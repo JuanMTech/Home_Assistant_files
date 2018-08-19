@@ -11,7 +11,7 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 
 # Device running Home Assistant and connected devices
 * Main server [Raspberry Pi 3](https://amzn.to/2PhyNYq) Running Hass.io based on HassOS
-* [Raspberry Pi 3 case](https://amzn.to/2OO6T5h)
+* [Raspberry Pi 3 case](https://amzn.to/2OO6T5h) - Best case ever for the Raspberry Pi 3
 * [Samsung microSD card 32GB](https://amzn.to/2OSdbB9) 
 * [WeMo Switch Smart Plug](https://amzn.to/2Pj2TLn)
 * [Wemo Mini Smart Plug](https://amzn.to/2L8fddM)
