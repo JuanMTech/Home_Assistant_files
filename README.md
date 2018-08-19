@@ -6,8 +6,8 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 
 # Videos and written guides
 
-* [Home Assistant Tutorial videos](https://www.youtube.com/playlist?list=PLLydq6ff7NvJ1ioQSVRCt2FJK9EFzRKWr)
-* [Home Assistant written guides](https://www.juanmtech.com/home-assistant/)
+* [Home Assistant Tutorial videos](https://www.youtube.com/playlist?list=PLLydq6ff7NvJ1ioQSVRCt2FJK9EFzRKWr) - YouTube playlist on easy to follow tutorials for Home Assistant
+* [Home Assistant written guides](https://www.juanmtech.com/home-assistant/) - Written guides for Home Assistant
 
 # Device running Home Assistant and connected devices
 * Main server [Raspberry Pi 3](https://amzn.to/2PhyNYq) Running Hass.io based on HassOS
