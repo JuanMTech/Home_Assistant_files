@@ -1,8 +1,12 @@
+<p align="center"> 
+<img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Banner-for-GitHub.jpg">
+</p>
+
 # Home Assistant files
 
 Hey guys, Juan here from [juanmtech.com](https://www.juanmtech.com). These are the Home Assistant configuration files I use in my Home Assistant setup. Hopefully, this repository would help someone else get ideas when getting started with Home Assistant.
 
-If you are new to Home Assistant, I recommend visiting my [YouTube channel](https://www.youtube.com/JuanMTech) and my [website](https://www.juanmtech.com) where you can find easy to follow tutorials on how to get started.  
+If you are new to Home Assistant, I recommend visiting my [YouTube channel](https://www.youtube.com/JuanMTech) and my [website](https://www.juanmtech.com) where you can find easy to follow tutorials on how to get started.
 
 # Videos and written guides
 
