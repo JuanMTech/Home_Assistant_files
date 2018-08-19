@@ -1,0 +1,277 @@
+###
+### TV remote select channels drop down
+###
+- alias: 'Select Channel'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: input_select.channel
+        state: 'CNN'
+      - condition: state
+        entity_id: input_select.channel
+        state: 'NatGeo'
+      - condition: state
+        entity_id: input_select.channel
+        state: 'SCI'
+      - condition: state
+        entity_id: input_select.channel
+        state: 'History'
+      - condition: state
+        entity_id: input_select.channel
+        state: 'DVR'
+      - condition: state
+        entity_id: input_select.channel
+        state: 'Cartoon Network'
+      - condition: state
+        entity_id: input_select.channel
+        state: 'Kids Music'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.channel
+        option: Select Channel
+###
+### Change to CNN channel
+###
+- alias: 'CNN'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'CNN'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 2
+          - 5
+          - Select
+###
+### Change to NatGeo Channel
+###
+- alias: 'NatGeo'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'NatGeo'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 1
+          - 6
+          - 2
+          - Select
+###
+### Change to SCI channel
+###
+- alias: 'SCI'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'SCI'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 1
+          - 7
+          - 0
+          - Select
+###
+### Change to History channel
+###
+- alias: 'History'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'History'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 4
+          - 7
+          - Select
+###
+### Change to DVR
+###
+- alias: 'DVR'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'DVR'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 1
+          - 0
+          - 0
+          - 1
+          - Select
+###
+### Change to Cartoon Network
+###
+- alias: 'Cartoon Network'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'Cartoon Network'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 1
+          - 2
+          - 8
+          - Select
+###
+### Change to Kids Music channel
+###
+- alias: 'Kids Music'
+  trigger:
+    platform: state
+    entity_id: input_select.channel
+    to: 'Kids Music'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - 8
+          - 7
+          - 3
+          - Select
+###
+### Set HA Theme at startup
+###
+- alias: 'Set theme at startup'
+  #initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: Dark - Green
+###
+### Automatically set up day and night themes
+###
+#- alias: 'Set HA theme for day and night'
+#  trigger:
+#    - platform: homeassistant
+#      event: start
+#    - platform: state
+#      entity_id: sun.sun
+#      to: above_horizon
+#    - platform: state
+#      entity_id: sun.sun
+#      to: below_horizon
+#  action:
+#    - service_template: frontend.set_theme
+#      data_template:
+#        name: >
+#          {% if states.sun.sun.state == "above_horizon" %}
+#            Light - Green
+#          {% else %}
+#            Dark - Green
+#          {% endif %}
+###
+### Manually change HA themes
+###
+- alias: 'Change HA theme'
+  trigger:
+    - platform: state
+      entity_id: input_select.themes
+    - platform: homeassistant
+      event: start
+  action:
+    - service: frontend.set_theme
+      data_template:
+        name: "{{ states.input_select.themes.state }}"
+###
+### TV remote select TV inputs drop down
+###
+- alias: 'Select Input'
+  trigger:
+    platform: state
+    entity_id: input_select.tv_inputs
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: input_select.tv_inputs
+        state: 'Cable'
+      - condition: state
+        entity_id: input_select.tv_inputs
+        state: 'Chromecast'
+      - condition: state
+        entity_id: input_select.tv_inputs
+        state: 'Switch'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.tv_inputs
+        option: Select Input
+###
+### Change to Cable Input
+###
+- alias: 'Cable'
+  trigger:
+    platform: state
+    entity_id: input_select.tv_inputs
+    to: 'Cable'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - InputHdmi1
+###
+### Change to Chromecast Input
+###
+- alias: 'Chromecast'
+  trigger:
+    platform: state
+    entity_id: input_select.tv_inputs
+    to: 'Chromecast'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - InputHdmi2
+###
+### Change to Nintendo Switch Input
+###
+- alias: 'Switch'
+  trigger:
+    platform: state
+    entity_id: input_select.tv_inputs
+    to: 'Switch'
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - InputHdmi3
