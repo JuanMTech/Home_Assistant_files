@@ -17,3 +17,5 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 * [Wemo Mini Smart Plug](https://amzn.to/2L8fddM)
 * [Logitech Harmony Hub](https://amzn.to/2vWsmSy)
 * [YEELIGHT Smart Wifi LED Light Strip](https://amzn.to/2Mp5tkT)
+* [Google Home](https://store.google.com/us/product/google_home?hl=en-US)
+* [Google Home Mini](https://store.google.com/product/google_home_mini?43700033967804248&gclid=Cj0KCQjwquTbBRCSARIsADzW88zhzmT6J3-arWJHTvvj4tbvnhIOjxhwb2yICOB36OtowI4cXF59k0kaAuF-EALw_wcB&gclsrc=aw.ds&dclid=CM7vqqfd-dwCFcS7swodddECDA)
