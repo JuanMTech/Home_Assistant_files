@@ -1,0 +1,104 @@
+sensor.pws_temp_f:
+  friendly_name: Temp
+sensor.ssl_cert_expiry:
+  friendly_name: SSL Remaining Time
+  icon: mdi:lock
+sensor.dark_sky_summary:
+  friendly_name: Today's Forecast
+sensor.dark_sky_temperature:
+  friendly_name: Current Temperature
+sensor.dark_sky_daily_high_temperature:
+  friendly_name: High Temperature
+sensor.dark_sky_daily_low_temperature:
+  friendly_name: Low Temperature
+sensor.dark_sky_precip_probability:
+  friendly_name: Chance of Rain
+  icon: mdi:weather-rainy
+sensor.dark_sky_humidity:
+  friendly_name: Humidity
+sensor.dark_sky_wind_speed:
+  friendly_name: Wind Speed
+switch.living_room_light:
+  icon: mdi:ceiling-light
+switch.bedroom_light:
+  icon: mdi:ceiling-light
+switch.computer:
+  icon: mdi:desktop-tower
+light.office_light:
+  icon: mdi:lamp
+light.yeelight_strip:
+  icon: mdi:lamp
+  friendly_name: Desk Light
+script.pc_lock:
+  icon: mdi:lock
+script.tv_power_toogle:
+  icon: mdi:television
+script.lr_tv_volume_up:
+  icon: mdi:volume-plus
+script.lr_tv_volume_down:
+  icon: mdi:volume-minus
+script.lr_tv_volume_mute:
+  icon: mdi:volume-mute
+script.cable_power_toogle:
+  icon: mdi:router-wireless
+script.soundbar_power_toogle:
+  icon: mdi:speaker
+script.chromecast_input:
+  icon: mdi:cast
+script.cable_input:
+  icon: mdi:television-box
+script.switch_input:
+  icon: mdi:nintendo-switch
+script.lr_fan_on:
+  icon: mdi:fan
+script.lr_fan_off:
+  icon: mdi:fan-off
+script.lr_ac_power_toggle:
+  icon: mdi:air-conditioner
+script.lr_ac_fan_speed:
+  icon: mdi:fan
+script.lr_ac_temp_up:
+  icon: mdi:temperature-fahrenheit
+script.lr_ac_temp_down:
+  icon: mdi:temperature-fahrenheit
+remote.harmony_hub:
+  hidden: true
+automation.select_channel:
+  hidden: true
+automation.cartoon_network:
+  hidden: true
+automation.cnn:
+  hidden: true
+automation.dvr:
+  hidden: true
+automation.history:
+  hidden: true
+automation.kids_music:
+  hidden: true
+automation.natgeo:
+  hidden: true
+automation.sci:
+  hidden: true
+automation.update_available_notifications:
+  hidden: true
+script.pc_off:
+  hidden: true
+automation.computer_turned_on:
+  hidden: true
+automation.computer_turned_off:
+  hidden: true
+automation.change_ha_theme:
+  icon: mdi:palette
+  hidden: true
+automation.set_ha_theme_for_day_and_night:
+  hidden: true
+automation.set_theme_at_startup:
+  hidden: true
+automation.cable:
+  hidden: true
+automation.switch:
+  hidden: true
+automation.chromecast:
+  hidden: true
+automation.select_input:
+  hidden: true

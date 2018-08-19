@@ -1,0 +1,218 @@
+###
+### TV power
+###
+tv_power_toogle:
+  alias: TV On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - PowerToggle
+
+###
+### Cable box power
+###
+cable_power_toogle:
+  alias: Cable Box On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - PowerToggle
+
+###
+### Soundbar power
+###
+soundbar_power_toogle:
+  alias: Soundbar On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - PowerToggle
+
+###
+### Chromecast input
+###
+#chromecast_input:
+#  alias: Chromecast Input
+#  sequence:
+#    - service: remote.send_command
+#      data:
+#        entity_id: remote.harmony_hub
+#        device: 555555 # Device ID number
+#        command:
+#          - InputHdmi2
+
+###
+### Cable input
+###
+#cable_input:
+#  alias: Cable Input
+#  sequence:
+#    - service: remote.send_command
+#      data:
+#        entity_id: remote.harmony_hub
+#        device: 555555 # Device ID number
+#        command:
+#          - InputHdmi1
+
+###
+### Switch input
+###
+#switch_input:
+#  alias: Switch Input
+#  sequence:
+#    - service: remote.send_command
+#      data:
+#        entity_id: remote.harmony_hub
+#        device: 555555 # Device ID number
+#        command:
+#          - InputHdmi3
+
+###
+### PC power off
+###
+pc_off:
+  alias: PC - Off
+  sequence:
+    - service: joaoapps_join.android_send_tasker
+      data:
+        device_id: !secret Join_PC_id
+        command: shutdown
+
+###
+### PC Lock
+###
+pc_lock:
+  alias: PC - Lock
+  sequence:
+    - service: joaoapps_join.android_send_tasker
+      data:
+        device_id: !secret Join_PC_id
+        command: lock
+
+###
+### Living room fan power on
+###
+lr_fan_on:
+  alias: Fan On
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - PowerToggle
+
+###
+### Living room fan power off
+###
+lr_fan_off:
+  alias: Fan Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - PowerToggle
+        num_repeats: 3
+        delay_secs: 2
+
+###
+### Living room AC power on
+###
+lr_ac_power_toggle:
+  alias: AC On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - PowerToggle
+
+###
+### Living room AC fan speed up
+###
+lr_ac_fan_speed:
+  alias: Fan Speed
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - FanSpeed
+
+###
+### Living room AC temp up
+###
+lr_ac_temp_up:
+  alias: Temp Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - TempHotter
+
+###
+### Living room AC temp down
+###
+lr_ac_temp_down:
+  alias: Temp Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - TempCooler
+
+###
+### Living room TV volume up
+###
+lr_tv_volume_up:
+  alias: TV Volume Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - VolumeUp
+
+###
+### Living room TV volume down
+###
+lr_tv_volume_down:
+  alias: TV Volume Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - VolumeDown
+
+###
+### Living room TV volume mute
+###
+lr_tv_volume_mute:
+  alias: TV Volume Mute
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 555555 # Device ID number
+        command:
+          - Mute

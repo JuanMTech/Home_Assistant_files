@@ -1,0 +1,6 @@
+- platform: wake_on_lan
+  name: Computer
+  mac_address: !secret PC_MAC
+  host: !secret PC_IP
+  turn_off:
+    service: script.pc_off

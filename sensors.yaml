@@ -1,0 +1,14 @@
+- platform: cert_expiry
+  host: domain.duckdns.org
+- platform: darksky
+  api_key: !secret DarkSky_API_Key
+  monitored_conditions:
+    - summary
+    - temperature
+    - temperature_max
+    - temperature_min
+    - humidity
+    - wind_speed
+    - precip_probability
+  update_interval:
+    hours: 1
