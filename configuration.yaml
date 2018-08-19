@@ -1,0 +1,68 @@
+homeassistant:
+  name: Home
+  latitude: !secret H_latitude
+  longitude: !secret H_longitude
+  elevation: 5
+  unit_system: imperial
+  time_zone: Your_Time_Zone
+  customize: !include customize.yaml
+
+http:
+  api_password: !secret http_password
+  base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: True
+  login_attempts_threshold: 3
+
+frontend:
+  themes: !include themes.yaml
+
+sun:
+config:
+conversation:
+history:
+logbook:
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
+input_select: !include input_select.yaml
+panel_iframe: !include panel_iframe.yaml
+
+discovery:
+  ignore:
+    - belkin_wemo
+
+tts:
+  - platform: google
+
+ifttt:
+  key: !secret IFTTT_Key
+
+wemo:
+  static:
+    - !secret Wemo_Living_Room_IP
+    - !secret Wemo_Bedroom_IP
+
+remote:
+  - platform: harmony
+    name: Harmony Hub
+    username: !secret H_Hub_ID
+    password: !secret H_Hub_Password
+    host: !secret Harmony_IP
+    port: !secret H_Hub_Port
+
+notify:
+  - platform: joaoapps_join
+    api_key: !secret Join_api_key
+    device_ids: !secret Join_device_ids
+    device_names: PC, S9
+
+joaoapps_join:
+  - name: android
+    device_ids: !secret Join_device_ids
+    api_key: !secret Join_api_key
