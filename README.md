@@ -1,5 +1,5 @@
-<p align="center"> 
-<img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Banner-for-GitHub.jpg">
+<p align="center">
+  <img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Banner-for-GitHub.jpg">
 </p>
 
 # Home Assistant files
