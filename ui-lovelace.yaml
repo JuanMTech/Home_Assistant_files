@@ -1,0 +1,360 @@
+############################
+### Home Assistant title ###
+############################
+title: Home
+################
+### Main tab ###
+################
+views:
+  - title: Main
+    cards:
+      ##############
+      ### Lights ###
+      ##############
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Lights
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: light.desk_light
+                    name: Desk
+                    icon: mdi:desk-lamp
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: switch.living_room_light
+                    name: Living room
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: switch.bedroom_light
+                    name: Bedroom
+                    tap_action: toggle
+      #######################
+      ### Office computer ###
+      #######################
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Office
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: switch.computer
+                    name: PC On/Off
+                    icon: mdi:desktop-tower-monitor
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.pc_lock
+                    name: PC Lock
+                    tap_action: toggle
+      #############################
+      ### Living room TV remote ###
+      #############################
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Living room TV
+          #########################################################
+          ### Power toggle: TV, Cable, SoundBar and HDMI Inputs ###
+          #########################################################
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.tv_power_toogle
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.cable_power_toogle
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.soundbar_power_toogle
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: input_boolean.hdmi
+                    tap_action: toggle
+          ###################
+          ### HDMI Inputs ###
+          ###################
+          - type: conditional
+            conditions:
+              - entity: input_boolean.hdmi
+                state: "on"
+            card:
+              type: glance
+              show_name: false
+              show_state: false
+              column_width: calc(100% / 3)
+              entities:
+                - entity: script.cable_input
+                  tap_action: toggle
+                - entity: script.chromecast_input
+                  tap_action: toggle
+                - entity: script.switch_input
+                  tap_action: toggle
+          #############################################################
+          ### Vol up, Prev channel, Channel up and Playback buttons ###
+          #############################################################
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_tv_volume_up
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_cable_channel_prev
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_cable_channel_up
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: input_boolean.playback_buttons
+                    tap_action: toggle
+          ########################
+          ### Playback buttons ###
+          ########################
+          - type: conditional
+            conditions:
+              - entity: input_boolean.playback_buttons
+                state: "on"
+            card:
+              type: glance
+              show_name: false
+              show_state: false
+              column_width: calc(100% / 5)
+              entities:
+                - entity: script.lr_cable_rewind
+                  tap_action: toggle
+                - entity: script.lr_cable_play
+                  tap_action: toggle
+                - entity: script.lr_cable_forward
+                  tap_action: toggle
+                - entity: script.lr_cable_stop
+                  tap_action: toggle
+                - entity: script.lr_cable_pause
+                  tap_action: toggle
+                - entity: script.lr_cable_direction_up
+                  tap_action: toggle
+                - entity: script.lr_cable_direction_down
+                  tap_action: toggle
+                - entity: script.lr_cable_direction_left
+                  tap_action: toggle
+                - entity: script.lr_cable_direction_right
+                  tap_action: toggle
+                - entity: script.lr_cable_select
+                  tap_action: toggle
+          ###################################################
+          ### Vol down, Mute, Channel down and Number Pad ###
+          ###################################################
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_tv_volume_down
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_tv_volume_mute
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_cable_channel_down
+                    tap_action: toggle
+              - type: glance
+                show_name: false
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: input_boolean.number_pad
+                    tap_action: toggle
+          ##################
+          ### Number pad ###
+          ##################
+          - type: conditional
+            conditions:
+              - entity: input_boolean.number_pad
+                state: "on"
+            card:
+              type: glance
+              show_name: false
+              show_state: false
+              column_width: calc(100% / 3)
+              entities:
+                - entity: script.lr_cable_number_1
+                  tap_action: toggle
+                - entity: script.lr_cable_number_2
+                  tap_action: toggle
+                - entity: script.lr_cable_number_3
+                  tap_action: toggle
+                - entity: script.lr_cable_number_4
+                  tap_action: toggle
+                - entity: script.lr_cable_number_5
+                  tap_action: toggle
+                - entity: script.lr_cable_number_6
+                  tap_action: toggle
+                - entity: script.lr_cable_number_7
+                  tap_action: toggle
+                - entity: script.lr_cable_number_8
+                  tap_action: toggle
+                - entity: script.lr_cable_number_9
+                  tap_action: toggle
+                - entity: script.lr_cable_number_0
+                  tap_action: toggle
+                - entity: script.lr_cable_select
+                  tap_action: toggle
+      ######################
+      ### Living room AC ###
+      ######################
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Living room AC
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_ac_power_toggle
+                    name: On/Off
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_ac_fan_speed
+                    name: Speed
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_ac_temp_up
+                    name: Up
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_ac_temp_down
+                    name: Down
+                    tap_action: toggle
+      #######################
+      ### Living room fan ###
+      #######################
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Living room fan
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_fan_on
+                    tap_action: toggle
+              - type: glance
+                show_state: false
+                column_width: calc(100% / 1)
+                entities:
+                  - entity: script.lr_fan_off
+                    tap_action: toggle
+      ###############################################
+      ### Google Home Speakers and ChromeCast TVs ###
+      ###############################################
+      - type: conditional
+        conditions:
+          - entity: media_player.living_room_speaker
+            state_not: "off"
+          - entity: media_player.living_room_speaker
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.living_room_speaker
+      - type: conditional
+        conditions:
+          - entity: media_player.bedroom_speaker
+            state_not: "off"
+          - entity: media_player.bedroom_speaker
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.bedroom_speaker
+      - type: conditional
+        conditions:
+          - entity: media_player.living_room_tv
+            state_not: "off"
+          - entity: media_player.living_room_tv
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.living_room_tv
+      - type: conditional
+        conditions:
+          - entity: media_player.bedroom_tv
+            state_not: "off"
+          - entity: media_player.bedroom_tv
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.bedroom_tv
