@@ -1,0 +1,12 @@
+playback_buttons:
+  name: Playback buttons
+  initial: off
+  icon: mdi:remote
+hdmi:
+  name: HDMI Inputs
+  initial: off
+  icon: mdi:video-input-hdmi
+number_pad:
+  name: Number Pad
+  initial: off
+  icon: mdi:dialpad
