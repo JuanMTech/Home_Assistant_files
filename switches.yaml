@@ -4,3 +4,17 @@
   host: !secret PC_IP
   turn_off:
     service: script.pc_off
+#
+- platform: template
+  switches:
+    lr_tv_power_toogle:
+      friendly_name: Living room TV
+      value_template: "{{ is_state('media_player.lr_sony_tv', 'on') }}"
+      turn_on:
+        service: media_player.turn_on
+        data:
+          entity_id: media_player.lr_sony_tv
+      turn_off:
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.lr_sony_tv
