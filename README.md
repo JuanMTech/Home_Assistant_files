@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Banner-for-GitHub.jpg">
+  <img src="https://www.juanmtech.com/wp-content/uploads/2018/11/Web-Retina-Logo-544x180-v.2.png">
 </p>
 
 # Home Assistant files
