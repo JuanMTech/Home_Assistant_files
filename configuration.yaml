@@ -4,38 +4,52 @@ homeassistant:
   longitude: !secret H_longitude
   elevation: 5
   unit_system: imperial
-  time_zone: Your_Time_Zone
+  time_zone: America/New_York
   customize: !include customize.yaml
 
 http:
-  api_password: !secret http_password
   base_url: !secret base_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   ip_ban_enabled: True
-  login_attempts_threshold: 3
+  login_attempts_threshold: 1
 
 frontend:
   themes: !include themes.yaml
+  javascript_version: latest
 
-sun:
-config:
+lovelace:
+  mode: yaml
+
 conversation:
+map:
+sun:
 history:
 logbook:
-cloud:
-
+config:
+cloud: !include cloud.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 sensor: !include sensors.yaml
 switch: !include switches.yaml
 input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
 panel_iframe: !include panel_iframe.yaml
+light: !include lights.yaml
+camera: !include cameras.yaml
+zone: !include zones.yaml
+
+owntracks:
+  max_gps_accuracy: 100
+  waypoints: true
+  waypoint_whitelist:
+    - Juan
 
 discovery:
   ignore:
     - belkin_wemo
+    - yeelight
 
 tts:
   - platform: google
@@ -50,19 +64,52 @@ wemo:
 
 remote:
   - platform: harmony
-    name: Harmony Hub
+    name: LR Harmony Hub
     username: !secret H_Hub_ID
     password: !secret H_Hub_Password
-    host: !secret Harmony_IP
+    host: !secret LR_Harmony_IP
+    port: !secret H_Hub_Port
+  - platform: harmony
+    name: BR Harmony Hub
+    username: !secret H_Hub_ID
+    password: !secret H_Hub_Password
+    host: !secret BR_Harmony_IP
     port: !secret H_Hub_Port
 
 notify:
   - platform: joaoapps_join
     api_key: !secret Join_api_key
     device_ids: !secret Join_device_ids
-    device_names: PC, S9
+    device_names: PC, Juan S9, Antonette S8
+    name: All
+  - platform: joaoapps_join
+    api_key: !secret Join_api_key
+    device_id: !secret Join_PC_id
+    device_names: PC
+    name: PC
+  - platform: joaoapps_join
+    api_key: !secret Join_api_key
+    device_id: !secret Join_Juan_S9_id
+    device_names: Juan S9
+    name: Juan S9
+  - platform: joaoapps_join
+    api_key: !secret Join_api_key
+    device_id: !secret Join_Antonette_S8_id
+    device_names: Antonette S8
+    name: Antonette S8
 
 joaoapps_join:
-  - name: android
-    device_ids: !secret Join_device_ids
+  - name: Join Devices
+    device_id: group.all
     api_key: !secret Join_api_key
+
+
+weather:
+  - platform: darksky
+    api_key: !secret DarkSky_API_Key
+
+media_player:
+  - platform: braviatv
+    host: !secret Living_room_TV_IP
+    name: LR Sony TV
+
