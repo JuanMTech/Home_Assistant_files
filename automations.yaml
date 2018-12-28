@@ -1,277 +1,106 @@
-###
-### TV remote select channels drop down
-###
-- alias: 'Select Channel'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: input_select.channel
-        state: 'CNN'
-      - condition: state
-        entity_id: input_select.channel
-        state: 'NatGeo'
-      - condition: state
-        entity_id: input_select.channel
-        state: 'SCI'
-      - condition: state
-        entity_id: input_select.channel
-        state: 'History'
-      - condition: state
-        entity_id: input_select.channel
-        state: 'DVR'
-      - condition: state
-        entity_id: input_select.channel
-        state: 'Cartoon Network'
-      - condition: state
-        entity_id: input_select.channel
-        state: 'Kids Music'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.channel
-        option: Select Channel
-###
-### Change to CNN channel
-###
-- alias: 'CNN'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'CNN'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 2
-          - 5
-          - Select
-###
-### Change to NatGeo Channel
-###
-- alias: 'NatGeo'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'NatGeo'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 1
-          - 6
-          - 2
-          - Select
-###
-### Change to SCI channel
-###
-- alias: 'SCI'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'SCI'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 1
-          - 7
-          - 0
-          - Select
-###
-### Change to History channel
-###
-- alias: 'History'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'History'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 4
-          - 7
-          - Select
-###
-### Change to DVR
-###
-- alias: 'DVR'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'DVR'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 1
-          - 0
-          - 0
-          - 1
-          - Select
-###
-### Change to Cartoon Network
-###
-- alias: 'Cartoon Network'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'Cartoon Network'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 1
-          - 2
-          - 8
-          - Select
-###
-### Change to Kids Music channel
-###
-- alias: 'Kids Music'
-  trigger:
-    platform: state
-    entity_id: input_select.channel
-    to: 'Kids Music'
-  action:
-    - service: remote.send_command
-      data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - 8
-          - 7
-          - 3
-          - Select
-###
-### Set HA Theme at startup
-###
+# Set HA Theme at startup
+#
 - alias: 'Set theme at startup'
-  #initial_state: 'on'
   trigger:
     platform: homeassistant
     event: start
   action:
     service: frontend.set_theme
     data:
-      name: Dark - Green
-###
-### Automatically set up day and night themes
-###
-#- alias: 'Set HA theme for day and night'
-#  trigger:
-#    - platform: homeassistant
-#      event: start
-#    - platform: state
-#      entity_id: sun.sun
-#      to: above_horizon
-#    - platform: state
-#      entity_id: sun.sun
-#      to: below_horizon
-#  action:
-#    - service_template: frontend.set_theme
-#      data_template:
-#        name: >
-#          {% if states.sun.sun.state == "above_horizon" %}
-#            Light - Green
-#          {% else %}
-#            Dark - Green
-#          {% endif %}
-###
-### Manually change HA themes
-###
-- alias: 'Change HA theme'
+      name: Dark - Green 2
+#
+# Google Home / IFTTT voice commands
+#
+- alias: 'IFTTT'
   trigger:
-    - platform: state
-      entity_id: input_select.themes
-    - platform: homeassistant
-      event: start
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
   action:
-    - service: frontend.set_theme
-      data_template:
-        name: "{{ states.input_select.themes.state }}"
-###
-### TV remote select TV inputs drop down
-###
-- alias: 'Select Input'
+    service_template: '{{ trigger.event.data.service }}'
+    data_template:
+      entity_id: '{{ trigger.event.data.entity_id }}'
+#
+# Presence Detection - Antonette / Juan Home
+#
+# Antonette
+- alias: 'Ann Loc Home msg'
   trigger:
     platform: state
-    entity_id: input_select.tv_inputs
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: input_select.tv_inputs
-        state: 'Cable'
-      - condition: state
-        entity_id: input_select.tv_inputs
-        state: 'Chromecast'
-      - condition: state
-        entity_id: input_select.tv_inputs
-        state: 'Switch'
+    entity_id: device_tracker.antonette_s8
+    from: 'not_home'
+    to: 'home'
   action:
-    - service: input_select.select_option
+    service: notify.juan_s9
+    data:
+      message: 'Antonette is now home.'
+      title: 'Home Assistant'
       data:
-        entity_id: input_select.tv_inputs
-        option: Select Input
-###
-### Change to Cable Input
-###
-- alias: 'Cable'
+        icon: https://www.home-assistant.io/images/favicon-192x192.png
+# Juan
+- alias: 'Juan Loc Home msg'
   trigger:
     platform: state
-    entity_id: input_select.tv_inputs
-    to: 'Cable'
+    entity_id: device_tracker.juan_s9
+    from: 'not_home'
+    to: 'home'
   action:
-    - service: remote.send_command
+    service: notify.antonette_s8
+    data:
+      message: 'Juan is now home.'
+      title: 'Home Assistant'
       data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - InputHdmi1
-###
-### Change to Chromecast Input
-###
-- alias: 'Chromecast'
+        icon: https://www.home-assistant.io/images/favicon-192x192.png
+#
+# Presence Detection - Antonette / Juan Work
+#
+# Antonette
+- alias: 'Ann Loc Work msg'
   trigger:
     platform: state
-    entity_id: input_select.tv_inputs
-    to: 'Chromecast'
+    entity_id: device_tracker.antonette_s8
+    from: 'not_home'
+    to: 'work'
   action:
-    - service: remote.send_command
+    service: notify.juan_s9
+    data:
+      message: 'Antonette is at work now.'
+      title: 'Home Assistant'
       data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - InputHdmi2
-###
-### Change to Nintendo Switch Input
-###
-- alias: 'Switch'
+        icon: https://www.home-assistant.io/images/favicon-192x192.png
+# Juan
+- alias: 'Juan Loc Work msg'
   trigger:
     platform: state
-    entity_id: input_select.tv_inputs
-    to: 'Switch'
+    entity_id: device_tracker.juan_s9
+    from: 'not_home'
+    to: 'work'
   action:
-    - service: remote.send_command
+    service: notify.antonette_s8
+    data:
+      message: 'Juan is at work now.'
+      title: 'Home Assistant'
       data:
-        entity_id: remote.harmony_hub
-        device: 555555 # Device ID number
-        command:
-          - InputHdmi3
+        icon: https://www.home-assistant.io/images/favicon-192x192.png
+#
+# Turn LR cable box on/off when LR TV on/off
+#
+# On
+- alias: 'LR cable on when TV on'
+  trigger:
+    platform: state
+    entity_id: media_player.lr_sony_tv
+    from: 'off'
+    to: 'on'
+  action:
+    service: script.lr_cable_power_toogle
+# Off
+- alias: 'LR cable off when TV off'
+  trigger:
+    platform: state
+    entity_id: media_player.lr_sony_tv
+    from: 'on'
+    to: 'off'
+  action:
+    service: script.lr_cable_power_toogle
