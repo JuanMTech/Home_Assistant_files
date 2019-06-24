@@ -1,5 +1,4 @@
 # Set HA Theme at startup
-#
 - alias: 'Set theme at startup'
   trigger:
     platform: homeassistant
@@ -10,7 +9,6 @@
       name: Dark - Green 2
 #
 # Google Home / IFTTT voice commands
-#
 - alias: 'IFTTT'
   trigger:
     platform: event
@@ -23,7 +21,6 @@
       entity_id: '{{ trigger.event.data.entity_id }}'
 #
 # Presence Detection - Antonette / Juan Home
-#
 # Antonette
 - alias: 'Ann Loc Home msg'
   trigger:
@@ -54,7 +51,6 @@
         icon: https://www.home-assistant.io/images/favicon-192x192.png
 #
 # Presence Detection - Antonette / Juan Work
-#
 # Antonette
 - alias: 'Ann Loc Work msg'
   trigger:
@@ -85,7 +81,6 @@
         icon: https://www.home-assistant.io/images/favicon-192x192.png
 #
 # Turn LR cable box on/off when LR TV on/off
-#
 # On
 - alias: 'LR cable on when TV on'
   trigger:

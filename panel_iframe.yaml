@@ -2,11 +2,4 @@ ide:
   title: IDE
   icon: mdi:code-braces
   url: https://domain.duckdns.org:8321
-#configurator:
-#  title: Configurator
-#  icon: mdi:wrench
-#  url: !secret configurator_url
-#nodered:
-#  title: Node-RED
-#  icon: mdi:sitemap
-#  url: !secret node_red_url
+
