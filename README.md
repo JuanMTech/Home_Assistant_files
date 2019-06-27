@@ -24,14 +24,47 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 
 Here are some of the tutorials that can get you started with Home Assistant.
 
-* [Beginner’s guide to Home Assistant - Hass.io](https://www.juanmtech.com/home-assistant-hassos-beginners-guide/)
-* [Home Assistant new user interface and UI editor](https://www.juanmtech.com/home-assistant-new-user-interface-and-ui-editor/)
-* [How to set up Lovelace on Home Assistant](https://www.juanmtech.com/how-to-set-up-lovelace-on-home-assistant/)
-* [Location tracking with OwnTracks HTTP Mode and Home Assistant](https://www.juanmtech.com/owntracks-http-mode-and-home-assistant/)
-* [How to integrate Google Assistant with Home Assistant Cloud](https://www.juanmtech.com/integrate-google-assistant-with-home-assistant-cloud/)
-* [How to integrate Amazon Alexa with Home Assistant Cloud](https://www.juanmtech.com/integrate-alexa-with-home-assistant-cloud/)
-* [How to get started with ESPHome and Sonoff](https://www.juanmtech.com/how-to-get-started-with-esphome-and-sonoff/)
-* [How to get started with Node-RED and Home Assistant](https://www.juanmtech.com/get-started-with-node-red-and-home-assistant/)
+<TABLE>
+<TR>
+    <TD>
+    <a href="https://www.juanmtech.com/home-assistant-hassos-beginners-guide/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/07/Web-Home-Assistant-HassOS-Beginners-guide.jpg" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/home-assistant-new-user-interface-and-ui-editor/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/02/Web-Home-Assistant-new-User-Interface.jpg" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/how-to-set-up-lovelace-on-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/10/Web-How-to-set-up-Lovelace-on-Home-Assistant.jpg" /></a><br/>
+    </TD>
+</TR>
+</TABLE>
+
+<TABLE>
+<TR>
+    <TD>
+    <a href="https://www.juanmtech.com/owntracks-http-mode-and-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/12/Web-Location-Tracking-with-OwnTracks-HTTP-Mode-and-Home-Assitant.jpg" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/integrate-google-assistant-with-home-assistant-cloud/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/01/Web-How-to-integrate-Google-Assistant-with-Home-Assistant-Cloud.png" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/integrate-alexa-with-home-assistant-cloud/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/01/Web-How-to-integrate-Alexa-with-Home-Assistant-Cloud.jpg" /></a><br/>
+    </TD>
+</TR>
+</TABLE>
+
+<TABLE>
+<TR>
+    <TD>
+    <a href="https://www.juanmtech.com/how-to-get-started-with-esphome-and-sonoff/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/04/Web-How-to-get-started-with-ESPHome-and-Sonoff-v.2.png" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/get-started-with-node-red-and-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/05/Web-Get-started-with-Node-RED-and-Home-Assistant.png" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/themes-in-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Web-How-to-set-up-themes-in-Home-Assistant.jpg" /></a><br/>
+    </TD>
+</TR>
+</TABLE>
 
 ## All video tutorials and written guides
 * [YouTube Playlist](https://www.youtube.com/playlist?list=PLLydq6ff7NvJ1ioQSVRCt2FJK9EFzRKWr) - Easy to follow tutorials to get you started with Home Assistant
@@ -56,6 +89,9 @@ Here are some of the tutorials that can get you started with Home Assistant.
 * [Sonoff Basic R2](https://amzn.to/2IAiLaN)
 * [Logitech Harmony Hub](https://amzn.to/2vWsmSy)
 * [YEELIGHT Smart Wifi LED Light Strip](https://amzn.to/2Mp5tkT)
+
+## DISCLOSURE
+Some of the links on this video, are **affiliate links**, meaning, at no additional cost to you, I will earn a commission if you click through and make a purchase.
 
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg

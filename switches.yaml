@@ -1,13 +1,23 @@
+# Wake on LAN - PC
 - platform: wake_on_lan
-  name: Computer
-  mac_address: !secret PC_MAC
-  host: !secret PC_IP
+  name: "Computer"
+  mac_address: !secret Artemis_MAC
+  host: !secret Artemis_IP
   turn_off:
     service: script.pc_off
 #
+# Wake on LAN - Server
+- platform: wake_on_lan
+  name: "Server"
+  mac_address: !secret Cypher_MAC
+  host: !secret Cypher_IP
+  turn_off:
+    service: script.server_off
+#
+# Living room TV
 - platform: template
   switches:
-    lr_tv_power_toogle:
+    lr_tv_power_toggle:
       friendly_name: Living room TV
       value_template: "{{ is_state('media_player.lr_sony_tv', 'on') }}"
       turn_on:

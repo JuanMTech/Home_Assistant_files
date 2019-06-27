@@ -1,20 +1,26 @@
 title: Home
-#resources:
-#  - url: /local/mini-media-player-bundle.js?v=0.9.8
-#    type: js
+resources:
+  - url: /local/mini-media-player-bundle.js?v=1.2.0
+    type: module
 views:
   - title: Main
     icon: mdi:home-outline
-    badges:
-      - device_tracker.juan_s9
-      - device_tracker.antonette_s8
     cards:
 #
-#### WEATHER ####
+# PERSONS
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - device_tracker.juan_phone
+          - type: divider
+          - device_tracker.antonette_phone
+#
+# WEATHER
       - type: weather-forecast
+        name: ' '
         entity: weather.dark_sky
 #
-#### LIGHTS ####
+# LIGHTS
       - type: vertical-stack
         cards:
           - type: markdown
@@ -23,12 +29,15 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: light.desk_light
-                name: Desk
+                entity: light.main_desk_light
+                name: Main desk
                 tap_action:
                   action: toggle
-                hold_action:
-                  action: more-info
+              - type: entity-button
+                entity: light.2nd_desk_light
+                name: 2nd desk
+                tap_action:
+                  action: toggle
               - type: entity-button
                 entity: light.living_room_light
                 name: Living Room
@@ -40,7 +49,7 @@ views:
                 tap_action:
                   action: toggle
 #
-#### Home Speakers ####
+# Home Speakers
           - type: conditional
             conditions:
               - entity: media_player.home_speakers
@@ -48,10 +57,11 @@ views:
               - entity: media_player.home_speakers
                 state_not: "unavailable"
             card:
-              type: media-control
+              type: custom:mini-media-player
               entity: media_player.home_speakers
+              artwork: cover
 #
-#### COMPUTER ####
+# COMPUTER
       - type: vertical-stack
         cards:
           - type: markdown
@@ -61,7 +71,7 @@ views:
             cards:
               - type: entity-button
                 entity: switch.computer
-                name: On/Off
+                name: PC
                 tap_action:
                   action: toggle
               - type: entity-button
@@ -75,10 +85,12 @@ views:
                 tap_action:
                   action: toggle
               - type: entity-button
-                entity: camera.living_room_camera
-                name: LR Cam
+                entity: switch.server
+                name: Server
+                tap_action:
+                  action: toggle
 #
-#### LIVING ROOM TV ####
+# LIVING ROOM TV
       - type: vertical-stack
         cards:
           - type: markdown
@@ -87,19 +99,19 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: switch.lr_tv_power_toogle
+                entity: switch.lr_tv_power_toggle
                 name: TV
                 tap_action:
                   action: toggle
                 hold_action:
                   action: more-info
               - type: entity-button
-                entity: script.lr_cable_power_toogle
+                entity: script.lr_cable_power_toggle
                 name: Cable
                 tap_action:
                   action: toggle
               - type: entity-button
-                entity: script.lr_soundbar_power_toogle
+                entity: script.lr_soundbar_power_toggle
                 name: Speaker
                 tap_action:
                   action: toggle
@@ -109,7 +121,7 @@ views:
                 tap_action:
                   action: toggle
 #
-#### HDMI INPUTS ####
+# HDMI INPUTS
           - type: conditional
             conditions:
               - entity: input_boolean.lr_hdmi
@@ -123,6 +135,9 @@ views:
                   tap_action:
                     action: toggle
                 - entity: script.lr_switch_input
+                  tap_action:
+                    action: toggle
+                - entity: script.lr_netflix_input
                   tap_action:
                     action: toggle
 #_#
@@ -149,7 +164,7 @@ views:
                 tap_action:
                   action: toggle
 #
-#### PLAYBACK KEYS ####
+# PLAYBACK KEYS
           - type: conditional
             conditions:
               - entity: input_boolean.lr_playback_buttons
@@ -228,7 +243,7 @@ views:
                 tap_action:
                   action: toggle
 #
-#### NUMBER KEYS ####
+# NUMBER KEYS
           - type: conditional
             conditions:
               - entity: input_boolean.lr_number_pad
@@ -273,9 +288,10 @@ views:
                   tap_action:
                     action: toggle
 #
-#### CHROMECAST & GOOGLE HOME ####
-      - type: vertical-stack
-        cards:
+# CHROMECAST & GOOGLE HOME
+          - type: custom:mini-media-player
+            entity: media_player.living_room_speaker
+            artwork: cover
           - type: conditional
             conditions:
               - entity: media_player.living_room_tv
@@ -283,30 +299,11 @@ views:
               - entity: media_player.living_room_tv
                 state_not: "unavailable"
             card:
-              type: media-control
+              type: custom:mini-media-player
               entity: media_player.living_room_tv
-          - type: conditional
-            conditions:
-              - entity: media_player.living_room_speaker
-                state_not: "off"
-              - entity: media_player.living_room_speaker
-                state_not: "unavailable"
-            card:
-              type: media-control
-              entity: media_player.living_room_speaker
-          - type: conditional
-            conditions:
-              - entity: media_player.kitchen_speaker
-                state_not: "off"
-              - entity: media_player.kitchen_speaker
-                state_not: "unavailable"
-            card:
-              type: media-control
-              entity: media_player.kitchen_speaker
+              artwork: cover
 #
-#### LIVING ROOM AC & FAN ####
-      - type: vertical-stack
-        cards:
+# LIVING ROOM AC & FAN
           - type: markdown
             content: >
               ## Living room AC and Fan
@@ -314,7 +311,7 @@ views:
             cards:
               - type: entity-button
                 entity: script.lr_ac_power_toggle
-                name: On/OFf
+                name: On/Off
                 tap_action:
                   action: toggle
               - type: entity-button
@@ -356,10 +353,11 @@ views:
                 name: Down
                 tap_action:
                   action: toggle
-#                                                     #
+#
 #######################################################
-#                                                     #
-#### BEDROOM TV ####
+#######################################################
+#
+# BEDROOM TV
       - type: vertical-stack
         cards:
           - type: markdown
@@ -368,14 +366,14 @@ views:
           - type: horizontal-stack
             cards:
               - type: entity-button
-                entity: script.br_tv_power_toogle
+                entity: script.br_tv_power_toggle
                 name: TV
                 tap_action:
                   action: toggle
                 hold_action:
                   action: more-info
               - type: entity-button
-                entity: script.br_cable_power_toogle
+                entity: script.br_cable_power_toggle
                 name: Cable
                 tap_action:
                   action: toggle
@@ -413,7 +411,7 @@ views:
                 tap_action:
                   action: toggle
 #
-#### PLAYBACK KEYS ####
+# PLAYBACK KEYS
           - type: conditional
             conditions:
               - entity: input_boolean.br_playback_buttons
@@ -492,7 +490,7 @@ views:
                 tap_action:
                   action: toggle
 #
-#### NUMBER KEYS ####
+# NUMBER KEYS
           - type: conditional
             conditions:
               - entity: input_boolean.br_number_pad
@@ -537,7 +535,10 @@ views:
                   tap_action:
                     action: toggle
 #
-#### CHROMECAST & GOOGLE HOME ####
+# CHROMECAST & GOOGLE HOME
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            artwork: cover
           - type: conditional
             conditions:
               - entity: media_player.bedroom_tv
@@ -547,29 +548,11 @@ views:
             card:
               type: custom:mini-media-player
               entity: media_player.bedroom_tv
-              name: Bedroom TV
               artwork: cover
-              power_color: true
-              hide_volume: false
-              show_progress: true
-          - type: conditional
-            conditions:
-              - entity: media_player.bedroom_speaker
-                state_not: "off"
-              - entity: media_player.bedroom_speaker
-                state_not: "unavailable"
-            card:
-              type: custom:mini-media-player
-              entity: media_player.bedroom_speaker
-              name: Bedroom speaker
-              artwork: cover
-              power_color: true
-              hide_volume: false
-              show_progress: true
 #
-#### BEDROOM AC & FAN ####
-      - type: vertical-stack
-        cards:
+# BEDROOM AC & FAN
+#      - type: vertical-stack
+#        cards:
           - type: markdown
             content: >
               ## Bedroom AC and Fan
@@ -577,7 +560,7 @@ views:
             cards:
               - type: entity-button
                 entity: script.br_ac_power_toggle
-                name: On/OFf
+                name: On/Off
                 tap_action:
                   action: toggle
               - type: entity-button
@@ -614,11 +597,12 @@ views:
                 tap_action:
                   action: toggle
 #
-#### DEVICES TRACKER MAP ####
-      - type: map
-        #aspect_ratio: 4:3
-        default_zoom: 16
-        entities:
-          - device_tracker.juan_s9
-          - device_tracker.antonette_s8
-          - zone.home
+# CHROMECAST & GOOGLE HOME (Kitchen)
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Kitchen
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_speaker
+            artwork: cover

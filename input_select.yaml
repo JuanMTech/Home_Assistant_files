@@ -1,7 +1,8 @@
+# Favorite Channels
 channel:
-  name: Favorite TV Channels
+  name: Favorite Channels
   options:
-    - Select Channel
+    - Select
     - CNN
     - NatGeo
     - SCI
@@ -9,40 +10,16 @@ channel:
     - DVR
     - Cartoon Network
     - Kids Music
-  initial: Select Channel
+  initial: Select
   icon: mdi:television-guide
+#
+# HDMI Inputs
 tv_inputs:
-  name: TV Inputs
+  name: HDMI Inputs
   options:
-    - Select Input
+    - Select
     - Cable
     - Chromecast
     - Switch
-  initial: Select Input
+  initial: Select
   icon: mdi:video-input-hdmi
-themes:
-  name: Available Themes
-  options:
-    - Select theme
-    - Dark - Green
-    - Light - Green
-    - Dark - Blue
-    - Light - Blue
-    - Dark - Orange
-    - Light - Orange
-    - Dark - Yellow
-    - Light - Yellow
-    - Dark - Cyan
-    - Light - Cyan
-    - Dark - Purple
-    - Light - Purple
-    - Gray & Green
-    - Dark - Gray
-    - Dark - Blue/Purple
-    - Dark - Light Red
-    - Light - Light Red
-    - Light - Navy Blue
-    - Navy Blue & Yellow
-    - Dark - Red
-  initial: Select theme
-  icon: mdi:palette

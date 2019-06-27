@@ -1,15 +1,5 @@
-# Set HA Theme at startup
-- alias: 'Set theme at startup'
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-    service: frontend.set_theme
-    data:
-      name: Dark - Green 2
-#
-# Google Home / IFTTT voice commands
-- alias: 'IFTTT'
+# IFTTT
+- alias: IFTTT
   trigger:
     platform: event
     event_type: ifttt_webhook_received
@@ -20,82 +10,14 @@
     data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
 #
-# Presence Detection - Antonette / Juan Home
-# Antonette
-- alias: 'Ann Loc Home msg'
+# Default theme
+- id: '1160451022067'
+  alias: Default Theme
   trigger:
-    platform: state
-    entity_id: device_tracker.antonette_s8
-    from: 'not_home'
-    to: 'home'
+  - event: start
+    platform: homeassistant
+  condition: []
   action:
-    service: notify.juan_s9
-    data:
-      message: 'Antonette is now home.'
-      title: 'Home Assistant'
-      data:
-        icon: https://www.home-assistant.io/images/favicon-192x192.png
-# Juan
-- alias: 'Juan Loc Home msg'
-  trigger:
-    platform: state
-    entity_id: device_tracker.juan_s9
-    from: 'not_home'
-    to: 'home'
-  action:
-    service: notify.antonette_s8
-    data:
-      message: 'Juan is now home.'
-      title: 'Home Assistant'
-      data:
-        icon: https://www.home-assistant.io/images/favicon-192x192.png
-#
-# Presence Detection - Antonette / Juan Work
-# Antonette
-- alias: 'Ann Loc Work msg'
-  trigger:
-    platform: state
-    entity_id: device_tracker.antonette_s8
-    from: 'not_home'
-    to: 'work'
-  action:
-    service: notify.juan_s9
-    data:
-      message: 'Antonette is at work now.'
-      title: 'Home Assistant'
-      data:
-        icon: https://www.home-assistant.io/images/favicon-192x192.png
-# Juan
-- alias: 'Juan Loc Work msg'
-  trigger:
-    platform: state
-    entity_id: device_tracker.juan_s9
-    from: 'not_home'
-    to: 'work'
-  action:
-    service: notify.antonette_s8
-    data:
-      message: 'Juan is at work now.'
-      title: 'Home Assistant'
-      data:
-        icon: https://www.home-assistant.io/images/favicon-192x192.png
-#
-# Turn LR cable box on/off when LR TV on/off
-# On
-- alias: 'LR cable on when TV on'
-  trigger:
-    platform: state
-    entity_id: media_player.lr_sony_tv
-    from: 'off'
-    to: 'on'
-  action:
-    service: script.lr_cable_power_toogle
-# Off
-- alias: 'LR cable off when TV off'
-  trigger:
-    platform: state
-    entity_id: media_player.lr_sony_tv
-    from: 'on'
-    to: 'off'
-  action:
-    service: script.lr_cable_power_toogle
+  - data:
+      name: Dark Blue
+    service: frontend.set_theme
