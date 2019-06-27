@@ -91,7 +91,7 @@ Here are some of the tutorials that can get you started with Home Assistant.
 * [YEELIGHT Smart Wifi LED Light Strip](https://amzn.to/2Mp5tkT)
 
 ## DISCLOSURE
-Some of the links on this video, are **affiliate links**, meaning, at no additional cost to you, I will earn a commission if you click through and make a purchase.
+Some of the links here, are **affiliate links**, meaning, at no additional cost to you, I will earn a commission if you click through and make a purchase.
 
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg
