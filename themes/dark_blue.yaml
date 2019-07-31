@@ -1,0 +1,66 @@
+Dark Blue:
+  # Main Interface Colors
+  primary-color: '#4481eb'
+  light-primary-color: '#4481eb'
+  primary-background-color: '#151515'
+  secondary-background-color: '#151515'
+  divider-color: '#151515'
+  dark-primary-color: 'var(--accent-color)'
+  accent-color: '#4481eb'
+  # Text
+  primary-text-color: '#F8F8F8'
+  secondary-text-color: '#4481eb'
+  text-primary-color: var(--primary-text-color)
+  disabled-text-color: '#717171'
+  # Sidebar Menu
+  sidebar-icon-color: '#4481eb'
+  sidebar-text-color: '#F8F8F8'
+  sidebar-selected-background-color: var(--accent-color)
+  sidebar-selected-icon-color: '#F8F8F8'
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color)
+  # States and Badges
+  state-icon-color: '#4481eb'
+  state-icon-active-color: '#FEB221'
+  state-icon-unavailable-color: var(--disabled-text-color)
+  # Sliders
+  paper-slider-knob-color: 'var(--accent-color)'
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: var(--paper-slider-knob-color)
+  paper-slider-secondary-color: var(--light-primary-color)
+  paper-slider-container-color: 'linear-gradient(var(--primary-background-color), var(--secondary-background-color)) no-repeat'
+  paper-slider-disabled-active-color: 'var(--disabled-text-color)'
+  # Labels
+  label-badge-border-color: 'green'
+  label-badge-background-color: '#171717'
+  label-badge-text-color: 'var(--primary-text-color)'
+  label-badge-red: 'var(--accent-color)'
+  # Cards
+  ha-card-border-radius: "15px"
+  ha-card-box-shadow: "none"
+  paper-card-header-color: '#F8F8F8'
+  paper-card-background-color: '#202020'
+  paper-listbox-color: '#F8F8F8'
+  paper-listbox-background-color: '#151515'
+  paper-dialog-background-color: '#151515'
+  paper-grey-50: '#151515'
+  paper-grey-200: '#151515'
+  # Toggles
+  paper-toggle-button-checked-button-color: 'var(--accent-color)'
+  paper-toggle-button-checked-bar-color: 'var(--accent-color)'
+  paper-toggle-button-checked-ink-color: 'var(--accent-color)'
+  paper-toggle-button-unchecked-button-color: 'var(--accent-color)'
+  paper-toggle-button-unchecked-bar-color: 'var(--accent-color)'
+  paper-toggle-button-unchecked-ink-color: 'var(--accent-color)'
+  # Table row
+  table-row-background-color: '#171717'
+  table-row-alternative-background-color: var(--table-row-background-color)
+  # Tabs
+  paper-tabs-selection-bar-color: 'green'
+  # Google
+  google-red-500: '#b58e31'
+  google-green-500: '#2980b9'
+  #
+  paper-item-icon-active-color: '#FEB221'
+  paper-item-icon_-_color: 'green'
+  paper-item-selected_-_background-color: '#4481eb'

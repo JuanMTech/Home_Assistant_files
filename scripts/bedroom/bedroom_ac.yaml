@@ -1,0 +1,54 @@
+# AC On-Off
+br_ac_power_toggle:
+  alias: AC On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - PowerToggle
+
+# Fan speed
+br_ac_fan_speed:
+  alias: Fan Speed
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - FanSpeed
+
+# AC temo up
+br_ac_temp_up:
+  alias: Temp Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - TempHotter
+
+# AC temo down
+br_ac_temp_down:
+  alias: Temp Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - TempCooler
+
+# AC mode
+br_ac_mode:
+  alias: Mode
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - Mode

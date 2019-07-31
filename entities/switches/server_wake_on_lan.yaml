@@ -1,0 +1,7 @@
+# Wake on LAN - Server
+platform: wake_on_lan
+name: "Server"
+mac_address: !secret Server_MAC
+host: !secret Server_IP
+turn_off:
+  service: script.server_off

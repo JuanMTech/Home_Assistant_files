@@ -1,0 +1,13 @@
+title: Kitchen
+icon: mdi:fridge
+cards:
+  #
+  # SPEAKER
+  - type: vertical-stack
+    cards:
+      - type: markdown
+        content: >
+          ## Speaker
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_speaker
+        artwork: cover

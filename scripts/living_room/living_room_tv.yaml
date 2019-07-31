@@ -1,0 +1,76 @@
+# TV On-Off
+lr_tv_power_toggle:
+  alias: TV On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - PowerToggle
+
+# Cable Input
+lr_cable_input:
+  alias: Cable Input
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - InputTv
+
+# Nintendo Switch Input
+lr_switch_input:
+  alias: Switch Input
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - InputHdmi4
+
+# Netflix Input
+lr_netflix_input:
+  alias: Netflix Input
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Netflix
+
+# Tv volume up
+lr_tv_volume_up:
+  alias: TV Volume Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - VolumeUp
+
+# Tv volume down
+lr_tv_volume_down:
+  alias: TV Volume Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - VolumeDown
+
+# Tv volume mute
+lr_tv_volume_mute:
+  alias: TV Volume Mute
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Mute

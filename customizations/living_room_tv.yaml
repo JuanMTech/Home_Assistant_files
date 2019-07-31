@@ -1,0 +1,19 @@
+# Living room TV
+script.lr_tv_power_toggle:
+  icon: mdi:television
+switch.lr_tv_power_toggle:
+  icon: mdi:television
+script.lr_tv_volume_up:
+  icon: mdi:volume-high
+script.lr_tv_volume_down:
+  icon: mdi:volume-medium
+script.lr_tv_volume_mute:
+  icon: mdi:volume-off
+script.lr_chromecast_input:
+  icon: mdi:cast
+script.lr_cable_input:
+  icon: mdi:television-box
+script.lr_switch_input:
+  icon: mdi:nintendo-switch
+script.lr_netflix_input:
+  icon: mdi:netflix

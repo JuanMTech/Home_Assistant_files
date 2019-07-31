@@ -1,0 +1,10 @@
+# HDMI Inputs
+tv_inputs:
+  name: HDMI Inputs
+  options:
+    - Select
+    - Cable
+    - Chromecast
+    - Switch
+  initial: Select
+  icon: mdi:video-input-hdmi

@@ -1,0 +1,1 @@
+notify: !include_dir_merge_named ../entities/notify_devices

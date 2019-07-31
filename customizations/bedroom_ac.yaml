@@ -1,0 +1,9 @@
+# Bedroom AC
+script.br_ac_power_toggle:
+  icon: mdi:air-conditioner
+script.br_ac_fan_speed:
+  icon: mdi:fan
+script.br_ac_temp_up:
+  icon: mdi:temperature-fahrenheit
+script.br_ac_temp_down:
+  icon: mdi:temperature-fahrenheit

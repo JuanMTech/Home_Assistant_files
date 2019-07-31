@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.juanmtech.com/wp-content/uploads/2019/05/Logo-Gray-v.5.png">
+  <img src="https://www.juanmtech.com/wp-content/uploads/2019/07/Logo-Site-v.6.png">
 </p>
 
 ---
@@ -27,27 +27,13 @@ Here are some of the tutorials that can get you started with Home Assistant.
 <TABLE>
 <TR>
     <TD>
-    <a href="https://www.juanmtech.com/home-assistant-hassos-beginners-guide/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/07/Web-Home-Assistant-HassOS-Beginners-guide.jpg" /></a><br/>
+    <a href="https://www.juanmtech.com/home-assistant-hassos-beginners-guide/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/07/Web-Home-Assistant-Hassio-Guide.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://www.juanmtech.com/home-assistant-new-user-interface-and-ui-editor/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/02/Web-Home-Assistant-new-User-Interface.jpg" /></a><br/>
+    <a href="https://www.juanmtech.com/home-assistant-new-user-interface-and-ui-editor/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/02/Web-Home-Assistant-new-User-Interface-v.2.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://www.juanmtech.com/how-to-set-up-lovelace-on-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/10/Web-How-to-set-up-Lovelace-on-Home-Assistant.jpg" /></a><br/>
-    </TD>
-</TR>
-</TABLE>
-
-<TABLE>
-<TR>
-    <TD>
-    <a href="https://www.juanmtech.com/owntracks-http-mode-and-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/12/Web-Location-Tracking-with-OwnTracks-HTTP-Mode-and-Home-Assitant.jpg" /></a><br/>
-    </TD>
-    <TD>
-    <a href="https://www.juanmtech.com/integrate-google-assistant-with-home-assistant-cloud/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/01/Web-How-to-integrate-Google-Assistant-with-Home-Assistant-Cloud.png" /></a><br/>
-    </TD>
-    <TD>
-    <a href="https://www.juanmtech.com/integrate-alexa-with-home-assistant-cloud/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/01/Web-How-to-integrate-Alexa-with-Home-Assistant-Cloud.jpg" /></a><br/>
+    <a href="https://www.juanmtech.com/how-to-set-up-lovelace-on-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/10/Web-Set-up-Lovelace-on-Home-Assistant.png" /></a><br/>
     </TD>
 </TR>
 </TABLE>
@@ -55,13 +41,27 @@ Here are some of the tutorials that can get you started with Home Assistant.
 <TABLE>
 <TR>
     <TD>
-    <a href="https://www.juanmtech.com/how-to-get-started-with-esphome-and-sonoff/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/04/Web-How-to-get-started-with-ESPHome-and-Sonoff-v.2.png" /></a><br/>
+    <a href="https://www.juanmtech.com/owntracks-http-mode-and-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/12/Web-Location-Tracking-with-OwnTracks-and-Home-Assitant.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://www.juanmtech.com/get-started-with-node-red-and-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/05/Web-Get-started-with-Node-RED-and-Home-Assistant.png" /></a><br/>
+    <a href="https://www.juanmtech.com/integrate-google-assistant-with-home-assistant-cloud/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/01/Web-Integrate-Google-Assistant-with-Home-Assistant-Cloud.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://www.juanmtech.com/themes-in-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Web-How-to-set-up-themes-in-Home-Assistant.jpg" /></a><br/>
+    <a href="https://www.juanmtech.com/integrate-alexa-with-home-assistant-cloud/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/01/Web-Integrade-Alexa-with-Home-Assistant-Cloud.png" /></a><br/>
+    </TD>
+</TR>
+</TABLE>
+
+<TABLE>
+<TR>
+    <TD>
+    <a href="https://www.juanmtech.com/how-to-get-started-with-esphome-and-sonoff/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/04/Web-Home-Assistant-and-ESPHome-Beginners-guide.png" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/get-started-with-node-red-and-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2019/05/Web-Home-Assistant-and-Node-RED-guide.png" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://www.juanmtech.com/themes-in-home-assistant/"><img src="https://www.juanmtech.com/wp-content/uploads/2018/08/Web-Set-up-Themes-in-Home-Assistant.png" /></a><br/>
     </TD>
 </TR>
 </TABLE>

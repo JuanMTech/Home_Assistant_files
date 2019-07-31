@@ -1,0 +1,10 @@
+# Default theme when accessing HA
+alias: Default Theme
+trigger:
+- event: start
+  platform: homeassistant
+condition: []
+action:
+- data:
+    name: Dark Blue
+  service: frontend.set_theme

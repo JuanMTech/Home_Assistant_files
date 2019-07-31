@@ -1,0 +1,43 @@
+Navy Blue & Yellow:
+  ### Main Interface Colors ###
+  primary-color: "#FEB221"
+  light-primary-color: "#FECA67"
+  primary-background-color: "#1F2635"
+  secondary-background-color: var(--primary-background-color)
+  divider-color: "#2D374D"
+  ### Text ###
+  primary-text-color: "#FBFBFB"
+  secondary-text-color: "#FEB221"
+  text-primary-color: "#FBFBFB"
+  disabled-text-color: "#4A5E84"
+  ### Sidebar Menu ###
+  sidebar-icon-color: "#8192B6"
+  sidebar-text-color: "#FBFBFB"
+  sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: "#FEB221"
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color)
+  ### States and Badges ###
+  state-icon-color: "#FEAA0A"
+  state-icon-active-color: "#FEF5D8"
+  state-icon-unavailable-color: var(--disabled-text-color)
+  ### Sliders ###
+  paper-slider-knob-color: "#FEB221"
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: var(--paper-slider-knob-color)
+  paper-slider-secondary-color: var(--light-primary-color)
+  ### Labels ###
+  label-badge-background-color: "#3E4C6C"
+  label-badge-text-color: "#FBFBFB"
+  label-badge-red: "#252D40"
+  ### Cards ###
+  paper-card-background-color: "#252D40"
+  paper-listbox-background-color: var(--primary-background-color)
+  ### Toggles ###
+  paper-toggle-button-checked-button-color: "#FEB221"
+  paper-toggle-button-checked-bar-color: "#FECA67"
+  paper-toggle-button-unchecked-button-color: "#6E81AA"
+  paper-toggle-button-unchecked-bar-color: "#3E4C6C"
+  ### Table row ###
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)

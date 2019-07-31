@@ -1,0 +1,5 @@
+# Bedroom Fan
+script.br_fan_on:
+  icon: mdi:fan
+script.br_fan_off:
+  icon: mdi:fan-off

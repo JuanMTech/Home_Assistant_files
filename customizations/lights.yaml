@@ -1,0 +1,13 @@
+# Lights
+light.living_room_light:
+  icon: mdi:floor-lamp
+light.bedroom_light:
+  icon: mdi:floor-lamp
+light.main_desk_light:
+  icon: mdi:desk-lamp
+light.2nd_desk_light:
+  icon: mdi:desk-lamp
+switch.living_room_light:
+  icon: mdi:power-socket-us
+switch.bedroom_light:
+  icon: mdi:power-socket-us

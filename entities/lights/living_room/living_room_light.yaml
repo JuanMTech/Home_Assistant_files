@@ -1,0 +1,14 @@
+# Living room light
+platform: template
+lights:
+  living_room_light:
+    friendly_name: Living room light
+    value_template: "{{ is_state('switch.living_room_light', 'on') }}"
+    turn_on:
+      service: switch.turn_on
+      data_template:
+        entity_id: switch.living_room_light
+    turn_off:
+      service: switch.turn_off
+      data_template:
+        entity_id: switch.living_room_light

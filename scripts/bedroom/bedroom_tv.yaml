@@ -1,0 +1,65 @@
+# TV On-Off
+br_tv_power_toggle:
+  alias: TV On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - PowerToggle
+
+# Cable Input
+br_cable_input:
+  alias: Cable Input
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - InputHdmi1
+
+# Chromecast Input
+br_chromecast_input:
+  alias: Chromecast Input
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - InputHdmi2
+
+# TV volume up
+br_tv_volume_up:
+  alias: TV Volume Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - VolumeUp
+
+# TV volume down
+br_tv_volume_down:
+  alias: TV Volume Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - VolumeDown
+
+# TV volume mute
+br_tv_volume_mute:
+  alias: TV Volume Mute
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.br_harmony_hub
+        device: 5899
+        command:
+          - Mute

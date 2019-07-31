@@ -1,0 +1,17 @@
+# Bedroom TV
+script.br_tv_power_toggle:
+  icon: mdi:television
+switch.br_tv_power_toggle:
+  icon: mdi:television
+script.br_tv_volume_up:
+  icon: mdi:volume-high
+script.br_tv_volume_down:
+  icon: mdi:volume-medium
+script.br_tv_volume_mute:
+  icon: mdi:volume-off
+script.br_chromecast_input:
+  icon: mdi:cast
+script.br_cable_input:
+  icon: mdi:television-box
+script.br_switch_input:
+  icon: mdi:nintendo-switch

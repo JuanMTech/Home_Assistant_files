@@ -1,0 +1,5 @@
+platform: joaoapps_join
+api_key: !secret Join_api_key
+device_id: !secret Join_Antonette_phone_id
+device_names: Antonette's phone
+name: Antonette's phone

@@ -1,0 +1,10 @@
+# Sound bar On-Off
+lr_soundbar_power_toggle:
+  alias: Soundbar On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - PowerToggle

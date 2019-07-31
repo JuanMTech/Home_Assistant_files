@@ -1,0 +1,49 @@
+# Living room Cable box
+script.lr_cable_power_toggle:
+  icon: mdi:set-top-box
+script.lr_cable_channel_up:
+  icon: mdi:chevron-up
+script.lr_cable_channel_down:
+  icon: mdi:chevron-down
+script.lr_cable_channel_prev:
+  icon: mdi:keyboard-return
+script.lr_cable_rewind:
+  icon: mdi:rewind
+script.lr_cable_play:
+  icon: mdi:play
+script.lr_cable_forward:
+  icon: mdi:fast-forward
+script.lr_cable_stop:
+  icon: mdi:stop
+script.lr_cable_pause:
+  icon: mdi:pause
+script.lr_cable_direction_up:
+  icon: mdi:menu-up
+script.lr_cable_direction_down:
+  icon: mdi:menu-down
+script.lr_cable_direction_right:
+  icon: mdi:menu-right
+script.lr_cable_direction_left:
+  icon: mdi:menu-left
+script.lr_cable_select:
+  icon: mdi:check-circle
+script.lr_cable_number_0:
+  icon: mdi:numeric-0-box
+script.lr_cable_number_1:
+  icon: mdi:numeric-1-box
+script.lr_cable_number_2:
+  icon: mdi:numeric-2-box
+script.lr_cable_number_3:
+  icon: mdi:numeric-3-box
+script.lr_cable_number_4:
+  icon: mdi:numeric-4-box
+script.lr_cable_number_5:
+  icon: mdi:numeric-5-box
+script.lr_cable_number_6:
+  icon: mdi:numeric-6-box
+script.lr_cable_number_7:
+  icon: mdi:numeric-7-box
+script.lr_cable_number_8:
+  icon: mdi:numeric-8-box
+script.lr_cable_number_9:
+  icon: mdi:numeric-9-box

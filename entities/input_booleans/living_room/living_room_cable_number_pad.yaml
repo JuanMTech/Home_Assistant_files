@@ -1,0 +1,4 @@
+lr_number_pad:
+  name: Number Pad
+  initial: off
+  icon: mdi:dialpad

@@ -1,0 +1,263 @@
+# Cable On-Off
+lr_cable_power_toggle:
+  alias: Box On/Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - PowerToggle
+
+# Rewind
+lr_cable_rewind:
+  alias: Rewind
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Rewind
+
+# Play
+lr_cable_play:
+  alias: Play
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Play
+
+# FastForward
+lr_cable_forward:
+  alias: FastForward
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - FastForward
+
+# Stop
+lr_cable_stop:
+  alias: Stop
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Stop
+
+# Pause
+lr_cable_pause:
+  alias: Pause
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Pause
+
+# Channel up
+lr_cable_channel_up:
+  alias: Channel Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - ChannelUp
+
+# Channel down
+lr_cable_channel_down:
+  alias: Channel Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - ChannelDown
+
+# Previous Channel
+lr_cable_channel_prev:
+  alias: Previous Channel
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - ChannelPrev
+
+# Direction up
+lr_cable_direction_up:
+  alias: Direction Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - DirectionUp
+
+# Direction down
+lr_cable_direction_down:
+  alias: Direction Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - DirectionDown
+
+# Direction right
+lr_cable_direction_right:
+  alias: Direction Right
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - DirectionRight
+
+# Direction left
+lr_cable_direction_left:
+  alias: Direction Left
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - DirectionLeft
+
+# select
+lr_cable_select:
+  alias: Select
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - Select
+
+# Number 0
+lr_cable_number_0:
+  alias: Number_0
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 0
+
+# Number 1
+lr_cable_number_1:
+  alias: Number_1
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 1
+
+# Number 2
+lr_cable_number_2:
+  alias: Number_2
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 2
+
+# Number 3
+lr_cable_number_3:
+  alias: Number_3
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 3
+
+# Number 4
+lr_cable_number_4:
+  alias: Number_4
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 4
+
+# Number 5
+lr_cable_number_5:
+  alias: Number_5
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 5
+
+# Number 6
+lr_cable_number_6:
+  alias: Number_6
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 6
+
+# Number 7
+lr_cable_number_7:
+  alias: Number_7
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 7
+
+# Number 8
+lr_cable_number_8:
+  alias: Number_8
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 8
+
+# Number 9
+lr_cable_number_9:
+  alias: Number_9
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_harmony_hub
+        device: 5899
+        command:
+          - 9
