@@ -1,0 +1,3 @@
+name: Antonette's phone
+device_id: !secret Join_Antonette_phone_id
+api_key: !secret Join_api_key

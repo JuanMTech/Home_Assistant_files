@@ -1,5 +1,4 @@
 platform: joaoapps_join
 api_key: !secret Join_api_key
 device_id: !secret Join_PC_id
-device_names: PC
-name: PC
+name: Computer

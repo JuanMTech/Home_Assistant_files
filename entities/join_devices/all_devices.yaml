@@ -1,0 +1,3 @@
+name: All Devices
+device_ids: !secret Join_device_ids
+api_key: !secret Join_api_key

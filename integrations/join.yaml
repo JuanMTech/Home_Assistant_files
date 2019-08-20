@@ -1,4 +1,1 @@
-joaoapps_join:
-  - name: Join Devices
-    device_id: group.all
-    api_key: !secret Join_api_key
+joaoapps_join: !include_dir_list ../entities/join_devices
