@@ -4,6 +4,7 @@ Light Blue:
   light-primary-color: "#4481eb"
   primary-background-color: "#F8F8F8"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#E6E6E6"
   # Text
   primary-text-color: "#424242"

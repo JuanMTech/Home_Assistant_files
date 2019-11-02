@@ -4,6 +4,7 @@ Light - Cyan:
   light-primary-color: "#71FFF7"
   primary-background-color: "#F7F8FA"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#E4E8EE"
   ### Text ###
   primary-text-color: "#6D7A8C"

@@ -4,6 +4,7 @@ Dark - Yellow:
   light-primary-color: "#FFCD44"
   primary-background-color: "#141414"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#262626"
   ### Text ###
   primary-text-color: "#EBEBEB"

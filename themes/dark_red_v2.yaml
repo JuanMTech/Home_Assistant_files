@@ -4,6 +4,7 @@ Dark - Red:
   light-primary-color: "#F35858"
   primary-background-color: "#141414"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#2D2D2D"
   ### Text ###
   primary-text-color: "#EAEEF1"

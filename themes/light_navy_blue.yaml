@@ -4,6 +4,7 @@ Light - Navy Blue:
   light-primary-color: "#5F81B0"
   primary-background-color: "#F6F7F9"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#D6DFEB"
   ### Text ###
   primary-text-color: "#395274"

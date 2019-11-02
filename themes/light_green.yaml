@@ -4,6 +4,7 @@ Light - Green:
   light-primary-color: "#47FC92"
   primary-background-color: "#F6F7F9"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#B9CDC3"
   ### Text ###
   primary-text-color: "#788083"

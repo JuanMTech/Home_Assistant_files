@@ -4,6 +4,7 @@ Dark - Purple:
   light-primary-color: "#6F64FA"
   primary-background-color: "#262938"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#313549"
   ### Text ###
   primary-text-color: "#F7F8FA"

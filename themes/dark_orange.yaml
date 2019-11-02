@@ -4,6 +4,7 @@ Dark - Orange:
   light-primary-color: "#FFA23F"
   primary-background-color: "#1F1F28"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#353544"
   ### Text ###
   primary-text-color: "#FFFFFF"

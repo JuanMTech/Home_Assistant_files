@@ -4,6 +4,7 @@ Gray & Green:
   light-primary-color: "#6BEAAA"
   primary-background-color: "#494B58"
   secondary-background-color: var(--primary-background-color)
+  card-background-color: var(--primary-background-color)
   divider-color: "#595B6B"
   ### Text ###
   primary-text-color: "#FBFBFB"
