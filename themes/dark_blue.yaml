@@ -4,6 +4,7 @@ Dark Blue:
   light-primary-color: '#4481eb'
   primary-background-color: '#151515'
   secondary-background-color: '#151515'
+  data-table-background-color: '#202020'
   divider-color: '#151515'
   dark-primary-color: 'var(--accent-color)'
   accent-color: '#4481eb'
