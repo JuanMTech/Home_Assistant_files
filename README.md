@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.juanmtech.com/wp-content/uploads/2019/10/Logo-Site-v.7.1.png">
+  <img src="https://www.juanmtech.com/wp-content/uploads/2020/01/Logo-v.8.1.png">
 </p>
 
 ---
