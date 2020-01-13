@@ -14,7 +14,7 @@ action:
     data_template:
       name: >
         {% if states.sun.sun.state == "above_horizon" %}
-          Light Blue
+          Light Google Theme
         {% else %}
-          Dark Blue
+          Dark Google Theme
         {% endif %}

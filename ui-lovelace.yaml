@@ -4,6 +4,7 @@ resources: !include_dir_list lovelace/resources
 cch:
   swipe: true
   swipe_wrap: false
+  background: var(--app-header-background-color)
 #
 views:
   - !include lovelace/views/main.yaml
