@@ -98,9 +98,9 @@ Some of the links here, are **affiliate links**, meaning, at no additional cost 
 [watchers-shield]: https://img.shields.io/github/watchers/JuanMTech/Home_Assistant_files.svg?style=social&label=Watchers
 [stars-shield]: https://img.shields.io/github/stars/JuanMTech/Home_Assistant_files.svg?style=social&label=Stars
 [forks-shield]: https://img.shields.io/github/forks/JuanMTech/Home_Assistant_files.svg?style=social&label=Forks
-[buymeacoffee-shield]: https://www.juanmtech.com/wp-content/uploads/2019/07/Buy-me-a-coffee-button-v2.png
+[buymeacoffee-shield]: https://i.imgur.com/Hzn2rM8.png
 [buymeacoffee]: https://www.buymeacoffee.com/JuanMTech
-[become-a-patron-shield]: https://www.juanmtech.com/wp-content/uploads/2019/07/Patreon-button-v2.png
+[become-a-patron-shield]: https://i.imgur.com/U9BjCfc.png
 [becomeapatron]: https://www.patreon.com/JuanMTech
-[youtube-sub-shield]: https://www.juanmtech.com/wp-content/uploads/2019/07/YT-Subscribe-button.png
+[youtube-sub-shield]: https://i.imgur.com/6TAqHgi.png
 [youtubesubscribe]: https://www.youtube.com/c/JuanMTech?sub_confirmation=1
