@@ -1,9 +1,16 @@
-Dark Google Theme:
+# Theme based on Google app dark theme
+# Creater: Juan - @juanmtech
+# Website: https://www.juanmtech.com
+# YouTube Channel: https://youtube.com/juanmtech
+# My Home Assistant Config files: https://github.com/JuanMTech/Home_Assistant_files
+#
+#
+Google Dark Theme:
   # Header:
   app-header-background-color: "#171717"
   app-header-text-color: "#BDC1C6"
   # Main Interface Colors
-  primary-color: "#5F6267"
+  primary-color: "#5F9BEA"
   light-primary-color: var(--primary-color)
   primary-background-color: "#171717"
   secondary-background-color: var(--primary-background-color)
@@ -33,17 +40,28 @@ Dark Google Theme:
   # Labels
   label-badge-background-color: "#202124"
   label-badge-text-color: "#BDC1C6"
-  label-badge-red: "#5F6267"
+  label-badge-red: "#D06568"
+  label-badge-green: "#80C884"
+  label-badge-blue: "#5F9BEA"
+  label-badge-yellow: "#DFC271"
+  label-badge-gray: "#5F6267"
+
   # Cards
   ha-card-border-radius: "15px"
   ha-card-box-shadow: 1px 1px 5px 0px rgb(12, 12, 14)
   paper-card-background-color: "#202124"
   paper-listbox-background-color: "#202124"
+  # Switches
+  switch-checked-button-color: "#5F9BEA"
+  switch-checked-track-color: "#404D64"
+  switch-unchecked-button-color: "#636466"
+  switch-unchecked-track-color: "#636466"
   # Toggles
-  paper-toggle-button-checked-button-color: "#5F9BEA"
-  paper-toggle-button-checked-bar-color: "#404D64"
-  paper-toggle-button-unchecked-button-color: "#B9B9B9"
-  paper-toggle-button-unchecked-bar-color: "#636466"
-  # Table row
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  # Table
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
+  data-table-background-color: var(--primary-background-color)

@@ -1,10 +1,18 @@
 title: Home
+#
+custom_header:
+  compact_mode: true
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
+#
 resources: !include_dir_list lovelace/resources
 #
-cch:
-  swipe: true
-  swipe_wrap: false
-  background: var(--app-header-background-color)
+#cch:
+#  swipe: true
+#  swipe_wrap: false
+#  background: var(--app-header-background-color)
 #
 views:
   - !include lovelace/views/main.yaml
@@ -12,3 +20,4 @@ views:
   - !include lovelace/views/living_room.yaml
   - !include lovelace/views/bedroom.yaml
   - !include lovelace/views/kitchen.yaml
+  - !include lovelace/views/cameras.yaml
