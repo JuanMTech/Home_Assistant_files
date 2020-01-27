@@ -1,3 +1,4 @@
+# Dart theme with a blue accent
 Dark Blue:
   # Main Interface Colors
   primary-color: '#4481eb'
@@ -5,7 +6,7 @@ Dark Blue:
   primary-background-color: '#151515'
   secondary-background-color: '#151515'
   data-table-background-color: '#202020'
-  divider-color: '#151515'
+  divider-color: '#202020'
   dark-primary-color: 'var(--accent-color)'
   accent-color: '#4481eb'
   # Text
@@ -16,6 +17,7 @@ Dark Blue:
   # Sidebar Menu
   sidebar-icon-color: '#4481eb'
   sidebar-text-color: '#F8F8F8'
+  sidebar-background-color: '#1A1A1A'
   sidebar-selected-background-color: var(--accent-color)
   sidebar-selected-icon-color: '#F8F8F8'
   sidebar-selected-text-color: var(--sidebar-selected-icon-color)
@@ -42,7 +44,7 @@ Dark Blue:
   paper-card-header-color: '#F8F8F8'
   paper-card-background-color: '#202020'
   paper-listbox-color: '#F8F8F8'
-  paper-listbox-background-color: '#151515'
+  paper-listbox-background-color: '#1A1A1A'
   paper-dialog-background-color: '#151515'
   paper-grey-50: '#151515'
   paper-grey-200: '#151515'
