@@ -1,0 +1,1341 @@
+# This file is the yaml configuration that goes inside the Raw Configuration Editor.
+# In Home Assistant, click on the menu on the top right and click on "Configure UI".
+# Then, again on the top right click again on the menu icon and go on Raw Configuration Editor.
+# Copy the content of this file and paste it there.
+#
+#
+title: Home
+views:
+  - badges: []
+    cards:
+      - cards:
+          - content: >-
+              {% if now().hour < 5 %} ## Good night {% elif now().hour < 12 %}
+              ## Good morning {% elif now().hour < 18 %} ## Good afternoon {%
+              elif now().hour >= 23 %} ## It's getting late! {% else %} ## Have
+              a nice evening {% endif %}
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: weather.home
+            show_forecast: true
+            type: weather-forecast
+          - content: '## Indoor Weather'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: sensor.lr_weather_sensor_temperature
+                name: Living room Temp
+                type: entity
+              - entity: sensor.lr_weather_sensor_humidity
+                name: Humidity
+                type: entity
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## People'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - aspect_ratio: 0%
+                entities:
+                  - entity: sensor.gs20_battery_level
+                  - entity: sensor.gs20_wifi_connection
+                  - entity: sensor.gs20_geocoded_location
+                entity: device_tracker.gs20
+                hold_action:
+                  action: none
+                image: /local/Juan.png
+                tap_action:
+                  action: more-info
+                title: Juan
+                type: picture-glance
+              - aspect_ratio: 0%
+                entities:
+                  - entity: sensor.gs9_battery_level
+                  - entity: sensor.gs9_wifi_connection
+                  - entity: sensor.gs9_geocoded_location
+                entity: device_tracker.gs9
+                hold_action:
+                  action: none
+                image: /local/Antonette.png
+                title: Ann
+                type: picture-glance
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Lights'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: light.main_desk_light
+                name: Computer
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entity: light.monitor_light
+                hold_action:
+                  action: more-info
+                name: Monitor
+                show_icon: true
+                show_name: true
+                show_state: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: light.2nd_desk_light
+                name: Desk
+                tap_action:
+                  action: toggle
+                type: entity-button
+            type: horizontal-stack
+          - cards:
+              - entity: light.living_room_light
+                name: Living room
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entity: light.salt_lamp
+                name: Salt Lamp
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entity: light.bedroom_light
+                name: Bedroom
+                tap_action:
+                  action: toggle
+                type: entity-button
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Spotify'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: media_player.spotify
+            type: media-control
+          - content: '## Speakers'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entities:
+              - entity: media_player.living_room_speaker
+              - entity: media_player.bedroom_speaker
+              - entity: media_player.kitchen_speaker
+            show_header_toggle: false
+            type: entities
+        type: vertical-stack
+      - cards:
+          - content: '## Weather map'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - aspect_ratio: 100%
+            type: iframe
+            url: >-
+              https://embed.windy.com/embed2.html?lat=40.653&lon=-73.630&detailLat=40.793&detailLon=-73.582&width=650&height=450&zoom=10&level=surface&overlay=temp&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+              frameborder="0
+        type: vertical-stack
+    icon: 'mdi:home'
+    path: main
+    title: Main
+  - badges: []
+    cards:
+      - cards:
+          - content: '## Computer & Server'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: switch.computer
+                type: entity
+              - entity: switch.server
+                type: entity
+            type: horizontal-stack
+          - content: '## Virtual Machines'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: binary_sensor.proxserver_home_assistant_running
+                name: Home Assistant
+                type: entity
+              - entity: binary_sensor.proxserver_unifi_controller_running
+                name: UniFi
+                type: entity
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Home Assistant Stats'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: sensor.glances_cpu_used
+                max: 100
+                min: 0
+                name: CPU
+                type: gauge
+              - entity: sensor.glances_ram_used_percent
+                max: 100
+                min: 0
+                name: RAM
+                type: gauge
+              - entity: sensor.glances_data_used_percent
+                max: 100
+                min: 0
+                name: Storage
+                type: gauge
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Internet Speeds'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: sensor.speedtest_download
+                graph: line
+                hours_to_show: 48
+                name: Down
+                type: sensor
+                unit: Mbps
+              - entity: sensor.speedtest_upload
+                graph: line
+                hours_to_show: 48
+                name: Up
+                type: sensor
+                unit: Mbps
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Printer Ink'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - direction: up
+                entities:
+                  - color: '#000000'
+                    entity: sensor.printer_ink_black
+                    name: Black
+                  - color: '#00e6e6'
+                    entity: sensor.printer_ink_cyan
+                    name: Cyan
+                  - color: '#ff80ff'
+                    entity: sensor.printer_ink_magenta
+                    name: Magenta
+                  - color: '#ffff00'
+                    entity: sensor.printer_ink_yellow
+                    name: Yellow
+                height: 100px
+                positions:
+                  icon: 'off'
+                  indicator: outside
+                  name: 'off'
+                  value: outside
+                stack: horizontal
+                type: 'custom:bar-card'
+            type: vertical-stack
+        type: vertical-stack
+      - cards:
+          - content: '## GitHub Repos'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entities:
+              - entity: sensor.home_assistant_files
+                type: 'custom:github-entity-row'
+              - entity: sensor.google_dark_theme
+                type: 'custom:github-entity-row'
+              - entity: sensor.google_light_theme
+                type: 'custom:github-entity-row'
+              - entity: sensor.ios_dark_theme
+                type: 'custom:github-entity-row'
+              - entity: sensor.ios_light_theme
+                type: 'custom:github-entity-row'
+              - entity: sensor.amoled_blue
+                type: 'custom:github-entity-row'
+              - entity: sensor.green_dark_mode
+                type: 'custom:github-entity-row'
+              - entity: sensor.green_light_mode
+                type: 'custom:github-entity-row'
+              - entity: sensor.orange_dark_theme
+                type: 'custom:github-entity-row'
+              - entity: sensor.orange_light_theme
+                type: 'custom:github-entity-row'
+            type: entities
+        type: vertical-stack
+    icon: 'mdi:desktop-tower'
+    path: office
+    title: Office
+  - badges: []
+    cards:
+      - cards:
+          - content: '## Climate'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: sensor.lr_weather_sensor_temperature
+                graph: line
+                hours_to_show: 48
+                icon: 'hass:temperature-fahrenheit'
+                name: Temperature
+                type: sensor
+              - entity: sensor.lr_weather_sensor_humidity
+                graph: line
+                hours_to_show: 48
+                icon: 'hass:water'
+                name: Humidity
+                type: sensor
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## TV and Cable Box'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: switch.living_room_tv
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_cable_box_power
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_soundbar_power
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: script.lr_cable_box_channel_up
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_cable_box_channel_prev
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_tv_volume_up
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: script.lr_cable_box_channel_down
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_tv_volume_mute
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_tv_volume_down
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: input_boolean.lr_tv_hdmi_inputs
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: input_boolean.lr_tv_playback_buttons
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: input_boolean.lr_tv_number_pad
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - card:
+              cards:
+                - entity: script.lr_tv_cable_input
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_tv_switch_input
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_tv_netflix_input
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_hdmi_inputs
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_rewind
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_play
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_forward
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_playback_buttons
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_stop
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_pause
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_select
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_playback_buttons
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_direction_left
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_direction_up
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_direction_down
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_direction_right
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_playback_buttons
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_number_1
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_2
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_3
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_number_pad
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_number_4
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_5
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_6
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_number_pad
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_number_7
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_8
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_9
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_number_pad
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.lr_cable_box_exit
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_number_0
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.lr_cable_box_select
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.lr_tv_number_pad
+                state: 'on'
+            type: conditional
+        type: vertical-stack
+      - cards:
+          - content: '## AC and Fan'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: script.lr_ac_power
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_ac_fan_speed
+                hold_action:
+                  action: more-info
+                name: Speed
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_ac_mode
+                hold_action:
+                  action: more-info
+                name: Mode
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: script.lr_fan_power
+                hold_action:
+                  action: more-info
+                name: Fan
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_fan_airflow
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_ac_temp_down
+                hold_action:
+                  action: more-info
+                name: Down
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.lr_ac_temp_up
+                hold_action:
+                  action: more-info
+                name: Up
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Google Home Speaker'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: media_player.living_room_speaker
+            type: media-control
+          - content: '## Cast'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: media_player.living_room_tv
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:sofa'
+    path: living-room
+    title: Living room
+  - badges: []
+    cards:
+      - cards:
+          - content: '## TV and Cable Box'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: script.br_tv_power
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_cable_box_power
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: script.br_cable_box_channel_up
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_cable_box_channel_prev
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_tv_volume_up
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: script.br_cable_box_channel_down
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_tv_volume_mute
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_tv_volume_down
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: input_boolean.br_tv_hdmi_inputs
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: input_boolean.br_tv_playback_buttons
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: input_boolean.br_tv_number_pad
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - card:
+              cards:
+                - entity: script.br_tv_cable_input
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_tv_chromecast_input
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_hdmi_inputs
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_rewind
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_play
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_forward
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_playback_buttons
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_stop
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_pause
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_select
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_playback_buttons
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_direction_left
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_direction_up
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_direction_down
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_direction_right
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_playback_buttons
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_number_1
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_2
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_3
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_number_pad
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_number_4
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_5
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_6
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_number_pad
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_number_7
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_8
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_9
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_number_pad
+                state: 'on'
+            type: conditional
+          - card:
+              cards:
+                - entity: script.br_cable_box_exit
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_number_0
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+                - entity: script.br_cable_box_select
+                  hold_action:
+                    action: more-info
+                  show_icon: true
+                  show_name: false
+                  tap_action:
+                    action: toggle
+                  type: button
+              type: horizontal-stack
+            conditions:
+              - entity: input_boolean.br_tv_number_pad
+                state: 'on'
+            type: conditional
+        type: vertical-stack
+      - cards:
+          - content: '## AC and Fan'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - cards:
+              - entity: script.br_ac_power
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_ac_fan_speed
+                hold_action:
+                  action: more-info
+                name: Speed
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_ac_temp_up
+                hold_action:
+                  action: more-info
+                name: Up
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+          - cards:
+              - entity: script.br_fan_power
+                hold_action:
+                  action: more-info
+                name: Fan
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_fan_airflow
+                hold_action:
+                  action: more-info
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: toggle
+                type: button
+              - entity: script.br_ac_temp_down
+                hold_action:
+                  action: more-info
+                name: Down
+                show_icon: true
+                show_name: true
+                tap_action:
+                  action: toggle
+                type: button
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - content: '## Google Home Speaker'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: media_player.bedroom_speaker
+            type: media-control
+          - content: '## Cast'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: media_player.bedroom_tv
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:bed-empty'
+    path: bedroom
+    title: Bedroom
+  - badges: []
+    cards:
+      - cards:
+          - content: '## Google Home Speaker'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entity: media_player.kitchen_speaker
+            type: media-control
+        type: vertical-stack
+    icon: 'mdi:fridge'
+    path: kitchen
+    title: Kitchen
+  - badges: []
+    cards:
+      - cards:
+          - content: '## Living room Camera'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - aspect_ratio: 75%
+            entity: camera.living_room_cam
+            show_name: false
+            show_state: false
+            type: picture-entity
+        type: vertical-stack
+    icon: 'mdi:cctv'
+    path: cctv
+    title: CCTV
+  - badges: []
+    cards:
+      - cards:
+          - content: '## Mobiles Devices'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entities:
+              - entity: sensor.gs20_battery_level
+                name: Galaxy S20+
+              - entity: sensor.gs9_battery_level
+                name: Galaxy S9+
+              - entity: sensor.ipad_pro_battery_level
+                name: iPad Pro
+            show_header_toggle: false
+            type: entities
+        type: vertical-stack
+      - cards:
+          - content: '## Sensors'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entities:
+              - entity: sensor.lr_weather_sensor_battery
+                name: Weather sensor
+              - entity: sensor.lr_door_sensor_battery
+                name: Door sensor
+            show_header_toggle: false
+            type: entities
+        type: vertical-stack
+      - cards:
+          - content: '## Switches'
+            style: |
+              ha-card {
+                box-shadow: none;
+                --card-background-color: none
+              }
+            type: markdown
+          - entities:
+              - entity: sensor.lr_mini_switch_battery
+                name: Living room mini switch
+            show_header_toggle: false
+            type: entities
+        type: vertical-stack
+    icon: 'hass:battery'
+    path: sensors
+    title: Devices Batteries
