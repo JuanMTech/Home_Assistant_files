@@ -6,13 +6,13 @@
 ![GitHub Watchers][watchers]
 ![GitHub Stars][stars]
 ![GitHub Forks][forks]
+<br />
 
 [![Subscribe to YouTube channel][youtube-sub-shield]][youtubesubscribe]
 
 [![Become a Patron][become-a-patron-shield]][becomeapatron]
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
-<br />
 <br />
 
 # About
@@ -27,10 +27,10 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 <TABLE>
 <TR>
     <TD>
-    ![Home Assistant UI 1](https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_1.png)<br/>
+    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_1.png"<br/>
     </TD>
     <TD>
-    ![Home Assistant UI 2](https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_2.png)<br/>
+    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_2.png"<br/>
     </TD>
 </TR>
 </TABLE>
@@ -38,14 +38,13 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 <TABLE>
 <TR>
     <TD>
-    ![Home Assistant UI 3](https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_3.png)<br/>
+    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_3.png"<br/>
     </TD>
     <TD>
-    ![Home Assistant UI 4](https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_4.png)<br/>
+    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_4.png"<br/>
     </TD>
 </TR>
 </TABLE>
-<br />
 <br />
 
 ## Home Assistant tutorials
@@ -92,11 +91,10 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
     <a href="https://youtu.be/PhWpnc-Pvko"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Integrade_Alexa_with_Home_Assistant_Cloud.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://youtu.be/tXjihKy7uvQ"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Integrate_Google_Assistant_with_Home_Assistant_Cloud.[mg" /></a><br/>
+    <a href="https://youtu.be/tXjihKy7uvQ"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Integrate_Google_Assistant_with_Home_Assistant_Cloud.png" /></a><br/>
     </TD>
 </TR>
 </TABLE>
-<br />
 <br />
 
 ## Video tutorials and written guides
