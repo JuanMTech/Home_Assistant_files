@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Logo/Logo.png">
+  <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Logo/Logo_2.png">
 </p>
 <br />
 
