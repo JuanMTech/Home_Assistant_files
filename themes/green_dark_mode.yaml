@@ -1,5 +1,5 @@
 # A matte black theme with a green accent color
-# Creater: Juan - @juanmtech
+# Creator: Juan - @juanmtech
 # Website: https://www.juanmtech.com
 # YouTube Channel: https://youtube.com/juanmtech
 # My Home Assistant Config files: https://github.com/JuanMTech/Home_Assistant_files
@@ -13,13 +13,13 @@ Green Dark Mode:
   primary-color: "#45AA79"
   light-primary-color: var(--primary-color)
   primary-background-color: "#1C1D21"
-  secondary-background-color: var(--primary-background-color)
+  secondary-background-color: "#252629"
   divider-color: var(--primary-background-color)
   # Text
   primary-text-color: "#BDC1C6"
   secondary-text-color: "#BDC1C6"
   text-primary-color: "#FFFFFF"
-  disabled-text-color: "#717171"
+  disabled-text-color: "#000000"
   # Sidebar Menu
   sidebar-icon-color: var(--app-header-text-color)
   sidebar-text-color: '#BDC1C6'
@@ -47,10 +47,12 @@ Green Dark Mode:
   label-badge-gray: "#5F6267"
 
   # Cards
-  ha-card-border-radius: "15px"
+  card-background-color: "#252629"
+  ha-card-border-radius: "10px"
   ha-card-box-shadow: 0px
-  paper-card-background-color: "#252629"
+  paper-dialog-background-color: var(--card-background-color)
   paper-listbox-background-color: "#1C1D21"
+  paper-card-background-color: var(--card-background-color)
   # Switches
   switch-checked-button-color: "#45AA79"
   switch-checked-track-color: "#347f5a"
@@ -65,3 +67,11 @@ Green Dark Mode:
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
   data-table-background-color: var(--primary-background-color)
+  # Dropdowns
+  material-background-color: var(--secondary-background-color)
+  material-secondary-background-color: var(--primary-background-color)
+  mdc-theme-surface: var(--secondary-background-color)
+  # HACS
+  hacs-chip-background-color: var(--primary-color)
+  # Pre/Code
+  markdown-code-background-color: "#1C1D21"

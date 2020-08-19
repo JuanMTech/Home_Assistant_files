@@ -1,0 +1,57 @@
+esphome:
+  name: salt_lamp
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: "WiFi"
+  password: !secret WiFi_Password
+  fast_connect: on
+
+  ap:
+    ssid: "Salt Lamp Fallback Hotspot"
+    password: !secret AP_Password
+
+captive_portal:
+
+logger:
+
+api:
+
+ota:
+  safe_mode: True
+  password: !secret OTA_Password
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Salt lamp button"
+    on_press:
+      - light.toggle: light_relay
+
+output:
+  - platform: esp8266_pwm
+    id: sonoff_relay
+    pin:
+      number: GPIO12
+      inverted: false
+
+light:
+  - platform: binary
+    name: "Salt lamp"
+    output: sonoff_relay
+    id: light_relay
+
+sensor:
+  - platform: wifi_signal
+    name: "Salt lamp WiFi signal"
+    update_interval: 60s
+  - platform: uptime
+    name: "Salt lamp uptime"
+
+text_sensor:
+  - platform: version
+    name: "Salt lamp ESPHome version"

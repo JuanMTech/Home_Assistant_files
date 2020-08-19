@@ -1,7 +1,0 @@
-platform: template
-sensors:
-  juan_phone_battery:
-    friendly_name: Juan's phone battery
-    entity_id: device_tracker.sm_g965u
-    unit_of_measurement: '%'
-    value_template: "{{ state_attr('device_tracker.sm_g965u', 'battery_level') }}"

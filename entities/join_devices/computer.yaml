@@ -1,3 +1,0 @@
-name: Computer
-device_id: !secret Join_PC_id
-api_key: !secret Join_api_key

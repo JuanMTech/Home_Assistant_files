@@ -1,4 +1,0 @@
-platform: harmony
-name: LR Harmony Hub
-host: !secret LR_Harmony_IP
-port: !secret H_Hub_Port

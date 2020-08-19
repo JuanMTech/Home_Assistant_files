@@ -1,1 +1,0 @@
-media_player: !include_dir_merge_named ../entities/media_players

@@ -1,0 +1,2 @@
+client_id: !secret Spotify_Client_ID
+client_secret: !secret Client_Secret

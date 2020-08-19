@@ -1,0 +1,23 @@
+platform: github
+access_token: !secret GitHub_Access_Token
+repositories:
+    - path: 'JuanMTech/Home_Assistant_files'
+      name: Home Assistant files
+    - path: JuanMTech/google_dark_theme
+      name: Google Dark Theme
+    - path: JuanMTech/google_light_theme
+      name: Google Light Theme
+    - path: JuanMTech/ios_dark_mode_theme
+      name: iOS Dark Theme
+    - path: JuanMTech/ios_light_mode_theme
+      name: iOS Light Theme
+    - path: JuanMTech/amoled_blue
+      name: AMOLED Blue
+    - path: JuanMTech/green_dark_mode
+      name: Green Dark Mode
+    - path: JuanMTech/green_light_mode
+      name: Green Light Mode
+    - path: JuanMTech/orange_dark
+      name: Orange Dark Theme
+    - path: JuanMTech/orange_light
+      name: Orange Light Theme

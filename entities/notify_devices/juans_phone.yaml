@@ -1,4 +1,0 @@
-platform: joaoapps_join
-api_key: !secret Join_api_key
-device_id: !secret Join_Juan_phone_id
-name: Juans phone

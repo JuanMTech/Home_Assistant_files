@@ -1,5 +1,0 @@
-# Dark Sky
-sensor.pws_temp_f:
-  friendly_name: Temp
-sensor.dark_sky_temperature:
-  friendly_name: Temp

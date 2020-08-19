@@ -1,9 +1,0 @@
-# Living room AC
-script.lr_ac_power_toggle:
-  icon: mdi:air-conditioner
-script.lr_ac_fan_speed:
-  icon: mdi:fan
-script.lr_ac_temp_up:
-  icon: mdi:temperature-fahrenheit
-script.lr_ac_temp_down:
-  icon: mdi:temperature-fahrenheit

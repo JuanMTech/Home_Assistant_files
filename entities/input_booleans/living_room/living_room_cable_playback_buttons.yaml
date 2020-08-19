@@ -1,4 +1,0 @@
-lr_playback_buttons:
-  name: Playback buttons
-  initial: off
-  icon: mdi:remote

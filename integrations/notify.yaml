@@ -1,1 +1,0 @@
-notify: !include_dir_list ../entities/notify_devices

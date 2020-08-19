@@ -1,0 +1,78 @@
+# Theme based on the iOS Light Mode UI
+# Creator: Juan - @juanmtech
+# Website: https://www.juanmtech.com
+# YouTube Channel: https://youtube.com/juanmtech
+# My Home Assistant Config files: https://github.com/JuanMTech/Home_Assistant_files
+#
+#
+iOS Light Mode:
+  # Header:
+  app-header-background-color: var(--primary-background-color)
+  app-header-text-color: rgb(28, 28, 30)
+  # Main Interface Colors
+  primary-color: rgb(0, 122, 255)
+  light-primary-color: var(--primary-color)
+  primary-background-color: rgb(242, 242, 247)
+  secondary-background-color: var(--primary-background-color)
+  divider-color: rgb(229, 229, 234)
+  accent-color: rgb(0, 122, 255)
+  # Text
+  primary-text-color: rgb(28, 28, 30)
+  secondary-text-color: rgb(142, 142, 147)
+  text-primary-color: rgb(255, 255, 255)
+  disabled-text-color: rgb(199, 199, 204)
+  # Sidebar Menu
+  sidebar-icon-color: rgb(58, 58, 30)
+  sidebar-text-color: var(--primary-text-color)
+  sidebar-background-color: rgb(255, 255, 255)
+  sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: rgb(0, 122, 255)
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color))
+  # Buttons
+  paper-item-icon-color: rgb(58, 58, 30)
+  paper-item-icon-active-color: rgb(0, 122, 255)
+  # States and Badges
+  state-icon-color: rgb(0, 122, 255)
+  state-icon-active-color: rgb(58, 58, 30)
+  state-icon-unavailable-color: var(--disabled-text-color)
+  # Sliders
+  paper-slider-knob-color: rgb(0, 122, 255)
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: rgb(0, 122, 255)
+  paper-slider-active-color: rgb(0, 122, 255)
+  paper-slider-secondary-color: var(--paper-slider-active-color)
+  # Labels
+  label-badge-background-color: rgb(28, 28, 30)
+  label-badge-text-color: rgb(242, 242, 247)
+  label-badge-red: rgb(255, 69, 58)
+  label-badge-green: rgb(52, 199, 89)
+  label-badge-blue: rgb(0, 122, 255)
+  label-badge-yellow: rgb(255, 214, 10)
+  label-badge-gray: rgb(72, 72, 74)
+  # Cards
+  card-background-color: rgb(255, 255, 255)
+  ha-card-border-radius: "10px"
+  ha-card-box-shadow: none
+  paper-dialog-background-color: var(--card-background-color)
+  paper-listbox-background-color: var(--card-background-color)
+  paper-card-background-color: var(--card-background-color)
+  # Switches
+  switch-checked-button-color: rgb(52, 199, 89)
+  switch-checked-track-color:  rgb(52, 199, 89)
+  switch-unchecked-button-color: rgb(174, 174, 178)
+  switch-unchecked-track-color: rgb(174, 174, 178)
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  # Table
+  table-row-background-color: rgb(255, 255, 255)
+  table-row-alternative-background-color: rgb(242, 242, 247)
+  data-table-background-color: var(--primary-background-color)
+  # Dropdowns
+  material-background-color: rgb(255, 255, 255)
+  material-secondary-background-color: rgb(242, 242, 247)
+  mdc-theme-surface: var(--primary-background-color)
+  # Pre/Code
+  markdown-code-background-color: rgb(242, 242, 247)

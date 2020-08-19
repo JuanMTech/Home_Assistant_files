@@ -1,0 +1,190 @@
+- id: '1583718534381'
+  alias: Auto Theme Selector
+  description: Automatically changes theme depending on the time of day
+  trigger:
+  - event: start
+    platform: homeassistant
+  - entity_id: sun.sun
+    from: below_horizon
+    platform: state
+    to: above_horizon
+  - entity_id: sun.sun
+    from: above_horizon
+    platform: state
+    to: below_horizon
+  condition: []
+  action:
+  - data_template:
+      name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  iOS Light Mode\n\
+        {% else %}\n  iOS Dark Mode\n{% endif %}\n"
+    service_template: frontend.set_theme
+  mode: single
+- id: '1583720081112'
+  alias: IFTTT
+  description: Execute commands sent from IFTTT
+  trigger:
+  - event_data:
+      action: call_service
+    event_type: ifttt_webhook_received
+    platform: event
+  condition: []
+  action:
+  - data_template:
+      entity_id: '{{ trigger.event.data.entity_id }}'
+    service_template: '{{ trigger.event.data.service }}'
+- id: '1583835786864'
+  alias: Turn on desk light when PC turns on
+  description: Turns on main desk light at night when PC is turned on
+  trigger:
+  - entity_id: switch.computer
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.main_desk_light
+    state: 'off'
+  - after: sunset
+    condition: sun
+  action:
+  - data: {}
+    entity_id: light.main_desk_light
+    service: light.turn_on
+- id: '1583806383900'
+  alias: Turn off desk light when PC turns off
+  description: Turns main desk light off when PC is turned off
+  trigger:
+  - entity_id: switch.computer
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: light.main_desk_light
+    state: 'on'
+  action:
+  - data: {}
+    entity_id: light.main_desk_light
+    service: light.turn_off
+- id: '1553816788580'
+  alias: PC turn on alert when not at home
+  description: Sends a notification when PC is turned on when I'm not home.
+  trigger:
+  - entity_id: switch.computer
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: device
+    device_id: bc0aabbd93fe4393879988de81013e77
+    domain: device_tracker
+    entity_id: device_tracker.gs20
+    type: is_not_home
+  action:
+  - data:
+      message: Computer has been turned on
+      title: Alert
+    service: notify.mobile_app_sm_g986u
+- id: '1584238245746'
+  alias: Turn off living room cable box when TV is off
+  description: Turns off the cable box when the TV is off for 5 minutes
+  trigger:
+  - entity_id: media_player.lr_sony_tv
+    for: 00:05:00
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    service: script.lr_cable_box_power
+- id: '1584522868385'
+  alias: Turn off 2nd desk light when PC turns off
+  description: Turns off 2nd desk light only if it was on when the PC was turned off
+  trigger:
+  - entity_id: switch.computer
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: light.2nd_desk_light
+    state: 'on'
+  action:
+  - data: {}
+    entity_id: light.2nd_desk_light
+    service: light.turn_off
+- id: '1597220783487'
+  alias: Toggle living room light with living room mini switch
+  description: When the living room Mini switch is press, it toggles the living room
+    light plug.
+  trigger:
+  - device_id: 10dc744bbc4fd681a9d3740f212a
+    domain: zha
+    platform: device
+    subtype: remote_button_short_press
+    type: remote_button_short_press
+  condition: []
+  action:
+  - device_id: 2d9c7e4610478dabe44f0ee1417c
+    domain: switch
+    entity_id: switch.lr_light_plug
+    type: toggle
+  mode: single
+- id: '1597376723322'
+  alias: Toggle bedroom light with living room mini switch
+  description: When the living room mini switch is double press, it toggles the bedroom
+    light
+  trigger:
+  - device_id: 10dc744bbc4fd681a9d3040f213a
+    domain: zha
+    platform: device
+    subtype: remote_button_double_press
+    type: remote_button_double_press
+  condition: []
+  action:
+  - device_id: 4d339b322d4f28b9987c5701643c
+    domain: switch
+    entity_id: switch.br_light_plug
+    type: toggle
+  mode: single
+- id: '1597414679490'
+  alias: Toggle both living room / bedroom light with living room mini switch
+  description: When the living room mini switch is long press, it toggles both living
+    room and bedroom light.
+  trigger:
+  - device_id: 30dc74ebbc4fd981a9d3070f212a
+    domain: zha
+    platform: device
+    subtype: remote_button_long_press
+    type: remote_button_long_press
+  condition: []
+  action:
+  - device_id: 5d3d9c7e4610478dabed8f0ee6417c
+    domain: switch
+    entity_id: switch.lr_light_plug
+    type: toggle
+  - device_id: 6d339bb2322d4f28b7387c5751644c
+    domain: switch
+    entity_id: switch.br_light_plug
+    type: toggle
+  mode: single
+- id: '1595469361215'
+  alias: turn off monitor light when PC turns off
+  description: The monitor light will turn off if it's on when PC turns off
+  trigger:
+  - entity_id: switch.computer
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: light.monitor_light
+    state: 'on'
+  action:
+  - delay: 00:01:00
+  - device_id: 41ade8e553cb4266242da7bbb3c553
+    domain: light
+    entity_id: light.monitor_light
+    type: turn_off
+  mode: single

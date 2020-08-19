@@ -1,4 +1,0 @@
-wemo:
-  static:
-    - !secret Wemo_Living_Room_IP
-    - !secret Wemo_Bedroom_IP

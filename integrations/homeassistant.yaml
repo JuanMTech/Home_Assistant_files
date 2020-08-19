@@ -1,2 +1,0 @@
-homeassistant:
-  customize: !include_dir_merge_named ../customizations

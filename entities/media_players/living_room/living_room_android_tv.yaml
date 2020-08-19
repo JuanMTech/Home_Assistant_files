@@ -1,3 +1,0 @@
-platform: braviatv
-host: !secret Living_room_TV_IP
-name: LR Sony TV

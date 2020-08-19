@@ -1,0 +1,25 @@
+- id: '1577422841823'
+  name: Everyday Soft Light
+  entities:
+    light.monitor_light:
+      brightness: 254
+      color_temp: 304
+      effect_list:
+      - colorloop
+      friendly_name: Monitor Light
+      hs_color:
+      - 45
+      - 42.857
+      icon: hass:television-ambient-light
+      max_mireds: 500
+      min_mireds: 153
+      off_brightness:
+      rgb_color:
+      - 255
+      - 227
+      - 145
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.42
+      - 0.411

@@ -3,5 +3,4 @@ platform: wake_on_lan
 name: "Computer"
 mac: !secret PC_MAC
 host: !secret PC_IP
-turn_off:
-  service: script.pc_off
+broadcast_address: !secret PC_IP

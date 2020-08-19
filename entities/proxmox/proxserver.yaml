@@ -1,0 +1,10 @@
+host: !secret Proxmox_Server
+verify_ssl: false
+username: !secret Proxmox_Username
+password: !secret Proxmox_Password
+realm: pve
+nodes:
+  - node: !secret Proxmox_Node
+    vms:
+      - 100
+      - 101

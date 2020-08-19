@@ -1,7 +1,3 @@
 # Computer
 switch.computer:
   icon: mdi:desktop-tower
-script.pc_restart:
-  icon: mdi:restart
-script.pc_lock:
-  icon: mdi:lock

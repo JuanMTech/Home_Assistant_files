@@ -1,4 +1,32 @@
 default_config:
 
 homeassistant:
-  packages: !include_dir_named integrations
+  customize: !include_dir_merge_named customizations
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: True
+  login_attempts_threshold: 3
+
+tts:
+  - platform: google_translate
+
+sun:
+scene: !include scenes.yaml
+group: !include groups.yaml
+light: !include_dir_list entities/lights
+script: !include scripts.yaml
+camera: !include_dir_list entities/cameras
+sensor: !include_dir_list entities/sensors
+stream:
+switch: !include_dir_list entities/switches
+spotify: !include_dir_merge_named entities/spotify
+proxmoxve: !include_dir_list entities/proxmox
+automation: !include automations.yaml
+wake_on_lan:
+media_player: !include_dir_merge_named entities/media_players
+speedtestdotnet: !include_dir_merge_named entities/speedtestdotnet

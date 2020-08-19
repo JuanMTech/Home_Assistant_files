@@ -1,4 +1,0 @@
-lr_hdmi:
-  name: HDMI Inputs
-  initial: off
-  icon: mdi:video-input-hdmi

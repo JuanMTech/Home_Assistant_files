@@ -1,5 +1,5 @@
 # A light mode theme with an orange accent color
-# Creater: Juan - @juanmtech
+# Creator: Juan - @juanmtech
 # Website: https://www.juanmtech.com
 # YouTube Channel: https://youtube.com/juanmtech
 # My Home Assistant Config files: https://github.com/JuanMTech/Home_Assistant_files
@@ -13,13 +13,13 @@ Orange light:
   primary-color: "#DF6040"
   light-primary-color: var(--primary-color)
   primary-background-color: "#FDFBFE"
-  secondary-background-color: var(--primary-background-color)
+  secondary-background-color: "#FFFFFF"
   divider-color: var(--primary-background-color)
   # Text
   primary-text-color: "#7c7d83"
   secondary-text-color: "#7c7d83"
   text-primary-color: "#FFFFFF"
-  disabled-text-color: "#717171"
+  disabled-text-color: "#BFBFBF"
   # Sidebar Menu
   sidebar-icon-color: var(--app-header-text-color)
   sidebar-text-color: '#7c7d83'
@@ -45,12 +45,13 @@ Orange light:
   label-badge-blue: "#5F9BEA"
   label-badge-yellow: "#DFC271"
   label-badge-gray: "#5F6267"
-
   # Cards
-  ha-card-border-radius: "15px"
+  card-background-color: "#FFFFFF"
+  ha-card-border-radius: "10px"
   ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
-  paper-card-background-color: "#FFFFFF"
-  paper-listbox-background-color: "#FFFFFF"
+  paper-dialog-background-color: var(--card-background-color)
+  paper-listbox-background-color: var(--card-background-color)
+  paper-card-background-color: var(--card-background-color)
   # Switches
   switch-checked-button-color: "#DF6040"
   switch-checked-track-color: "#c44221"
@@ -65,3 +66,10 @@ Orange light:
   table-row-background-color: var(--primary-background-color)
   table-row-alternative-background-color: var(--secondary-background-color)
   data-table-background-color: var(--primary-background-color)
+  # Dropdowns
+  material-background-color: var(--secondary-background-color)
+  material-secondary-background-color: var(--primary-background-color)
+  # HACS
+  hacs-chip-background-color: var(--primary-color)
+  # Pre/Code
+  markdown-code-background-color: "#FDFBFE"
