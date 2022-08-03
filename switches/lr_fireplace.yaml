@@ -1,0 +1,11 @@
+# Living room Fireplace
+platform: template
+switches:
+  lr_fireplace:
+    friendly_name: Living room Fireplace
+    unique_id: "b4a710af-1691-42dd-9d98-71e1b8c23a0b"
+    value_template: "{{ states('sensor.lr_fireplace_plug_electrical_measurement')|float > 0 }}"
+    turn_on:
+      service: script.lr_fireplace
+    turn_off:
+      service: script.lr_fireplace

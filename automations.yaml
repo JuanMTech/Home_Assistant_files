@@ -1,190 +1,1006 @@
-- id: '1583718534381'
-  alias: Auto Theme Selector
-  description: Automatically changes theme depending on the time of day
+- id: '1609360640751'
+  alias: Ofc Desk light toggle
+  description: ''
   trigger:
-  - event: start
-    platform: homeassistant
-  - entity_id: sun.sun
-    from: below_horizon
-    platform: state
-    to: above_horizon
-  - entity_id: sun.sun
-    from: above_horizon
-    platform: state
-    to: below_horizon
-  condition: []
-  action:
-  - data_template:
-      name: "{% if states.sun.sun.state == \"above_horizon\" %}\n  iOS Light Mode\n\
-        {% else %}\n  iOS Dark Mode\n{% endif %}\n"
-    service_template: frontend.set_theme
-  mode: single
-- id: '1583720081112'
-  alias: IFTTT
-  description: Execute commands sent from IFTTT
-  trigger:
-  - event_data:
-      action: call_service
-    event_type: ifttt_webhook_received
-    platform: event
-  condition: []
-  action:
-  - data_template:
-      entity_id: '{{ trigger.event.data.entity_id }}'
-    service_template: '{{ trigger.event.data.service }}'
-- id: '1583835786864'
-  alias: Turn on desk light when PC turns on
-  description: Turns on main desk light at night when PC is turned on
-  trigger:
-  - entity_id: switch.computer
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: light.main_desk_light
-    state: 'off'
-  - after: sunset
-    condition: sun
-  action:
-  - data: {}
-    entity_id: light.main_desk_light
-    service: light.turn_on
-- id: '1583806383900'
-  alias: Turn off desk light when PC turns off
-  description: Turns main desk light off when PC is turned off
-  trigger:
-  - entity_id: switch.computer
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: light.main_desk_light
-    state: 'on'
-  action:
-  - data: {}
-    entity_id: light.main_desk_light
-    service: light.turn_off
-- id: '1553816788580'
-  alias: PC turn on alert when not at home
-  description: Sends a notification when PC is turned on when I'm not home.
-  trigger:
-  - entity_id: switch.computer
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition:
-  - condition: device
-    device_id: bc0aabbd93fe4393879988de81013e77
-    domain: device_tracker
-    entity_id: device_tracker.gs20
-    type: is_not_home
-  action:
-  - data:
-      message: Computer has been turned on
-      title: Alert
-    service: notify.mobile_app_sm_g986u
-- id: '1584238245746'
-  alias: Turn off living room cable box when TV is off
-  description: Turns off the cable box when the TV is off for 5 minutes
-  trigger:
-  - entity_id: media_player.lr_sony_tv
-    for: 00:05:00
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition: []
-  action:
-  - data: {}
-    service: script.lr_cable_box_power
-- id: '1584522868385'
-  alias: Turn off 2nd desk light when PC turns off
-  description: Turns off 2nd desk light only if it was on when the PC was turned off
-  trigger:
-  - entity_id: switch.computer
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: light.2nd_desk_light
-    state: 'on'
-  action:
-  - data: {}
-    entity_id: light.2nd_desk_light
-    service: light.turn_off
-- id: '1597220783487'
-  alias: Toggle living room light with living room mini switch
-  description: When the living room Mini switch is press, it toggles the living room
-    light plug.
-  trigger:
-  - device_id: 10dc744bbc4fd681a9d3740f212a
+  - device_id: 9a4868dc7e530466fc51a82a
     domain: zha
     platform: device
-    subtype: remote_button_short_press
-    type: remote_button_short_press
-  condition: []
-  action:
-  - device_id: 2d9c7e4610478dabe44f0ee1417c
-    domain: switch
-    entity_id: switch.lr_light_plug
-    type: toggle
-  mode: single
-- id: '1597376723322'
-  alias: Toggle bedroom light with living room mini switch
-  description: When the living room mini switch is double press, it toggles the bedroom
-    light
-  trigger:
-  - device_id: 10dc744bbc4fd681a9d3040f213a
-    domain: zha
-    platform: device
-    subtype: remote_button_double_press
     type: remote_button_double_press
+    subtype: remote_button_double_press
   condition: []
   action:
-  - device_id: 4d339b322d4f28b9987c5701643c
-    domain: switch
-    entity_id: switch.br_light_plug
-    type: toggle
+  - type: toggle
+    device_id: 98a6f3f2f6065c6593d7a4e8ccc38fca
+    entity_id: light.ofc_desk_light
+    domain: light
   mode: single
-- id: '1597414679490'
-  alias: Toggle both living room / bedroom light with living room mini switch
-  description: When the living room mini switch is long press, it toggles both living
-    room and bedroom light.
+- id: '1609360756657'
+  alias: Lr light toggle
+  description: Toggle living room light with living room switch
   trigger:
-  - device_id: 30dc74ebbc4fd981a9d3070f212a
+  - device_id: 3966ae998ca93d88e8dc1fa3
     domain: zha
     platform: device
-    subtype: remote_button_long_press
-    type: remote_button_long_press
+    type: remote_button_short_press
+    subtype: remote_button_short_press
   condition: []
   action:
-  - device_id: 5d3d9c7e4610478dabed8f0ee6417c
-    domain: switch
-    entity_id: switch.lr_light_plug
-    type: toggle
-  - device_id: 6d339bb2322d4f28b7387c5751644c
-    domain: switch
-    entity_id: switch.br_light_plug
-    type: toggle
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.lr_light
   mode: single
-- id: '1595469361215'
-  alias: turn off monitor light when PC turns off
-  description: The monitor light will turn off if it's on when PC turns off
+- id: '1609360846832'
+  alias: Br light toggle with bed switch
+  description: ''
   trigger:
-  - entity_id: switch.computer
-    from: 'on'
-    platform: state
+  - device_id: 1a9d25890f90f9adfd8001a68
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.br_light
+  mode: single
+- id: '1609361264184'
+  alias: Lr TV lights toggle
+  description: ''
+  trigger:
+  - device_id: 3966ae998ca93d88e8dc1fa3
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    target:
+      entity_id: light.lr_tv_lights
+    data: {}
+  mode: single
+- id: '1609361366516'
+  alias: Lr Toggle Fireplace light with living room switch
+  description: ''
+  trigger:
+  - device_id: 3966ae998ca93d88e8dc1fa3
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: remote_button_long_press
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.lr_fireplace
+  mode: single
+- id: '1609361438749'
+  alias: Br Toggle bedroom AC/Fan with bed switch
+  description: ''
+  trigger:
+  - device_id: 1a9d25890f90f9adfd8001a68
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: remote_button_long_press
+  condition: []
+  action:
+  - service: script.br_air_conditioner
+    data: {}
+  - service: script.br_fan
+    data: {}
+    enabled: false
+  mode: single
+- id: '1609712886475'
+  alias: Ofc Monitor light modes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.ofc_monitor_light_mode
+    to: Soft light
+  - platform: state
+    entity_id: input_select.ofc_monitor_light_mode
+    to: YouTube light
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.ofc_monitor_light_mode
+        state: Soft light
+      sequence:
+      - scene: scene.soft_light
+    - conditions:
+      - condition: state
+        entity_id: input_select.ofc_monitor_light_mode
+        state: YouTube light
+      sequence:
+      - scene: scene.youtube_light
+    default:
+    - service: light.toggle
+      data: {}
+      target:
+        entity_id: light.ofc_monitor_lights
+  mode: single
+- id: '1609717531423'
+  alias: Ofc Monitors lights toggle
+  description: ''
+  trigger:
+  - device_id: 9a4868dc7e530466fc51a82a
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.ofc_monitor_lights
+  mode: single
+- id: '1609728017637'
+  alias: Lr TV lights mode dropdown set to Selec
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.lr_tv_light_mode
+    from: Select
+  condition: []
+  action:
+  - service: input_select.select_option
+    data:
+      option: Select
+    target:
+      entity_id: input_select.lr_tv_light_mode
+  mode: single
+- id: '1609783393518'
+  alias: Ofc Turn off monitor lights when Mac Studio turns off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.mac_studio
     to: 'off'
   condition:
   - condition: state
-    entity_id: light.monitor_light
+    entity_id: light.ofc_monitor_lights
     state: 'on'
   action:
-  - delay: 00:01:00
-  - device_id: 41ade8e553cb4266242da7bbb3c553
-    domain: light
-    entity_id: light.monitor_light
-    type: turn_off
+  - service: light.turn_off
+    target:
+      entity_id: light.ofc_monitor_lights
+    data: {}
+  mode: single
+- id: '1623453911792'
+  alias: Lr TV light modes
+  description: Change TV lights to different scenes
+  trigger:
+  - platform: state
+    to: White
+    entity_id: input_select.lr_tv_light_mode
+  - platform: state
+    entity_id: input_select.lr_tv_light_mode
+    to: Warm
+  - platform: state
+    to: Blue
+    entity_id: input_select.lr_tv_light_mode
+  - platform: state
+    entity_id: input_select.lr_tv_light_mode
+    to: Purple
+  condition:
+  - condition: state
+    entity_id: light.lr_tv_lights
+    state: 'on'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.lr_tv_light_mode
+        state: White
+      sequence:
+      - scene: scene.tv_light_white
+    - conditions:
+      - condition: state
+        entity_id: input_select.lr_tv_light_mode
+        state: Warm
+      sequence:
+      - scene: scene.tv_light_warm
+    - conditions:
+      - condition: state
+        entity_id: input_select.lr_tv_light_mode
+        state: Blue
+      sequence:
+      - scene: scene.tv_light_blue
+    - conditions:
+      - condition: state
+        entity_id: input_select.lr_tv_light_mode
+        state: Purple
+      sequence:
+      - scene: scene.tv_light_purple
+    default:
+    - service: light.toggle
+      data: {}
+      target:
+        entity_id:
+        - light.lr_tv_light_left
+        - light.lr_tv_light_right
+  mode: single
+- id: '1623454516597'
+  alias: Ofc Monitor light mode dropdown set to Select
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.ofc_monitor_light_mode
+    from: Select
+  condition: []
+  action:
+  - service: input_select.select_option
+    data:
+      option: Select
+    target:
+      entity_id: input_select.ofc_monitor_light_mode
+  mode: single
+- id: '1626477608097'
+  alias: Ofc Set monitors lights to soft white when turn on during day light
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.ofc_monitor_lights
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    after: 08:00:00
+    before: '23:00:00'
+  action:
+  - scene: scene.soft_light
+  mode: single
+- id: '1628409747827'
+  alias: Br Fireplace toggle with bed switch
+  description: ''
+  trigger:
+  - device_id: 1a9d25890f90f9adfd8001a68
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: switch.toggle
+    target:
+      entity_id: switch.br_fireplace
+    data: {}
+  mode: single
+- id: '1628833569186'
+  alias: Ofc Turn off living room light with office switch
+  description: ''
+  trigger:
+  - device_id: 9a4868dc7e530466fc51a82a
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: remote_button_long_press
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.lr_light
+  mode: single
+- id: '1631293897934'
+  alias: Lr Cam Privacy Mode
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.lr_camera_privacy_mode
+    to: 'on'
+  - platform: state
+    entity_id: switch.lr_camera_privacy_mode
+    to: 'off'
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - if:
+    - condition: state
+      entity_id: switch.lr_camera_privacy_mode
+      state: 'on'
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.lr_camera_status_led
+    else:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.lr_camera_status_led
+  mode: single
+- id: '1632442030624'
+  alias: Br Turn off bedroom fireplace at 3:00 AM
+  description: ''
+  trigger:
+  - platform: time
+    at: 03:00:00
+  condition:
+  - condition: state
+    entity_id: switch.br_fireplace
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.br_fireplace
+  mode: single
+- id: '1634356553136'
+  alias: Kit Motion detected in litter box
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kit_litter_sensor_zone
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.mobile_app_juans_iphone
+    data:
+      message: Einstein is using the litter box
+      data:
+        group: cat-litter-box
+  - service: notify.mobile_app_antonettes_iphone
+    data:
+      message: Einstein is using the litter box
+      data:
+        group: cat-litter-box
+  mode: single
+- id: '1643825385976'
+  alias: Home Assistant Backups Issue Notification
+  description: Send a mobile notification when there is an issue with the automatic
+    backups from the HA Google Drive backups add-on
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.backups_stale
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.mobile_app_juans_iphone
+    data:
+      title: There is an issue with the backups
+      message: Access the Home Assistant Google Drive Backup add-on for details
+      data:
+        url: /cebe7a76_hassio_google_drive_backup/dashboard
+        group: backups-alerts
+  mode: single
+- id: '1643863189258'
+  alias: Br Cam Privacy Mode
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.br_camera_privacy_mode
+    to: 'on'
+  - platform: state
+    entity_id:
+    - switch.br_camera_privacy_mode
+    to: 'off'
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - if:
+    - condition: state
+      entity_id: switch.br_camera_privacy_mode
+      state: 'on'
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.br_camera_status_led
+    else:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.br_camera_status_led
+  mode: single
+- id: '1643863274039'
+  alias: Kit Cam Privacy Mode
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.kit_camera_privacy_mode
+    to: 'on'
+  - platform: state
+    entity_id: switch.kit_camera_privacy_mode
+    to: 'off'
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - if:
+    - condition: state
+      entity_id: switch.kit_camera_privacy_mode
+      state: 'on'
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.kit_camera_status_led
+    else:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.kit_camera_status_led
+  mode: single
+- id: '1644549482846'
+  alias: Sensors Low Battery Notification
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id:
+    - sensor.br_weather_sensor_battery
+    - sensor.entrance_door_sensor_battery
+    - sensor.lr_door_sensor_battery
+    - sensor.lr_weather_sensor_battery
+    - sensor.kit_weather_sensor_battery
+    - sensor.ofc_switch_battery
+    - sensor.lr_switch_battery
+    - sensor.kit_litter_sensor_battery
+    - sensor.br_switch_battery
+    below: '10'
+  condition: []
+  action:
+  - service: notify.mobile_app_juans_iphone
+    data:
+      message: '{{ trigger.from_state.attributes.friendly_name }} sensor is low in
+        battery'
+      title: Low Battery alert
+      data:
+        group: sensors_battery_alert
+  mode: single
+- id: '1647454398605'
+  alias: Notify when there is smoke or CO detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.lr_smoke_detected
+    - binary_sensor.br_smoke_detected
+    - binary_sensor.lr_co_detected
+    - binary_sensor.br_co_detected
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.lr_smoke_detected
+        state: 'on'
+      sequence:
+      - service: camera.snapshot
+        data:
+          filename: /config/www/living_room_image_smoke_alarm.jpg
+        target:
+          entity_id: camera.lr_camera
+      - service: notify.mobile_app_juans_iphone
+        data:
+          message: Smoke detected in the living room
+          title: Smoke Alert
+          data:
+            image: /local/living_room_image_smoke_alarm.jpg
+            url: shortcuts://run-shortcut?name=UniFiProtect
+            group: smoke-alarm
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.br_smoke_detected
+        state: 'on'
+      sequence:
+      - service: camera.snapshot
+        data:
+          filename: /config/www/bedroom_image_smoke_alarm.jpg
+        target:
+          entity_id: camera.br_camera
+      - service: notify.mobile_app_juans_iphone
+        data:
+          message: Smoke detected in the bedroom
+          title: Smoke Alert
+          data:
+            image: /local/bedroom_image_smoke_alarm.jpg
+            url: shortcuts://run-shortcut?name=UniFiProtect
+            group: smoke-alarm
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.lr_co_detected
+        state: 'on'
+      sequence:
+      - service: camera.snapshot
+        data:
+          filename: /config/www/living_room_image_co_alarm.jpg
+        target:
+          entity_id: camera.lr_camera
+      - service: notify.mobile_app_juans_iphone
+        data:
+          message: Carbon monoxide detected in the living room
+          title: CO Alert
+          data:
+            image: /local/living_room_image_co_alarm.jpg
+            url: shortcuts://run-shortcut?name=UniFiProtect
+            group: co-alarm
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.br_co_detected
+        state: 'on'
+      sequence:
+      - service: camera.snapshot
+        data:
+          filename: /config/www/bedroom_image_co_alarm.jpg
+        target:
+          entity_id: camera.br_camera
+      - service: notify.mobile_app_juans_iphone
+        data:
+          message: Carbon monoxide detected in the bedroom
+          title: CO Alert
+          data:
+            image: /local/bedroom_image_co_alarm.jpg
+            url: shortcuts://run-shortcut?name=UniFiProtect
+            group: co-alarm
+    default: []
+  mode: single
+- id: '1649984320476'
+  alias: Notify when updates are available
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - update.home_assistant_core_update
+    - update.home_assistant_operating_system_update
+    - update.home_assistant_supervisor_update
+    - update.home_assistant_google_drive_backup_update
+    - update.studio_code_server_update
+    - update.z_wave_js_update
+    - update.samba_share_update
+    - update.esphome_update
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.mobile_app_juans_iphone
+    data:
+      title: Update available
+      data:
+        group: updates
+      message: "{% if is_state('update.home_assistant_core_update', 'on') %}\n  H.A.
+        Core Update {{ state_attr('update.home_assistant_core_update', 'latest_version')
+        }} available\n{% elif is_state('update.home_assistant_operating_system_update',
+        'on') %}\n  H.A. OS Update {{ state_attr('update.home_assistant_operating_system_update',
+        'latest_version') }} available\n{% elif is_state('update.home_assistant_supervisor_update',
+        'on') %}\n  H.A. Supervisor Update {{ state_attr('update.home_assistant_supervisor_update',
+        'latest_version') }} available\n{% elif is_state('update.home_assistant_google_drive_backup_update',
+        'on') %}\n  Google Drive Backup Update {{ state_attr('update.home_assistant_google_drive_backup_update',
+        'latest_version') }} available\n{% elif is_state('update.studio_code_server_update',
+        'on') %}\n  Studio Code Server Update {{ state_attr('update.studio_code_server_update',
+        'latest_version') }} available\n{% elif is_state('update.z_wave_js_update',
+        'on') %}\n  Z-Wave JS Update {{ state_attr('update.z_wave_js_update', 'latest_version')
+        }} available\n{% elif is_state('update.samba_share_update', 'on') %}\n  Samba
+        Share Update {{ state_attr('update.samba_share_update', 'latest_version')
+        }} available\n{% elif is_state('update.esphome_update', 'on') %}\n  ESPHome
+        Update {{ state_attr('update.esphome_update', 'latest_version') }} available\n{%
+        endif %}"
+  mode: single
+- id: '1649990587776'
+  alias: Ofc Turn off monitor lights when Mac is idle
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.mac_studio_active
+    attribute: Screensaver
+    from: false
+    to: true
+  - platform: state
+    entity_id: binary_sensor.mac_studio_active
+    attribute: Screensaver
+    from: true
+    to: false
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.mac_studio_active
+        state: true
+        attribute: Screensaver
+      - condition: state
+        entity_id: light.ofc_monitor_lights
+        state: 'on'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.ofc_monitor_lights
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.mac_studio_active
+        attribute: Screensaver
+        state: false
+      - condition: state
+        entity_id: light.ofc_monitor_lights
+        state: 'off'
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.ofc_monitor_lights
+    default: []
+  mode: single
+- id: '1651718902759'
+  alias: Home Assistant Remote access
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - device_tracker.juans_iphone
+    to: not_home
+  - platform: state
+    entity_id:
+    - device_tracker.juans_iphone
+    to: home
+  condition: []
+  action:
+  - if:
+    - condition: state
+      entity_id: device_tracker.juans_iphone
+      state: not_home
+    then:
+    - service: cloud.remote_connect
+      data: {}
+    else:
+    - service: cloud.remote_disconnect
+      data: {}
+  mode: single
+- id: '1651720688481'
+  alias: 'Ofc Toggle automation: Turn off monitor lights when Mac is idle'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.ofc_monitor_lights
+    to: 'on'
+  - platform: state
+    entity_id:
+    - light.ofc_monitor_lights
+    - switch.mac_studio
+    to: 'off'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.ofc_monitor_lights
+        state: 'on'
+      - condition: state
+        entity_id: automation.turn_off_monitor_lights_when_mac_is_idle
+        state: 'off'
+      sequence:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id: automation.turn_off_monitor_lights_when_mac_is_idle
+    - conditions:
+      - condition: state
+        entity_id: light.ofc_monitor_lights
+        state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: switch.mac_studio
+          state: 'off'
+      sequence:
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id: automation.turn_off_monitor_lights_when_mac_is_idle
+    default: []
+  mode: single
+- id: '1652138178341'
+  alias: Turn off cable boxes at 2AM if on
+  description: ''
+  trigger:
+  - platform: time
+    at: 02:00:00
+  condition:
+  - condition: state
+    entity_id: switch.all_cable_boxes
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.all_cable_boxes
+  mode: single
+- id: '1652220700080'
+  alias: Air purifiers power on schedule 1AM
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.lr_air_purifier
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.lr_air_purifier
+    default: []
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.br_air_purifier
+        state: 'off'
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.br_air_purifier
+    default: []
+  mode: single
+- id: '1652221595750'
+  alias: Air purifiers power on schedule 8AM
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.br_air_purifier
+        state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.br_air_purifier
+    default: []
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.lr_air_purifier
+        state: 'off'
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.lr_air_purifier
+    default: []
+  mode: single
+- id: '1652839830104'
+  alias: 'Ofc Tag 1: Toggle monitor lights'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: monitor_lights
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.ofc_monitor_lights
+  mode: single
+- id: '1652839887141'
+  alias: 'Ofc Tag 2: Toggle desk light'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: desk_light
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.ofc_desk_light
+  mode: single
+- id: '1652839998997'
+  alias: 'Kit Tag 3: Toggle kitchen cable box plug'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: kit_cable_box_plug_toggle
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.kit_cable_box_plug
+  mode: single
+- id: '1652840047433'
+  alias: 'Lr Tag 4: Toggle living room cable box plug'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: lr_cable_box_plug_toggle
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.lr_cable_box_plug
+  mode: single
+- id: '1652840074185'
+  alias: 'Br Tag 5: Toggle bedroom cable box plug'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: br_cable_box_plug_toggle
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.br_cable_box_plug
+  mode: single
+- id: '1657847851936'
+  alias: Enable recording on cameras after privacy mode disable
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.lr_camera_privacy_mode
+    - switch.br_camera_privacy_mode
+    - switch.kit_camera_privacy_mode
+    to: 'off'
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.lr_camera_privacy_mode
+        state: 'off'
+      sequence:
+      - service: select.select_option
+        data:
+          option: Always
+        target:
+          entity_id: select.lr_camera_recording_mode
+    - conditions:
+      - condition: state
+        entity_id: switch.br_camera_privacy_mode
+        state: 'off'
+      sequence:
+      - service: select.select_option
+        data:
+          option: Always
+        target:
+          entity_id: select.br_camera_recording_mode
+    - conditions:
+      - condition: state
+        entity_id: switch.kit_camera_privacy_mode
+        state: 'off'
+      sequence:
+      - service: select.select_option
+        data:
+          option: Always
+        target:
+          entity_id: select.kit_camera_recording_mode
+    default: []
+  mode: single
+- id: '1657898788107'
+  alias: Br light toggle
+  description: ''
+  trigger:
+  - device_id: 665cf85a1d2acea4db834
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.br_light
+  mode: single
+- id: '1659476740186'
+  alias: Br Fireplace toggle with bedroom switch
+  description: ''
+  trigger:
+  - device_id: 665cf85a1d2acea4db834
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: switch.toggle
+    target:
+      entity_id: switch.br_fireplace
+    data: {}
+  mode: single
+- id: '1659476820610'
+  alias: Br Toggle bedroom AC/Fan with bedroom switch
+  description: ''
+  trigger:
+  - device_id: 665cf85a1d2acea4db834
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: remote_button_long_press
+  condition: []
+  action:
+  - service: script.br_air_conditioner
+    data: {}
+  - service: script.br_fan
+    data: {}
+    enabled: false
+  mode: single
+- id: '1659489805267'
+  alias: Notify when entrance lock is left unlocked for over 5 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - lock.entrance_door_lock
+    to: unlocked
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - if:
+    - condition: state
+      entity_id: lock.entrance_door_lock
+      state: unlocked
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 0
+    then:
+    - service: notify.mobile_app_juans_iphone
+      data:
+        title: Entrance Unlocked
+        message: The entrance door was left unlocked
+        data:
+          actions:
+          - action: lock
+            title: Lock door
+  mode: single
+- id: '1659491009388'
+  alias: Lock entrance door with notification event
+  description: ''
+  trigger:
+  - platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: lock
+  condition: []
+  action:
+  - service: lock.lock
+    data: {}
+    target:
+      entity_id: lock.entrance_door_lock
   mode: single

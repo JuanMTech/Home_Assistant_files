@@ -1,0 +1,23 @@
+google_actions:
+  entity_config:
+    script.lr_air_conditioner:
+      room: Living room
+      aliases:
+        - Living room air conditioner
+        - Living room air
+        - Air
+        - AC
+        - Air conditioner
+    script.br_air_conditioner:
+      room: Bedroom
+      aliases:
+        - Bedroom air conditioner
+        - Bedroom air
+        - Air
+        - AC
+        - Air conditioner
+    switch.lr_air_purifier_plug:
+      aliases:
+        - Purifier
+        - Air purifier
+        - AP

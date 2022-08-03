@@ -1,9 +1,0 @@
-# Persons
-person.juan:
-  entity_picture: /local/juan.png
-person.antonette:
-  entity_picture: /local/antonette.png
-device_tracker.juan_phone:
-  entity_picture: /local/juan.png
-device_tracker.antonette_phone:
-  entity_picture: /local/antonette.png

@@ -1,0 +1,11 @@
+# Bedroom TV
+platform: template
+switches:
+  bedroom_tv:
+    friendly_name: Bedroom TV
+    unique_id: "4d692b92-39e0-4070-a249-a06582f9dcbc"
+    value_template: "{{ not is_state('media_player.br_samsung_tv', 'unavailable') }}"
+    turn_on:
+      service: script.br_tv
+    turn_off:
+      service: script.br_tv

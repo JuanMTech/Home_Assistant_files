@@ -1,0 +1,21 @@
+{
+  "domain": "alarmo",
+  "name": "Alarmo",
+  "documentation": "https://github.com/nielsfaber/alarmo",
+  "issue_tracker": "https://github.com/nielsfaber/alarmo/issues",
+  "version": "v1.9.5",
+  "dependencies": [
+    "http",
+    "panel_custom"
+  ],
+  "after_dependencies": [
+    "mqtt",
+    "notify"
+  ],
+  "codeowners": [
+    "@nielsfaber"
+  ],
+  "requirements": [],
+  "config_flow": true,
+  "iot_class": "local_push"
+}

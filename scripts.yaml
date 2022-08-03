@@ -1,868 +1,1004 @@
-lr_tv_power:
-  alias: Living room TV - Power toggle
+lr_tv:
+  alias: Living room TV
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-    entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Power
+    target:
+      entity_id: remote.lr_remote
   mode: single
   icon: hass:television
-lr_tv_cable_input:
-  alias: Living room TV - Cable input
+lr_tv_channel_up:
+  alias: Living room TV channel up
   sequence:
-  - data:
-      command:
-      - InputTv
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Channel Up
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:television-box
-lr_tv_switch_input:
-  alias: Living room TV - Switch input
+  icon: hass:chevron-up
+lr_tv_channel_down:
+  alias: Living room TV channel down
   sequence:
-  - data:
-      command:
-      - InputHdmi4
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Channel down
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:nintendo-switch
-lr_tv_netflix_input:
-  alias: Living room TV - Netflix input
+  icon: hass:chevron-down
+lr_tv_previous_channel:
+  alias: Living room TV previous channel
   sequence:
-  - data:
-      command:
-      - Netflix
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Previous Channel
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:netflix
+  icon: hass:keyboard-return
 lr_tv_volume_up:
-  alias: Living room TV - Volume up
+  alias: Living room TV volume up
   sequence:
-  - entity_id: media_player.lr_sony_tv
-    service: media_player.volume_up
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Volume Up
+    target:
+      entity_id: remote.lr_remote
   mode: single
   icon: hass:volume-high
 lr_tv_volume_down:
-  alias: Living room TV - Volume down
+  alias: Living room TV volume down
   sequence:
-  - entity_id: media_player.lr_sony_tv
-    service: media_player.volume_down
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Volume Down
+    target:
+      entity_id: remote.lr_remote
   mode: single
   icon: hass:volume-medium
-lr_tv_volume_mute:
-  alias: Living room TV - Mute
+lr_tv_mute:
+  alias: Living room TV mute
   sequence:
-  - data:
-      is_volume_muted: false
-    entity_id: media_player.lr_sony_tv
-    service: media_player.volume_mute
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Mute
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:volume-off
-lr_soundbar_power:
-  alias: Living room Soundbar - Power toggle
+  icon: hass:volume-mute
+lr_tv_home:
+  alias: Living room TV Home
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Home
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:speaker
-lr_fan_power:
-  alias: Living room fan - Power toggle
+  icon: hass:home-outline
+lr_tv_inpute_list:
+  alias: Living room TV Inpute list
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Inpute List
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:fan
-lr_fan_airflow:
-  alias: Living room fan - Airflow
+  icon: hass:video-input-hdmi
+lr_tv_netflix:
+  alias: Living room TV Netflix
   sequence:
-  - data:
-      command:
-      - Airflow
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Netflix
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:swap-horizontal-bold
-lr_cable_box_power:
-  alias: Living room cable box - Power toggle
+  icon: hass:netflix
+lr_tv_play:
+  alias: Living room TV Play
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:set-top-box
-lr_cable_box_rewind:
-  alias: Living room cable box - Rewind
-  sequence:
-  - data:
-      command:
-      - Rewind
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:rewind
-lr_cable_box_play:
-  alias: Living room cable box - Play
-  sequence:
-  - data:
-      command:
-      - Play
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Play
+    target:
+      entity_id: remote.lr_remote
   mode: single
   icon: hass:play
-lr_cable_box_forward:
-  alias: Living room cable box - FastForward
+lr_tv_pause:
+  alias: Living room TV Pause
   sequence:
-  - data:
-      command:
-      - FastForward
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:fast-forward
-lr_cable_box_stop:
-  alias: Living room cable box - Stop
-  sequence:
-  - data:
-      command:
-      - Stop
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:stop
-lr_cable_box_pause:
-  alias: Living room cable box - Pause
-  sequence:
-  - data:
-      command:
-      - Pause
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Pause
+    target:
+      entity_id: remote.lr_remote
   mode: single
   icon: hass:pause
-lr_cable_box_channel_up:
-  alias: Living room cable box - Channel up
+lr_tv_rewind:
+  alias: Living room TV Rewind
   sequence:
-  - data:
-      command:
-      - ChannelUp
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Rewind
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:chevron-up
-lr_cable_box_channel_down:
-  alias: Living room cable box - Channel down
+  icon: hass:rewind
+lr_tv_fast_forward:
+  alias: Living room TV Fast Forward
   sequence:
-  - data:
-      command:
-      - ChannelDown
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Fast Forward
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:chevron-down
-lr_cable_box_channel_prev:
-  alias: Living room cable box - Previous channel
+  icon: hass:fast-forward
+lr_tv_stop:
+  alias: Living room TV Stop
   sequence:
-  - data:
-      command:
-      - ChannelPrev
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Stop
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:keyboard-return
-lr_cable_box_direction_up:
-  alias: Living room cable box - Direction up
+  icon: hass:stop
+lr_cable_box:
+  alias: Living room Cable Box
   sequence:
-  - data:
-      command:
-      - DirectionUp
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Power
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:menu-up
-lr_cable_box_direction_down:
-  alias: Living room cable box - Direction down
+  icon: hass:set-top-box
+lr_cable_box_dvr:
+  alias: Living room Cable Box DVR
   sequence:
-  - data:
-      command:
-      - DirectionDown
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: DVR
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:menu-down
-lr_cable_box_direction_right:
-  alias: Living room cable box - Direction right
+  icon: hass:harddisk
+lr_cable_box_guide:
+  alias: Living room Cable Box Guide
   sequence:
-  - data:
-      command:
-      - DirectionRight
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Guide
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:menu-right
-lr_cable_box_direction_left:
-  alias: Living room cable box - Direction left
-  sequence:
-  - data:
-      command:
-      - DirectionLeft
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:menu-left
-lr_cable_box_select:
-  alias: Living room cable box - Select
-  sequence:
-  - data:
-      command:
-      - Select
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:check-bold
+  icon: hass:television-guide
 lr_cable_box_exit:
-  alias: Living room cable box - Exit
+  alias: Living room Cable Box Exit
   sequence:
-  - data:
-      command:
-      - Exit
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Exit
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:cancel
-lr_cable_box_number_0:
-  alias: Living room cable box - Number_0
+  icon: hass:exit-to-app
+lr_air_conditioner:
+  alias: Living room Air Conditioner
   sequence:
-  - data:
-      command:
-      - 0
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-0
-lr_cable_box_number_1:
-  alias: Living room cable box - Number 1
-  sequence:
-  - data:
-      command:
-      - 1
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-1
-lr_cable_box_number_2:
-  alias: Living room cable box - Number 2
-  sequence:
-  - data:
-      command:
-      - 2
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-2
-lr_cable_box_number_3:
-  alias: Living room cable box - Number 3
-  sequence:
-  - data:
-      command:
-      - 3
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-3
-lr_cable_box_number_4:
-  alias: Living room cable box - Number 4
-  sequence:
-  - data:
-      command:
-      - 4
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-4
-lr_cable_box_number_5:
-  alias: Living room cable box - Number 5
-  sequence:
-  - data:
-      command:
-      - 5
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-5
-lr_cable_box_number_6:
-  alias: Living room cable box - Number 6
-  sequence:
-  - data:
-      command:
-      - 6
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-6
-lr_cable_box_number_7:
-  alias: Living room cable box - Number 7
-  sequence:
-  - data:
-      command:
-      - 7
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-7
-lr_cable_box_number_8:
-  alias: Living room cable box - Number 8
-  sequence:
-  - data:
-      command:
-      - 8
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-8
-lr_cable_box_number_9:
-  alias: Living room cable box - Number 9
-  sequence:
-  - data:
-      command:
-      - 9
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-9
-lr_ac_power:
-  alias: Living room AC - Power toggle
-  sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Power
+    target:
+      entity_id: remote.lr_remote
   mode: single
   icon: hass:air-conditioner
-lr_ac_fan_speed:
-  alias: Living room AC - Fan speed
-  sequence:
-  - data:
-      command:
-      - FanSpeed
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:weather-windy
 lr_ac_temp_up:
-  alias: Living room AC - Temp up
+  alias: Living room Air Conditioner Temp Up
   sequence:
-  - data:
-      command:
-      - TempHotter
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Temp Up
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:temperature-fahrenheit
+  icon: hass:thermometer-plus
 lr_ac_temp_down:
-  alias: Living room AC - Temp down
+  alias: Living room Air Conditioner Temp down
   sequence:
-  - data:
-      command:
-      - TempCooler
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Temp Down
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:temperature-fahrenheit
+  icon: hass:thermometer-minus
+lr_ac_fan_speed:
+  alias: Living room Air Conditioner Fan speed
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Fan Speed
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:fan-plus
 lr_ac_mode:
-  alias: Living room AC - Mode
+  alias: Living room Air Conditioner Mode
   sequence:
-  - data:
-      command:
-      - Mode
-      device: 54425655
-      entity_id: remote.lr_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Mode
+    target:
+      entity_id: remote.lr_remote
   mode: single
-  icon: hass:dots-vertical
-br_tv_power:
-  alias: Bedroom TV - Power toggle
+  icon: hass:menu
+lr_fireplace:
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Power
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:fireplace
+  alias: Living room Fireplace
+lr_fireplace_heat:
+  alias: Living room Fireplace Heat
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Heat
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:radiator
+lr_fireplace_brightness_up:
+  alias: Living room Fireplace Brightness Up
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Brightness Up
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:brightness-7
+lr_fireplace_brightness_down:
+  alias: Living room Fireplace Brightness Down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Brightness Down
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:brightness-5
+lr_soundbar:
+  alias: Living room Soundbar
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Soundbar
+      command: Power
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:speaker
+lr_soundbar_volume_up:
+  alias: Living room Soundbar Volume Up
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Soundbar
+      command: Volume Up
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:volume-high
+lr_soundbar_volume_down:
+  alias: Living room Soundbar Volume Down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Soundbar
+      command: Volume Down
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:volume-medium
+lr_soundbar_mute:
+  alias: Living room Soundbar Mute
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Soundbar
+      command: Mute
+    target:
+      entity_id: remote.lr_remote
+  mode: single
+  icon: hass:volume-mute
+br_tv:
+  alias: Bedroom TV
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Power
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:television
-br_tv_cable_input:
-  alias: Bedroom TV - Cable input
-  sequence:
-  - data:
-      command:
-      - InputHdmi1
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:television-box
-br_tv_chromecast_input:
-  alias: Bedroom TV - Chromecast input
-  sequence:
-  - data:
-      command:
-      - InputHdmi4
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:cast
 br_tv_volume_up:
-  alias: Bedroom TV - Volume up
+  alias: Bedroom TV Volume Up
   sequence:
-  - data:
-      command:
-      - VolumeUp
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      command: Volume Up
+      device: TV
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:volume-high
 br_tv_volume_down:
-  alias: Bedroom TV - Volume down
+  alias: Bedroom TV volume down
   sequence:
-  - data:
-      command:
-      - VolumeDown
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Volume Down
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:volume-medium
-br_tv_volume_mute:
-  alias: Bedroom TV - Mute
+br_tv_mute:
+  alias: Bedroom TV mute
   sequence:
-  - data:
-      command:
-      - Mute
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Mute
+    target:
+      entity_id: remote.br_remote
   mode: single
-  icon: hass:volume-off
-br_fan_power:
-  alias: Bedroom fan - Power toggle
+  icon: hass:volume-mute
+br_tv_home:
+  alias: Bedroom TV Home
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Home
+    target:
+      entity_id: remote.br_remote
   mode: single
-  icon: hass:fan
-br_fan_airflow:
-  alias: Bedroom fan - Airflow
+  icon: hass:home-outline
+br_tv_source_list:
+  alias: Bedroom TV Source list
   sequence:
-  - data:
-      command:
-      - Airflow
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Source List
+    target:
+      entity_id: remote.br_remote
   mode: single
-  icon: hass:swap-horizontal-bold
-br_cable_box_power:
-  alias: Bedroom cable box - Power toggle
+  icon: hass:video-input-hdmi
+br_tv_play:
+  alias: Bedroom TV Play
   sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:set-top-box
-br_cable_box_rewind:
-  alias: Bedroom cable box - Rewind
-  sequence:
-  - data:
-      command:
-      - Rewind
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:rewind
-br_cable_box_play:
-  alias: Bedroom cable box - Play
-  sequence:
-  - data:
-      command:
-      - Play
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Play
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:play
-br_cable_box_forward:
-  alias: Bedroom cable box - FastForward
+br_tv_pause:
+  alias: Bedroom TV Pause
   sequence:
-  - data:
-      command:
-      - FastForward
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Pause
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:pause
+br_tv_rewind:
+  alias: Bedroom TV Rewind
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Rewind
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:rewind
+br_tv_fast_forward:
+  alias: Bedroom TV Fast Forward
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Fast Forward
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:fast-forward
+br_tv_stop:
+  alias: Bedroom TV Stop
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Stop
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:stop
+br_tv_return:
+  alias: Bedroom TV Return
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Return
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:keyboard-return
+br_tv_exit:
+  alias: Bedroom TV Exit
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Exit
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:exit-to-app
+br_cable_box:
+  alias: Bedroom Cable Box
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Power
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:set-top-box
+br_cable_box_dvr:
+  alias: Bedroom Cable Box DVR
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: DVR
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:harddisk
+br_cable_box_previous_channel:
+  alias: Bedroom Cable Box previous channel
+  sequence:
+  - service: remote.send_command
+    data:
+      command: Previous Channel
+      device: Cable Box
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:keyboard-return
+br_tv_channel_up:
+  alias: Bedroom TV channel up
+  sequence:
+  - service: remote.send_command
+    data:
+      command: Channel Up
+      device: Cable Box
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:chevron-up
+br_tv_channel_down:
+  alias: Bedroom TV channel down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Channel down
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:chevron-down
+br_cable_box_guide:
+  alias: Bedroom Cable Box Guide
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Guide
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:television-guide
+br_cable_box_play:
+  alias: Bedroom Cable Box Play
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Play
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:play
+br_cable_box_pause:
+  alias: Bedroom Cable Box Pause
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Pause
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:pause
+br_cable_box_rewind:
+  alias: Bedroom Cable Box Rewind
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Rewind
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:rewind
+br_cable_box_fast_forward:
+  alias: Bedroom Cable Box Fast Forward
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Fast Forward
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:fast-forward
 br_cable_box_stop:
-  alias: Bedroom cable box - Stop
+  alias: Bedroom Cable Box Stop
   sequence:
-  - data:
-      command:
-      - Stop
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Stop
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:stop
-br_cable_box_pause:
-  alias: Bedroom cable box - Pause
+br_air_conditioner:
+  alias: Bedroom Air Conditioner
   sequence:
-  - data:
-      command:
-      - Pause
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:pause
-br_cable_box_channel_up:
-  alias: Bedroom cable box - Channel up
-  sequence:
-  - data:
-      command:
-      - ChannelUp
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:chevron-up
-br_cable_box_channel_down:
-  alias: Bedroom cable box - Channel down
-  sequence:
-  - data:
-      command:
-      - ChannelDown
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:chevron-down
-br_cable_box_channel_prev:
-  alias: Bedroom cable box - Previous channel
-  sequence:
-  - data:
-      command:
-      - ChannelPrev
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:keyboard-return
-br_cable_box_direction_up:
-  alias: Bedroom cable box - Direction up
-  sequence:
-  - data:
-      command:
-      - DirectionUp
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:menu-up
-br_cable_box_direction_down:
-  alias: Bedroom cable box - Direction down
-  sequence:
-  - data:
-      command:
-      - DirectionDown
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:menu-down
-br_cable_box_direction_right:
-  alias: Bedroom cable box - Direction right
-  sequence:
-  - data:
-      command:
-      - DirectionRight
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:menu-right
-br_cable_box_direction_left:
-  alias: Bedroom cable box - Direction left
-  sequence:
-  - data:
-      command:
-      - DirectionLeft
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:menu-left
-br_cable_box_select:
-  alias: Bedroom cable box - Select
-  sequence:
-  - data:
-      command:
-      - Select
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:check-bold
-br_cable_box_exit:
-  alias: Bedroom cable box - Exit
-  sequence:
-  - data:
-      command:
-      - Exit
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:cancel
-br_cable_box_number_0:
-  alias: Bedroom cable box - Number 0
-  sequence:
-  - data:
-      command:
-      - 0
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-0
-br_cable_box_number_1:
-  alias: Bedroom cable box - Number 1
-  sequence:
-  - data:
-      command:
-      - 1
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-1
-br_cable_box_number_2:
-  alias: Bedroom cable box - Number 2
-  sequence:
-  - data:
-      command:
-      - 2
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-2
-br_cable_box_number_3:
-  alias: Bedroom cable box - Number 3
-  sequence:
-  - data:
-      command:
-      - 3
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-3
-br_cable_box_number_4:
-  alias: Bedroom cable box - Number 4
-  sequence:
-  - data:
-      command:
-      - 4
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-4
-br_cable_box_number_5:
-  alias: Bedroom cable box - Number 5
-  sequence:
-  - data:
-      command:
-      - 5
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-5
-br_cable_box_number_6:
-  alias: Bedroom cable box - Number 6
-  sequence:
-  - data:
-      command:
-      - 6
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-6
-br_cable_box_number_7:
-  alias: Bedroom cable box - Number 7
-  sequence:
-  - data:
-      command:
-      - 7
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-7
-br_cable_box_number_8:
-  alias: Bedroom cable box - Number 8
-  sequence:
-  - data:
-      command:
-      - 8
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-8
-br_cable_box_number_9:
-  alias: Bedroom cable box - Number 9
-  sequence:
-  - data:
-      command:
-      - 9
-      device: 54425655
-      entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:numeric-9
-br_ac_power:
-  alias: Bedroom AC - Power toggle
-  sequence:
-  - data:
-      command:
-      - PowerToggle
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Power
+    target:
+      entity_id: remote.br_remote
   mode: single
   icon: hass:air-conditioner
-br_ac_fan_speed:
-  alias: Bedroom AC - fan speed
-  sequence:
-  - data:
-      command:
-      - FanSpeed
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
-  mode: single
-  icon: hass:weather-windy
 br_ac_temp_up:
-  alias: Bedroom AC - Temp up
+  alias: Bedroom Air Conditioner Temp Up
   sequence:
-  - data:
-      command:
-      - TempHotter
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Temp Up
+    target:
+      entity_id: remote.br_remote
   mode: single
-  icon: hass:temperature-fahrenheit
+  icon: hass:thermometer-plus
 br_ac_temp_down:
-  alias: Bedroom AC - Temp down
+  alias: Bedroom Air Conditioner Temp down
   sequence:
-  - data:
-      command:
-      - TempCooler
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Temp Down
+    target:
+      entity_id: remote.br_remote
   mode: single
-  icon: hass:temperature-fahrenheit
-br_ac_mode:
-  alias: Bedroom AC - Mode
+  icon: hass:thermometer-minus
+lr_tv_direction_up:
   sequence:
-  - data:
-      command:
-      - Mode
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    target:
+      entity_id: remote.lr_remote
+    data:
+      device: TV
+      command: Direction Up
   mode: single
-  icon: hass:dots-vertical
-br_tv_source:
-  alias: Bedroom TV - Source
+  alias: Living room TV Direction Up
+  icon: hass:arrow-up-bold-circle
+lr_tv_direction_down:
+  alias: Living room TV Direction down
   sequence:
-  - data:
-      command:
-      - Source
-      device: 54425655
-    entity_id: remote.br_harmony_hub
-    service: remote.send_command
+  - service: remote.send_command
+    target:
+      entity_id: remote.lr_remote
+    data:
+      device: TV
+      command: Direction Down
   mode: single
-  icon: hass:video-input-hdmi
-pc_boot:
-  alias: PC - Boot
-  icon: hass:power
-  mode: single
+  icon: hass:arrow-down-bold-circle
+lr_tv_direction_left:
+  alias: Living room TV Direction Left
   sequence:
-  - data:
-      broadcast_address: 192.168.1.1
-      mac: a1:b2:c3:d4:e5:f6
-    service: wake_on_lan.send_magic_packet
+  - service: remote.send_command
+    target:
+      entity_id: remote.lr_remote
+    data:
+      device: TV
+      command: Direction Left
+  mode: single
+  icon: hass:arrow-left-bold-circle
+lr_tv_direction_right:
+  alias: Living room TV Direction Right
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.lr_remote
+    data:
+      device: TV
+      command: Direction Right
+  mode: single
+  icon: hass:arrow-right-bold-circle
+lr_tv_select:
+  alias: Living room TV Select
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.lr_remote
+    data:
+      device: TV
+      command: Direction Select
+  mode: single
+  icon: hass:circle
+br_tv_direction_up:
+  alias: Bedroom TV Direction Up
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Direction Up
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:arrow-up-bold-circle
+br_tv_direction_down:
+  alias: Bedroom TV Direction down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Direction Down
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:arrow-down-bold-circle
+br_tv_direction_left:
+  alias: Bedroom TV Direction Left
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Direction Left
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:arrow-left-bold-circle
+br_tv_direction_right:
+  alias: Bedroom TV Direction Right
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Direction Right
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:arrow-right-bold-circle
+br_tv_select:
+  alias: Bedroom TV Select
+  sequence:
+  - service: remote.send_command
+    data:
+      device: TV
+      command: Direction Select
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:circle
+lr_cable_box_record:
+  alias: Living room Cable Box Record
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.lr_remote
+    data:
+      device: Cable Box
+      command: Record
+  mode: single
+  icon: hass:record-circle
+br_cable_box_record:
+  alias: Bedroom Cable Box Record
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Cable Box
+      command: Record
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:record-circle
+br_fireplace:
+  alias: Bedroom Fireplace
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Power
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:fireplace
+br_fireplace_heat:
+  alias: Bedroom Fireplace Heat
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Heat
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:radiator
+br_fireplace_brightness_up:
+  alias: Bedroom Fireplace Brightness Up
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Brightness Up
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:brightness-7
+br_fireplace_brightness_down:
+  alias: Bedroom Fireplace Brightness Down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fireplace
+      command: Brightness Down
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:brightness-5
+lr_fan:
+  sequence:
+  - service: remote.send_command
+    target:
+      device_id: 302c3b9a6397562a6203f
+    data:
+      device: Fan
+      command: Power
+  mode: single
+  alias: Living room Fan
+  icon: hass:fan
+br_fan:
+  alias: Bedroom Fan
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Power
+    target:
+      device_id: 31199e27670692d2bbd25
+  mode: single
+  icon: hass:fan
+br_fan_mode:
+  alias: Bedroom Fan mode
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Mode
+    target:
+      device_id: 31199e27670692d2bbd2
+  mode: single
+  icon: hass:fan-auto
+lr_fan_mode:
+  alias: Living room Fan mode
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Mode
+    target:
+      device_id: 302c3b9a6397562a6203f459
+  mode: single
+  icon: hass:fan-auto
+lr_fan_airflow:
+  alias: Living room Fan airflow
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Airflow
+    target:
+      device_id: 302c3b9a6397562a6203f459
+  mode: single
+  icon: hass:swap-horizontal-bold
+br_fan_airflow:
+  alias: Bedroom Fan airflow
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Airflow
+    target:
+      device_id: 31199e27670692d2bbd258f
+  mode: single
+  icon: hass:swap-horizontal-bold
+br_fan_temp_up:
+  alias: Bedroom Fan temp up
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Temp Up
+    target:
+      device_id: 31199e27670692d2bbd258f
+  mode: single
+  icon: mdi:thermometer-chevron-up
+br_fan_temp_down:
+  alias: Bedroom Fan temp down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Temp Down
+    target:
+      device_id: 31199e27670692d2bbd258f
+  mode: single
+  icon: mdi:thermometer-chevron-down
+lr_fan_temp_down:
+  alias: Living room Fan temp down
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Temp Down
+    target:
+      device_id: 302c3b9a6397562a6203f459
+  mode: single
+  icon: mdi:thermometer-chevron-down
+lr_fan_temp_up:
+  alias: Living room Fan temp up
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Fan
+      command: Temp Up
+    target:
+      device_id: 302c3b9a6397562a6203f459
+  mode: single
+  icon: mdi:thermometer-chevron-up
+siren:
+  alias: Siren
+  sequence:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.5
+    target:
+      entity_id: media_player.lr_speaker
+  - repeat:
+      until:
+      - condition: state
+        entity_id: alarm_control_panel.alarmo
+        state: disarmed
+      sequence:
+      - service: media_player.play_media
+        target:
+          entity_id: media_player.lr_speaker
+        data:
+          media_content_id: media-source://media_source/local/Alarm Sound.mp3
+          media_content_type: audio/mpeg
+        metadata:
+          title: Alarm Sound.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+      - wait_template: '{{ is_state("media_player.lr_speaker", "idle") }}'
+        continue_on_timeout: true
+  mode: single
+  icon: mdi:bullhorn
+stop_siren:
+  alias: Stop Siren
+  sequence:
+  - service: media_player.turn_off
+    data: {}
+    target:
+      entity_id: media_player.lr_speaker
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.44
+    target:
+      entity_id: media_player.lr_speaker
+  mode: single
+  icon: mdi:bullhorn-outline
+br_air_conditioner_mode:
+  alias: Bedroom Air Conditioner Mode
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Mode
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:menu
+br_air_conditioner_fan_speed:
+  alias: Bedroom Air Conditioner Fan speed
+  sequence:
+  - service: remote.send_command
+    data:
+      device: Air Conditioner
+      command: Fan Speed
+    target:
+      entity_id: remote.br_remote
+  mode: single
+  icon: hass:fan-plus

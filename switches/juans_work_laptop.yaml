@@ -1,0 +1,5 @@
+# Mac Studio
+platform: wake_on_lan
+name: "Juan's Work Laptop"
+mac: !secret JuanWorkLaptop_MAC
+host: !secret JuanWorkLaptop_IP

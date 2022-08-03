@@ -1,0 +1,11 @@
+# Bedroom Fireplace
+platform: template
+switches:
+  br_fireplace:
+    friendly_name: Bedroom Fireplace
+    unique_id: "db8382ac-4288-4ac0-b776-b6afaa9c0fc8"
+    value_template: "{{ states('sensor.br_fireplace_plug_electrical_measurement')|float > 0 }}"
+    turn_on:
+      service: script.br_fireplace
+    turn_off:
+      service: script.br_fireplace

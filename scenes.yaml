@@ -1,25 +1,356 @@
-- id: '1577422841823'
-  name: Everyday Soft Light
+- id: '1609711673759'
+  name: Monitor Light - Soft light
   entities:
-    light.monitor_light:
-      brightness: 254
-      color_temp: 304
+    light.ofc_monitor_light_left:
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Monitor Light
-      hs_color:
-      - 45
-      - 42.857
-      icon: hass:television-ambient-light
-      max_mireds: 500
-      min_mireds: 153
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
       off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Office Monitor Light - Left
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 44.384
+      - 28.627
       rgb_color:
       - 255
-      - 227
-      - 145
-      state: 'on'
-      supported_features: 63
+      - 236
+      - 182
       xy_color:
-      - 0.42
-      - 0.411
+      - 0.385
+      - 0.384
+      state: 'on'
+    light.ofc_monitor_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Office Monitor Light - Right
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 45
+      - 28.571
+      rgb_color:
+      - 255
+      - 236
+      - 182
+      xy_color:
+      - 0.385
+      - 0.384
+      state: 'on'
+  icon: mdi:monitor
+  metadata: {}
+- id: '1609711984232'
+  name: Monitor Light - YouTube light
+  entities:
+    light.ofc_monitor_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Office Monitor Light - Right
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 225
+      - 100
+      rgb_color:
+      - 0
+      - 63
+      - 255
+      xy_color:
+      - 0.137
+      - 0.065
+      state: 'on'
+    light.ofc_monitor_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Office Monitor Light - Left
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 270
+      - 100
+      rgb_color:
+      - 127
+      - 0
+      - 255
+      xy_color:
+      - 0.217
+      - 0.077
+      state: 'on'
+  icon: mdi:monitor
+  metadata: {}
+- id: '1623452978640'
+  name: TV Light - White
+  entities:
+    light.lr_tv_lights:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      entity_id:
+      - light.lr_tv_light_left
+      - light.lr_tv_light_right
+      icon: mdi:television-ambient-light
+      friendly_name: Living Room TV Lights
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 225
+      - 0
+      rgb_color:
+      - 255
+      - 255
+      - 255
+      xy_color:
+      - 0.323
+      - 0.329
+      state: 'on'
+  icon: mdi:television-classic
+  metadata: {}
+- id: '1623453027375'
+  name: TV Light - Warm
+  entities:
+    light.lr_tv_lights:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      entity_id:
+      - light.lr_tv_light_left
+      - light.lr_tv_light_right
+      icon: mdi:television-ambient-light
+      friendly_name: Living Room TV Lights
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 45
+      - 42
+      rgb_color:
+      - 255
+      - 228
+      - 147
+      xy_color:
+      - 0.417
+      - 0.41
+      state: 'on'
+  icon: mdi:television-classic
+  metadata: {}
+- id: '1623453115681'
+  name: TV Light - Blue
+  entities:
+    light.lr_tv_lights:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      entity_id:
+      - light.lr_tv_light_left
+      - light.lr_tv_light_right
+      icon: mdi:television-ambient-light
+      friendly_name: Living Room TV Lights
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 195
+      - 100
+      rgb_color:
+      - 0
+      - 191
+      - 255
+      xy_color:
+      - 0.146
+      - 0.238
+      state: 'on'
+  icon: mdi:television-classic
+  metadata: {}
+- id: '1623453178539'
+  name: TV Light - Purple
+  entities:
+    light.lr_tv_lights:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      entity_id:
+      - light.lr_tv_light_left
+      - light.lr_tv_light_right
+      icon: mdi:television-ambient-light
+      friendly_name: Living Room TV Lights
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 270
+      - 100
+      rgb_color:
+      - 127
+      - 0
+      - 255
+      xy_color:
+      - 0.217
+      - 0.077
+      state: 'on'
+  icon: mdi:television-classic
+  metadata: {}
+- id: '1651156382267'
+  name: TV Light - YouTube light
+  entities:
+    light.lr_tv_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Living room TV light - Left
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 270
+      - 100
+      rgb_color:
+      - 127
+      - 0
+      - 255
+      xy_color:
+      - 0.217
+      - 0.077
+      state: 'on'
+    light.lr_tv_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Living room TV light - Right
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 225
+      - 100
+      rgb_color:
+      - 0
+      - 63
+      - 255
+      xy_color:
+      - 0.137
+      - 0.065
+      state: 'on'
+  icon: mdi:television-classic
+  metadata: {}
+- id: '1659217434606'
+  name: Monitor Light - White light
+  entities:
+    light.ofc_monitor_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Office Monitor Light - Left
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 270
+      - 0
+      rgb_color:
+      - 255
+      - 255
+      - 255
+      xy_color:
+      - 0.323
+      - 0.329
+      state: 'on'
+    light.ofc_monitor_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_with_transition: false
+      off_brightness:
+      icon: hass:television-ambient-light
+      friendly_name: Office Monitor Light - Right
+      supported_features: 44
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 300
+      - 0
+      rgb_color:
+      - 255
+      - 255
+      - 255
+      xy_color:
+      - 0.323
+      - 0.329
+      state: 'on'
+  icon: mdi:monitor
+  metadata: {}

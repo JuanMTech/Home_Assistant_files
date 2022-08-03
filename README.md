@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Logo/Logo_2.png">
+  <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Logo/JMT_Banner.png">
 </p>
 <br />
 
@@ -24,27 +24,9 @@ If you are new to Home Assistant, I recommend visiting my [YouTube channel](http
 
 ## Lovelace set up
 
-<TABLE>
-<TR>
-    <TD>
-    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_1.png"<br/>
-    </TD>
-    <TD>
-    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_2.png"<br/>
-    </TD>
-</TR>
-</TABLE>
-
-<TABLE>
-<TR>
-    <TD>
-    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_3.png"<br/>
-    </TD>
-    <TD>
-    <img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_UI_4.png"<br/>
-    </TD>
-</TR>
-</TABLE>
+<br />
+<p align="center">
+<img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Home_Assistant_Images/HA_Dashboard.png"</p>
 <br />
 
 ## Home Assistant tutorials
@@ -55,21 +37,10 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 <TABLE>
 <TR>
     <TD>
-    <a href="https://youtu.be/XdiGdC7K4sI"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Beginners_guide_to_Home_Assistant.png" /></a><br/>
+    <a href="https://youtu.be/F57zx3qQXuY"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Getting_started_with_Home_Assistant.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://youtu.be/42gopfIrPBY"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Install_Proxmox_and_virtualize_Home_Assistant.png" /></a><br/>
-    </TD>
-</TR>
-</TABLE>
-
-<TABLE>
-<TR>
-    <TD>
-    <a href="https://youtu.be/ekVfLXnoM7k"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Hassio_in_Docker_and_Ubuntu.png" /></a><br/>
-    </TD>
-    <TD>
-    <a href="https://youtu.be/dYN1Lp-XYKA"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Home_Assistant_and_Node-RED_guide.png" /></a><br/>
+    <a href="https://youtu.be/6-HgmFnZ95A"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/How_to_set_up_Home_Assistant_on_Unraid.png" /></a><br/>
     </TD>
 </TR>
 </TABLE>
@@ -77,10 +48,10 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 <TABLE>
 <TR>
     <TD>
-    <a href="https://youtu.be/soKuma8DJWQ"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Home_Assistant_and_ESPHome_-_Beginners_guide.png" /></a><br/>
+    <a href="https://youtu.be/2CbObOuOEuA"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/How_to_set_up_Unraid_2021_Guide.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://youtu.be/J7YWxROlmh4"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Home_Assistant_new_User_Interface.png" /></a><br/>
+    <a href="https://youtu.be/i4Jgr3tR4Ps"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Install HACS in Home_Assistant_for_themes_and_custom_cards.png" /></a><br/>
     </TD>
 </TR>
 </TABLE>
@@ -88,10 +59,21 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 <TABLE>
 <TR>
     <TD>
-    <a href="https://youtu.be/PhWpnc-Pvko"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Integrade_Alexa_with_Home_Assistant_Cloud.png" /></a><br/>
+    <a href="https://youtu.be/62uhVq_76K8"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Intergrate_Z-Wave_with_Home_Assistant.png" /></a><br/>
     </TD>
     <TD>
-    <a href="https://youtu.be/tXjihKy7uvQ"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Integrate_Google_Assistant_with_Home_Assistant_Cloud.png" /></a><br/>
+    <a href="https://youtu.be/VsjTzm2JFJ0"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/How_to_use_NFC_tags_with_Home_Assistant.png" /></a><br/>
+    </TD>
+</TR>
+</TABLE>
+
+<TABLE>
+<TR>
+    <TD>
+    <a href="https://youtu.be/bGqajHcgHMw"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/How_to_automatically_backup_Home_Assistant_to_Google_Drive.png" /></a><br/>
+    </TD>
+    <TD>
+    <a href="https://youtu.be/xVvYN5uHaxg"><img src="https://raw.githubusercontent.com/JuanMTech/Home_Assistant_files/master/images/Thumbnails/Integrate_HomeKit_with_Home_Assistant_and_control_devices_with_Siri.png" /></a><br/>
     </TD>
 </TR>
 </TABLE>
@@ -102,8 +84,11 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 * [Written guides](https://www.juanmtech.com/home-assistant/) - Companion writtent guides for all video tutorials
 
 ## Themes I made for Home Assistant *(Available via HACS)*
-* [Google Dark Theme](https://github.com/JuanMTech/google_dark_theme) - ⭐
-* [Google Light Theme](https://github.com/JuanMTech/google_light_theme) - ⭐
+* [macOS-Theme](https://github.com/JuanMTech/macOS-Theme) (Dark/Light) - ⭐
+* [iOS Theme](https://github.com/JuanMTech/ios-theme) (Dark/Light) - ⭐
+* [Google Theme](https://github.com/JuanMTech/google-theme) (Dark/Light) - ⭐
+* [Google Dark Theme](https://github.com/JuanMTech/google_dark_theme)
+* [Google Light Theme](https://github.com/JuanMTech/google_light_theme)
 * [iOS Dark Mode Theme](https://github.com/JuanMTech/ios_dark_mode_theme)
 * [iOS Light Mode Theme](https://github.com/JuanMTech/ios_light_mode_theme)
 * [AMOLED Blue Theme](https://github.com/JuanMTech/amoled_blue)
@@ -113,7 +98,7 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 * [Orange Light Theme](https://github.com/JuanMTech/orange_light)
 
 ## Devices running Home Assistant
-* Server running [Proxmox VE](https://proxmox.com/en/proxmox-ve) with Home Assistant *(aka Hassio)* in a virtual machine
+* Server running [Unraid](https://unraid.net) with Home Assistant  in a virtual machine
 
 ## Common equipment to run Home Assistant
 * [Raspberry Pi 4](https://amzn.to/2Q3UwVi)
@@ -129,22 +114,22 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 * [Amazon Echo](https://amzn.to/2XzITuC)
 * [Amazon Echo Dot](https://amzn.to/2N7nHYW)<br />
 
-2. **Plugs / Switches**
-* [WeMo Switch Smart Plug](https://amzn.to/2Pj2TLn)
-* [Wemo Mini Smart Plug](https://amzn.to/2L8fddM)
-* [Sonoff Basic R2](https://amzn.to/2IAiLaN)<br />
+2. **InfraRed Remote**
+* [BroadLink RM4 pro](https://amzn.to/3QdzgJS)
+* [BroadLink RM4 Mini](https://amzn.to/3zuwBVt)<br />
 
-3. **InfraRed Remote**
-* [Logitech Harmony Hub](https://amzn.to/2vWsmSy)<br />
-
-4. **Zigbee Devices**
+3. **Zigbee Devices**
 * [ConBee II - Zigbee USB Gateway](https://amzn.to/324zSdd)
 * [Aqara Door and Window Sensor](https://amzn.to/313ZYxO)
 * [Aqara Smart Plug](https://amzn.to/3h8odkb)
 * [Aqara Wireless Mini Switch](https://amzn.to/3g2n5wV)
 * [Aqara Temperature and Humidity Sensor](https://amzn.to/2Eg6fgN)
 * [Philips Hue Play Black & Color Smart Light](https://amzn.to/3iR9Ktj)
-* [Philips Hue Smart Dimmer Switch](https://amzn.to/3aBKd4c)
+* [Philips Hue Smart Dimmer Switch](https://amzn.to/3aBKd4c)<br />
+
+4. **Z-Wave Devices**
+* [Aeotec Z-Stick 7 Plus](https://amzn.to/3BEMawk)
+* [First Alert Z-Wave Smoke Detector & Carbon Monoxide Alarm](https://amzn.to/3oPbNmL)
 <br />
 <br />
 

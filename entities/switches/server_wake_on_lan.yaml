@@ -1,5 +1,0 @@
-# Wake on LAN - Server
-platform: wake_on_lan
-name: "Server"
-mac: !secret Server_MAC
-host: !secret Server_IP

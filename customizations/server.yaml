@@ -1,7 +1,0 @@
-# Server
-switch.server:
-  icon: mdi:server
-binary_sensor.proxserver_home_assistant_running:
-  icon: mdi:home-assistant
-binary_sensor.proxserver_unifi_controller_running:
-  icon: mdi:router-network

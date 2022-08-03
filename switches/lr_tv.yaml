@@ -1,0 +1,15 @@
+# Living room TV
+platform: template
+switches:
+  living_room_tv:
+    friendly_name: Living room TV
+    unique_id: '24cf1b74-3d18-49f2-b3ba-242af4ecab00'
+    value_template: "{{ not is_state('media_player.lr_sony_tv', 'off') }}"
+    turn_on:
+      service: media_player.turn_on
+      data:
+        entity_id: media_player.lr_sony_tv
+    turn_off:
+      service: media_player.turn_off
+      data:
+        entity_id: media_player.lr_sony_tv

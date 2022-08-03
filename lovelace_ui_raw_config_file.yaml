@@ -1,939 +1,1101 @@
 # This file is the yaml configuration that goes inside the Raw Configuration Editor.
-# In Home Assistant, click on the menu on the top right and click on "Configure UI".
-# Then, again on the top right click again on the menu icon and go on Raw Configuration Editor.
+# In Home Assistant, click on the menu on the top right and click on "Edit Dashboard".
+# Then, again on the top right click again on the menu icon and go on "Raw Configuration Editor".
 # Copy the content of this file and paste it there.
+##################################################
+##################################################
 #
-#
-title: Home
+kiosk_mode:
+  hide_header: true
 views:
-  - title: Main
-    path: main
-    icon: ''
+  - title: Home
+    path: home
+    icon: mdi:home
     badges: []
     cards:
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: >-
-              {% if now().hour < 5 %} ## Good night {% elif now().hour < 12 %}
-              ## Good morning {% elif now().hour < 18 %} ## Good afternoon {%
-              elif now().hour >= 23 %} ## It's getting late! {% else %} ## Have
-              a nice evening {% endif %}
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: weather-forecast
-            entity: weather.home
-          - type: markdown
-            content: '## Indoor Weather'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
+          - type: custom:mushroom-title-card
+            title: |-
+              {% if now().hour < 12 %}
+              Good morning, {{user}}!
+              {% elif now().hour < 18 %}
+              Good afternoon, {{user}}!
+              {% else %}
+              Good evening, {{user}}!
+              {% endif %}
+            subtitle: >-
+              Today is {{
+              ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()]
+              }} {{
+              ['January','February','March','April','May','June','July','August','September','October','November','December'][now().month-1]
+              }} {{ now().day }}, {{ now().year}}. It is
+              {{state_attr('weather.home', 'temperature')}}° with
+              {{state_attr('weather.home', 'humidity')}}% humidity.
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: template
+                entity: lock.entrance_door_lock
+                icon: |
+                  {% if is_state('lock.entrance_door_lock', 'locked') %}
+                    mdi:lock
+                  {% elif is_state('lock.entrance_door_lock', 'unlocking') %}
+                    mdi:lock-open
+                  {% elif is_state('lock.entrance_door_lock', 'locking') %}
+                    mdi:lock
+                  {% else %}
+                    mdi:lock-open
+                  {% endif %}
+                icon_color: |
+                  {% if is_state('lock.entrance_door_lock', 'locked') %}
+                    red
+                  {% elif is_state('lock.entrance_door_lock', 'unlocking') %}
+                    yellow
+                  {% elif is_state('lock.entrance_door_lock', 'locking') %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %}
+                tap_action:
+                  action: none
+                hold_action:
+                  action: toggle
+                content: >
+                  Entrance is {% if is_state('lock.entrance_door_lock',
+                  'locked') %}
+                    locked
+                  {% elif is_state('lock.entrance_door_lock', 'locking') %}
+                    locking
+                  {% elif is_state('lock.entrance_door_lock', 'unlocking') %}
+                    unlocking
+                  {% else %}
+                    unlocked
+                  {% endif %}
+              - type: action
+                tap_action:
+                  action: navigate
+                  navigation_path: cameras
+                icon: mdi:cctv
+              - type: action
+                icon: mdi:server-network
+                tap_action:
+                  action: navigate
+                  navigation_path: network
+              - type: alarm-control-panel
+                entity: alarm_control_panel.alarmo
+            alignment: center
+          - type: custom:vertical-stack-in-card
+            horizontal: true
             cards:
-              - type: entity
-                entity: sensor.lr_weather_sensor_temperature
-                name: Living room Temp
-              - type: entity
-                entity: sensor.lr_weather_sensor_humidity
-                name: Humidity
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## People'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: glance
-            entities:
-              - entity: person.juan
-              - entity: sensor.gs20_battery_level
-                name: Battery
-              - entity: sensor.gs20_wifi_connection
-                name: WiFi
-          - type: glance
-            entities:
-              - entity: person.antonette
-              - entity: sensor.gs9_battery_level
-                name: Battery
-              - entity: sensor.gs9_wifi_connection
-                name: WiFi
-          - type: markdown
-            content: '## Lights'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
+              - type: custom:mushroom-person-card
+                entity: person.juan
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                icon_type: entity-picture
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-chips-card
+                    chips:
+                      - type: entity
+                        entity: sensor.juans_iphone_battery_level
+                        icon_color: green
+                      - type: entity
+                        entity: sensor.juans_iphone_battery_state
+                        use_entity_picture: false
+                        icon: mdi:power-plug
+                    alignment: end
+                  - type: custom:mushroom-chips-card
+                    chips:
+                      - type: entity
+                        entity: sensor.juans_iphone_storage
+                    alignment: end
+          - type: custom:vertical-stack-in-card
+            horizontal: true
             cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: light.main_desk_light
-                name: Computer
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: light.monitor_light
-                name: Monitor
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: light.2nd_desk_light
+              - type: custom:mushroom-person-card
+                entity: person.antonette
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                icon_type: entity-picture
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-chips-card
+                    chips:
+                      - type: entity
+                        entity: sensor.antonettes_iphone_battery_level
+                        icon_color: green
+                      - type: entity
+                        entity: sensor.antonettes_iphone_battery_state
+                        use_entity_picture: false
+                        icon: mdi:power-plug
+                    alignment: end
+                  - type: custom:mushroom-chips-card
+                    chips:
+                      - type: entity
+                        entity: sensor.antonettes_iphone_storage
+                    alignment: end
+          - type: conditional
+            conditions:
+              - entity: media_player.spotify
+                state_not: idle
+            card:
+              type: media-control
+              entity: media_player.spotify
+          - type: custom:mushroom-title-card
+            title: Lights
+            subtitle: ''
+          - type: custom:vertical-stack-in-card
+            horizontal: true
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.ofc_desk_light
                 name: Desk
-          - type: horizontal-stack
+                use_light_color: true
+                show_brightness_control: false
+                show_color_temp_control: false
+                show_color_control: false
+                double_tap_action:
+                  action: none
+                fill_container: false
+              - type: custom:mushroom-light-card
+                entity: light.ofc_monitor_lights
+                name: Monitor
+                use_light_color: false
+                show_brightness_control: false
+                show_color_temp_control: false
+                show_color_control: false
+                double_tap_action:
+                  action: none
+                fill_container: false
+              - type: custom:vertical-stack-in-card
+                horizontal: true
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.white_light
+                    picture: /local/color-circles/white.png
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.soft_light
+                    picture: /local/color-circles/yellow.png
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.youtube_light
+                    picture: /local/color-circles/red.png
+          - type: custom:vertical-stack-in-card
+            horizontal: true
             cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: light.living_room_light
+              - type: custom:mushroom-light-card
+                entity: light.lr_tv_lights
+                name: Lr TV Lights
+                use_light_color: false
+                show_brightness_control: false
+                show_color_temp_control: false
+                show_color_control: false
+                double_tap_action:
+                  action: none
+                fill_container: false
+              - type: custom:vertical-stack-in-card
+                horizontal: true
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.tv_light_white
+                    picture: /local/color-circles/white.png
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.tv_light_warm
+                    picture: /local/color-circles/yellow.png
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.tv_light_purple
+                    picture: /local/color-circles/purple.png
+                  - type: custom:mushroom-template-card
+                    primary: ''
+                    secondary: ''
+                    icon: ''
+                    layout: vertical
+                    entity: scene.tv_light_blue
+                    picture: /local/color-circles/blue.png
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.lr_light
                 name: Living room
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: light.salt_lamp
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: light.bedroom_light
+                secondary_info: none
+                use_light_color: false
+                fill_container: false
+              - type: custom:mushroom-light-card
+                entity: light.br_light
                 name: Bedroom
+                secondary_info: none
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: '## Spotify'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: media-control
-            entity: media_player.spotify
-          - type: markdown
-            content: '## Speakers'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: entities
-            entities:
-              - entity: media_player.living_room_speaker
-              - entity: media_player.bedroom_speaker
-              - entity: media_player.kitchen_speaker
-  - title: Office
-    path: office
+          - type: custom:mushroom-title-card
+            title: Living room
+            subtitle: >-
+              Temperature: {{states('sensor.lr_weather_sensor_temperature')}}° |
+              Humidity: {{states('sensor.lr_weather_sensor_humidity')}}%
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: media_player.lr_sony_tv
+                name: TV
+                icon_color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_tv_mute
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_tv_volume_down
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_tv_volume_up
+                    tap_action:
+                      action: toggle
+          - type: custom:mushroom-media-player-card
+            entity: media_player.lr_apple_tv
+            icon_type: entity-picture
+            name: Apple TV
+            use_media_info: true
+            show_volume_level: true
+            volume_controls:
+              - volume_set
+              - volume_buttons
+            media_controls:
+              - on_off
+            layout: horizontal
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.lr_cable_box_plug
+                name: Cable Box
+                icon_color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_tv_previous_channel
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_tv_channel_down
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_tv_channel_up
+                    tap_action:
+                      action: toggle
+          - type: custom:mushroom-media-player-card
+            entity: media_player.lr_speaker
+            icon_type: entity-picture
+            layout: horizontal
+            name: Speaker
+            use_media_info: true
+            show_volume_level: true
+            volume_controls:
+              - volume_set
+            media_controls:
+              - on_off
+              - play_pause_stop
+              - next
+          - type: custom:mushroom-climate-card
+            entity: climate.lr_ac
+            fill_container: false
+            show_temperature_control: true
+            collapsible_controls: false
+            hvac_modes:
+              - 'off'
+              - cool
+              - dry
+              - fan_only
+              - auto
+            icon: mdi:air-conditioner
+            name: Air Conditioner
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.lr_fireplace
+                icon_color: green
+                name: Fireplace
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                icon: ''
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_fireplace_brightness_down
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_fireplace_brightness_up
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_fireplace_heat
+                    tap_action:
+                      action: toggle
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: script.lr_fan
+                icon_color: green
+                name: Window Fan
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                icon: ''
+                secondary_info: none
+              - type: horizontal-stack
+                cards:
+                  - show_name: false
+                    show_icon: true
+                    type: button
+                    entity: script.lr_fan_temp_down
+                    tap_action:
+                      action: toggle
+                    icon: mdi:minus
+                  - show_name: false
+                    show_icon: true
+                    type: button
+                    entity: script.lr_fan_temp_up
+                    tap_action:
+                      action: toggle
+                    icon: mdi:plus
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.lr_fan_mode
+                    tap_action:
+                      action: toggle
+                  - show_name: false
+                    show_icon: true
+                    type: button
+                    tap_action:
+                      action: toggle
+                    entity: script.lr_fan_airflow
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Bedroom
+            subtitle: >-
+              Temperature: {{states('sensor.br_weather_sensor_temperature')}}° |
+              Humidity: {{states('sensor.br_weather_sensor_humidity')}}%
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.bedroom_tv
+                name: TV
+                icon_color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_tv_mute
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_tv_volume_down
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_tv_volume_up
+                    tap_action:
+                      action: toggle
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.br_cable_box_plug
+                name: Cable Box
+                icon_color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_cable_box_previous_channel
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_tv_channel_down
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_tv_channel_up
+                    tap_action:
+                      action: toggle
+          - type: custom:mushroom-media-player-card
+            entity: media_player.br_speaker
+            icon_type: entity-picture
+            layout: horizontal
+            name: Speaker
+            use_media_info: true
+            show_volume_level: true
+            volume_controls:
+              - volume_set
+            media_controls:
+              - on_off
+              - play_pause_stop
+              - next
+          - type: custom:mushroom-climate-card
+            entity: climate.br_ac
+            fill_container: false
+            show_temperature_control: true
+            collapsible_controls: false
+            hvac_modes:
+              - 'off'
+              - cool
+              - dry
+              - fan_only
+              - auto
+            icon: mdi:air-conditioner
+            name: Air Conditioner
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.br_fireplace
+                icon_color: green
+                name: Fireplace
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                icon: ''
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_fireplace_brightness_down
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_fireplace_brightness_up
+                    tap_action:
+                      action: toggle
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_fireplace_heat
+                    tap_action:
+                      action: toggle
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: script.br_fan
+                icon_color: green
+                name: Window Fan
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                icon: ''
+                secondary_info: none
+              - type: horizontal-stack
+                cards:
+                  - show_name: false
+                    show_icon: true
+                    type: button
+                    entity: script.br_fan_temp_down
+                    tap_action:
+                      action: toggle
+                    icon: mdi:minus
+                  - show_name: false
+                    show_icon: true
+                    type: button
+                    entity: script.br_fan_temp_up
+                    tap_action:
+                      action: toggle
+                    icon: mdi:plus
+                  - type: button
+                    show_name: false
+                    show_icon: true
+                    entity: script.br_fan_mode
+                    tap_action:
+                      action: toggle
+                  - show_name: false
+                    show_icon: true
+                    type: button
+                    tap_action:
+                      action: toggle
+                    entity: script.br_fan_airflow
+          - type: custom:mushroom-title-card
+            title: Kitchen
+            subtitle: >-
+              Temperature: {{states('sensor.kit_weather_temperature')}}° |
+              Humidity: {{states('sensor.kit_weather_humidity')}}%
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.kit_tv
+                name: TV
+                icon_color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - type: custom:mushroom-entity-card
+                entity: switch.kit_cable_box_plug
+                name: Cable Box
+                icon_color: green
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+          - type: custom:mushroom-media-player-card
+            entity: media_player.kit_speaker
+            icon_type: entity-picture
+            layout: horizontal
+            name: Speaker
+            use_media_info: true
+            show_volume_level: true
+            volume_controls:
+              - volume_set
+            media_controls:
+              - on_off
+              - play_pause_stop
+              - next
+  - title: Network
+    path: network
+    icon: mdi:server-network
+    visible:
+      - user: 866f975360bxxxxxx217e2a73x
     badges: []
     cards:
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: '## Computer & Server'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: back
+              - type: action
+                icon: mdi:home
+                tap_action:
+                  action: navigate
+                  navigation_path: home
+          - type: custom:mushroom-title-card
+            title: Mac Studio
+          - square: false
+            columns: 2
+            type: grid
             cards:
-              - type: entity
-                entity: switch.computer
-              - type: entity
-                entity: switch.server
-          - type: markdown
-            content: '##  Virtual Machines'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: entity
-                entity: binary_sensor.proxserver_home_assistant_running
-                name: Home Assistant
-              - type: entity
-                entity: binary_sensor.proxserver_unifi_controller_running
-                name: UniFi
-          - type: markdown
-            content: '## Home Assistant Stats'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                entity: sensor.glances_cpu_used
-                min: 0
-                max: 100
-                name: CPU
-              - type: gauge
-                entity: sensor.glances_ram_used_percent
-                min: 0
-                max: 100
-                name: RAM
-              - type: gauge
-                entity: sensor.glances_data_used_percent
-                min: 0
-                max: 100
+              - type: custom:mushroom-entity-card
+                entity: switch.mac_studio
+                icon_color: green
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.mac_studio_active
+                name: Active
+                icon_color: green
+                hold_action:
+                  action: none
+                double_tap_action:
+                  action: none
+              - type: custom:mushroom-entity-card
+                entity: sensor.mac_studio_storage
                 name: Storage
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Internet Speeds'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: sensor
-                entity: sensor.speedtest_download
-                graph: line
-                name: Down
-              - type: sensor
-                entity: sensor.speedtest_upload
-                graph: line
-                name: Up
-          - type: markdown
-            content: '## Printer Ink'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.mac_studio_focus
+                name: Focus
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+              - type: custom:mushroom-entity-card
+                entity: sensor.mac_studio_last_update_trigger
+                name: Last Update Trigger
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+              - type: custom:mushroom-entity-card
+                entity: sensor.mac_studio_ssid
+                name: SSID
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+          - type: custom:mushroom-title-card
+            title: Battery Devices
           - type: entities
             entities:
-              - entity: sensor.printer_ink_black
-              - entity: sensor.printer_ink_cyan
-              - entity: sensor.printer_ink_magenta
-              - entity: sensor.printer_ink_yellow
-            show_header_toggle: false
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## GitHub Repos'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: entities
-            entities:
-              - entity: sensor.home_assistant_files
-                type: 'custom:github-entity-row'
-              - entity: sensor.google_dark_theme
-                type: 'custom:github-entity-row'
-              - entity: sensor.google_light_theme
-                type: 'custom:github-entity-row'
-              - entity: sensor.ios_dark_theme
-                type: 'custom:github-entity-row'
-              - entity: sensor.ios_light_theme
-                type: 'custom:github-entity-row'
-              - entity: sensor.amoled_blue
-                type: 'custom:github-entity-row'
-              - entity: sensor.green_dark_mode
-                type: 'custom:github-entity-row'
-              - entity: sensor.green_light_mode
-                type: 'custom:github-entity-row'
-              - entity: sensor.orange_dark_theme
-                type: 'custom:github-entity-row'
-              - entity: sensor.orange_light_theme
-                type: 'custom:github-entity-row'
-  - title: Living room
-    path: living-room
-    badges: []
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Climate'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: sensor
-                graph: line
-                entity: sensor.lr_weather_sensor_temperature
-                name: Temperature
-              - type: sensor
-                entity: sensor.lr_weather_sensor_humidity
-                graph: line
-                name: Humidity
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## TV & Cable Box'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: switch.living_room_tv
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_cable_box_power
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_soundbar_power
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_cable_box_channel_up
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_cable_box_channel_prev
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_tv_volume_up
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_cable_box_channel_down
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_tv_volume_mute
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_tv_volume_down
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: input_boolean.lr_tv_hdmi_inputs
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: input_boolean.lr_tv_playback_buttons
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: input_boolean.lr_tv_number_pad
-                show_name: false
-          - type: conditional
-            conditions:
-              - entity: input_boolean.lr_tv_hdmi_inputs
-                state: 'on'
-            card:
-              type: horizontal-stack
-              cards:
-                - type: vertical-stack
-                  cards:
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_rewind
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_play
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_forward
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_stop
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_pause
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_select
-                          show_name: false
-          - type: conditional
-            conditions:
-              - entity: input_boolean.lr_tv_playback_buttons
-                state: 'on'
-            card:
-              type: horizontal-stack
-              cards:
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.lr_cable_box_direction_left
-                  show_name: false
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.lr_cable_box_direction_up
-                  show_name: false
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.lr_cable_box_direction_down
-                  show_name: false
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.lr_cable_box_direction_right
-                  show_name: false
-          - type: conditional
-            conditions:
-              - entity: input_boolean.lr_tv_number_pad
-                state: 'on'
-            card:
-              type: horizontal-stack
-              cards:
-                - type: vertical-stack
-                  cards:
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_1
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_2
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_3
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_4
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_5
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_6
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_7
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_8
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_9
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_exit
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_number_0
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.lr_cable_box_select
-                          show_name: false
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## AC & Fan'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_ac_power
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_ac_fan_speed
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_ac_mode
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_fan_power
-                show_name: true
-                name: Fan
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_fan_airflow
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_ac_temp_down
-                show_name: true
-                name: Down
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.lr_ac_temp_up
-                show_name: true
-                name: Up
-          - type: markdown
-            content: '## Google Home Spearker'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: media-control
-            entity: media_player.living_room_speaker
-          - type: markdown
-            content: '## Cast'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: media-control
-            entity: media_player.lr_sony_tv
-  - title: Bedroom
-    path: bedroom
-    badges: []
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## TV & Cable Box'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_tv_power
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_cable_box_power
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_cable_box_channel_up
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_cable_box_channel_prev
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_tv_volume_up
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_cable_box_channel_down
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_tv_volume_mute
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_tv_volume_down
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: input_boolean.br_tv_hdmi_inputs
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: input_boolean.br_tv_playback_buttons
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: input_boolean.br_tv_number_pad
-                show_name: false
-          - type: conditional
-            conditions:
-              - entity: input_boolean.br_tv_hdmi_inputs
-                state: 'on'
-            card:
-              type: horizontal-stack
-              cards:
-                - type: vertical-stack
-                  cards:
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_rewind
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_play
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_forward
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_stop
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_pause
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_select
-                          show_name: false
-          - type: conditional
-            conditions:
-              - entity: input_boolean.br_tv_playback_buttons
-                state: 'on'
-            card:
-              type: horizontal-stack
-              cards:
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.br_cable_box_direction_left
-                  show_name: false
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.br_cable_box_direction_up
-                  show_name: false
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.br_cable_box_direction_down
-                  show_name: false
-                - type: button
-                  tap_action:
-                    action: toggle
-                  entity: script.br_cable_box_direction_right
-                  show_name: false
-          - type: conditional
-            conditions:
-              - entity: input_boolean.br_tv_number_pad
-                state: 'on'
-            card:
-              type: horizontal-stack
-              cards:
-                - type: vertical-stack
-                  cards:
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_1
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_2
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_3
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_4
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_5
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_6
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_7
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_8
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_9
-                          show_name: false
-                    - type: horizontal-stack
-                      cards:
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_exit
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_number_0
-                          show_name: false
-                        - type: button
-                          tap_action:
-                            action: toggle
-                          entity: script.br_cable_box_select
-                          show_name: false
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## AC & Fan'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_ac_power
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_ac_fan_speed
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_ac_temp_up
-                show_name: false
-          - type: horizontal-stack
-            cards:
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_fan_power
-                show_name: true
-                name: Fan
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_fan_airflow
-                show_name: false
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: script.br_ac_temp_up
-                show_name: true
-                name: Up
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Google Home Spearker'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: media-control
-            entity: media_player.bedroom_speaker
-          - type: markdown
-            content: '## Cast'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: media-control
-            entity: media_player.bedroom_tv
-  - title: Kitchen
-    path: kitchen
-    badges: []
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Google Home Speaker'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: media-control
-            entity: media_player.kitchen_speaker
-  - title: CCTV
-    path: cctv
-    badges: []
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Living room camera'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: picture-entity
-            entity: camera.living_room_cam
-            show_name: false
-            show_state: false
-            camera_image: camera.living_room_cam
-  - title: Devices Battery
-    path: devices-battery
-    badges: []
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Mobile Devices'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: entities
-            entities:
-              - entity: sensor.gs20_battery_level
-                name: Galaxy S20+
-              - entity: sensor.gs9_battery_level
-                name: Galaxy S9+
-              - entity: sensor.ipad_pro_battery_level
-                name: iPad Pro
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: '## Sensors'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
-          - type: entities
-            entities:
-              - entity: sensor.lr_weather_sensor_battery
-                name: Weather sensor
+              - entity: sensor.entrance_door_lock_battery
+                name: Door lock
+                secondary_info: last-updated
+              - entity: sensor.entrance_door_sensor_battery
+                secondary_info: last-updated
+                name: Entrance Door Sensor
               - entity: sensor.lr_door_sensor_battery
-                name: Door sensor
+                secondary_info: last-updated
+                name: Living Room Door Sensor
+              - entity: sensor.lr_weather_sensor_battery
+                secondary_info: last-updated
+                name: Living Room Weather Sensor
+              - entity: sensor.lr_switch_battery
+                secondary_info: last-updated
+                name: Living Room Switch
+              - entity: sensor.ofc_switch_battery
+                secondary_info: last-updated
+                name: Office Switch
+              - entity: sensor.br_weather_sensor_battery
+                secondary_info: last-updated
+                name: Bedroom Weather Sensor
+              - entity: sensor.br_switch_battery
+                secondary_info: last-updated
+                name: Bedroom Switch
+              - entity: sensor.br_door_sensor_battery
+                secondary_info: last-updated
+                name: Bedroom Door Sensor
+              - entity: sensor.kit_litter_sensor_battery
+                secondary_info: last-updated
+                name: Litter Sensor
+              - entity: sensor.kit_weather_sensor_battery
+                secondary_info: last-updated
+                name: Kitchen Weather Sensor
+              - entity: sensor.kit_switch_battery
+                secondary_info: last-updated
+                name: Kitchen Switch
       - type: vertical-stack
         cards:
-          - type: markdown
-            content: '## Switches'
-            style: |
-              ha-card {
-                box-shadow: none;
-                --card-background-color: none
-              }
+          - type: custom:mushroom-title-card
+            title: Printer
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: sensor.ofc_printer_black_ink
+                name: Black Ink
+                icon_color: black
+              - type: custom:mushroom-entity-card
+                entity: sensor.ofc_printer_cyan_ink
+                name: Cyan Ink
+                icon_color: cyan
+              - type: custom:mushroom-entity-card
+                entity: sensor.ofc_printer_magenta_ink
+                name: Magenta Ink
+                icon_color: purple
+              - type: custom:mushroom-entity-card
+                entity: sensor.ofc_printer_yellow_ink
+                name: Yellow
+                icon_color: yellow
+  - title: Cameras
+    path: cameras
+    icon: mdi:cctv
+    visible:
+      - user: 866f975360bxxxx17e2a73x
+      - user: 37e2ffe8956xxx840a9f12e1x
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: back
+              - type: action
+                icon: mdi:home
+                tap_action:
+                  action: navigate
+                  navigation_path: home
+            alignment: start
+          - type: custom:mushroom-title-card
+            title: Doorbell
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            entity: camera.doorbell
+            aspect_ratio: '16:9'
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-lock-card
+                entity: lock.entrance_door_lock
+                fill_container: false
+                layout: horizontal
+                name: Entrance Door
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
           - type: entities
             entities:
-              - entity: sensor.lr_mini_switch_battery
-                name: Living room mini switch
-              - entity: sensor.office_mini_switch_battery
-                name: Office mini switch
+              - entity: media_player.doorbell_cam_speaker
+            show_header_toggle: false
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_privacy_mode
+                icon_color: green
+                name: Privacy Mode
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.doorbell_motion
+                icon_color: green
+                name: Motion
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_hdr_mode
+                name: HDR Mode
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_status_led
+                name: Status LED
+                icon_color: green
+                tap_action:
+                  action: toggle
+          - type: entities
+            entities:
+              - entity: select.doorbell_recording_mode
+                name: Recording Mode
+              - entity: select.doorbell_infrared_mode
+                name: Infrared Mode
+              - entity: select.doorbell_doorbell_text
+              - entity: number.doorbell_microphone_level
+                name: Mic Level
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_detections_person
+                name: person Detection
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_detections_vehicle
+                name: Vehicle Detection
+                icon_color: green
+                tap_action:
+                  action: toggle
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_overlay_show_date
+                name: Show Date
+                tap_action:
+                  action: toggle
+                icon_color: green
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_overlay_show_logo
+                name: Show Logo
+                tap_action:
+                  action: toggle
+                icon_color: green
+                icon: ''
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_overlay_show_name
+                name: Show Name
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.doorbell_overlay_show_bitrate
+                name: Show Bitrate
+                tap_action:
+                  action: toggle
+                icon_color: green
+          - type: custom:mushroom-title-card
+            title: Bedroom
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            entity: camera.br_camera
+          - type: entities
+            entities:
+              - entity: media_player.bedroom_cam_speaker
+            show_header_toggle: false
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.br_camera_privacy_mode
+                icon_color: green
+                name: Privacy Mode
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.bedroom_motion
+                icon_color: green
+                name: Motion
+              - type: custom:mushroom-entity-card
+                entity: switch.bedroom_hdr_mode
+                name: HDR Mode
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.br_camera_status_led
+                name: Status LED
+                icon_color: green
+                tap_action:
+                  action: toggle
+          - type: entities
+            entities:
+              - entity: select.br_camera_recording_mode
+                name: Recording Mode
+              - entity: select.bedroom_infrared_mode
+                name: Infrared Mode
+              - entity: number.bedroom_microphone_level
+                name: Mic Level
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.bedroom_overlay_show_date
+                name: Show Date
+                tap_action:
+                  action: toggle
+                icon_color: green
+              - type: custom:mushroom-entity-card
+                entity: switch.bedroom_overlay_show_logo
+                name: Show Logo
+                tap_action:
+                  action: toggle
+                icon_color: green
+                icon: ''
+              - type: custom:mushroom-entity-card
+                entity: switch.bedroom_overlay_show_name
+                name: Show Name
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.bedroom_overlay_show_bitrate
+                name: Show Bitrate
+                tap_action:
+                  action: toggle
+                icon_color: green
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Living Room
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            entity: camera.lr_camera
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.lr_camera_privacy_mode
+                icon_color: green
+                name: Privacy Mode
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.living_room_motion
+                icon_color: green
+                name: Motion
+              - type: custom:mushroom-entity-card
+                entity: switch.living_room_hdr_mode
+                name: HDR Mode
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.lr_camera_status_led
+                name: Status LED
+                icon_color: green
+                tap_action:
+                  action: toggle
+          - type: entities
+            entities:
+              - entity: select.lr_camera_recording_mode
+                name: Recording Mode
+              - entity: select.living_room_infrared_mode
+                name: Infrared Mode
+              - entity: number.living_room_microphone_level
+                name: Mic Level
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.living_room_overlay_show_date
+                name: Show Date
+                tap_action:
+                  action: toggle
+                icon_color: green
+              - type: custom:mushroom-entity-card
+                entity: switch.living_room_overlay_show_logo
+                name: Show Logo
+                tap_action:
+                  action: toggle
+                icon_color: green
+                icon: ''
+              - type: custom:mushroom-entity-card
+                entity: switch.living_room_overlay_show_name
+                name: Show Name
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.living_room_overlay_show_bitrate
+                name: Show Bitrate
+                tap_action:
+                  action: toggle
+                icon_color: green
+          - type: custom:mushroom-title-card
+            title: Kitchen
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            entity: camera.kit_camera
+          - type: entities
+            entities:
+              - entity: media_player.kitchen_cam_speaker
+            show_header_toggle: false
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.kit_camera_privacy_mode
+                icon_color: green
+                name: Privacy Mode
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.kitchen_motion
+                icon_color: green
+                name: Motion
+              - type: custom:mushroom-entity-card
+                entity: switch.kitchen_hdr_mode
+                name: HDR Mode
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.kit_camera_status_led
+                name: Status LED
+                icon_color: green
+                tap_action:
+                  action: toggle
+          - type: entities
+            entities:
+              - entity: select.kit_camera_recording_mode
+                name: Recording Mode
+              - entity: select.kitchen_infrared_mode
+                name: Infrared Mode
+              - entity: number.kitchen_microphone_level
+                name: Mic Level
+          - square: false
+            columns: 2
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: switch.kitchen_overlay_show_date
+                name: Show Date
+                tap_action:
+                  action: toggle
+                icon_color: green
+              - type: custom:mushroom-entity-card
+                entity: switch.kitchen_overlay_show_logo
+                name: Show Logo
+                tap_action:
+                  action: toggle
+                icon_color: green
+                icon: ''
+              - type: custom:mushroom-entity-card
+                entity: switch.kitchen_overlay_show_name
+                name: Show Name
+                icon_color: green
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-entity-card
+                entity: switch.kitchen_overlay_show_bitrate
+                name: Show Bitrate
+                tap_action:
+                  action: toggle
+                icon_color: green

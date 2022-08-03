@@ -51,6 +51,7 @@ iOS Dark Mode:
   label-badge-gray: rgb(72, 72, 74)
   # Cards
   card-background-color: rgb(28, 28, 30)
+  ha-card-background: rgb(28, 28, 30)
   ha-card-border-radius: "10px"
   ha-card-box-shadow: none
   paper-dialog-background-color: var(--card-background-color)
@@ -79,3 +80,16 @@ iOS Dark Mode:
   # Checkboxes
   mdc-checkbox-unchecked-color: rgb(174, 174, 178)
   mdc-checkbox-disable-color: var(--disabled-text-color)
+  mdc-select-fill-color: rgb(28, 28, 30)
+  mdc-select-ink-color: var(--primary-text-color)
+  mdc-select-label-ink-color: var(--secondary-text-color)
+  mdc-select-idle-line-color: var(--primary-text-color)
+  mdc-select-dropdown-icon-color: var(--secondary-text-color)
+  mdc-select-hover-line-color: var(--accent-color)
+  # Input
+  input-fill-color: var(--secondary-background-color)
+  input-dropdown-icon-color: var(--secondary-text-color)
+  input-ink-color: var(--primary-text-color)
+  input-label-ink-color: var(--secondary-text-color)
+  input-idle-line-color: var(--primary-text-color)
+  input-hover-line-color: var(--accent-color)

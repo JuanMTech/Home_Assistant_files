@@ -1,6 +1,0 @@
-# Wake on LAN - PC
-platform: wake_on_lan
-name: "Computer"
-mac: !secret PC_MAC
-host: !secret PC_IP
-broadcast_address: !secret PC_IP

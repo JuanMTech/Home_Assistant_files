@@ -1,0 +1,5 @@
+# Mac Studio
+platform: wake_on_lan
+name: "Mac Studio"
+mac: !secret MacStudio_MAC
+host: !secret MacStudio_IP

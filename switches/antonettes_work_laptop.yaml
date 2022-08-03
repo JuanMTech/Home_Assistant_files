@@ -1,0 +1,5 @@
+# Mac Studio
+platform: wake_on_lan
+name: "Antonette's Work Laptop"
+mac: !secret AntonetteWorkLaptop_MAC
+host: !secret AntonetteWorkLaptop_IP
