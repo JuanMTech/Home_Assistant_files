@@ -81,7 +81,7 @@ Here are some of the tutorials that can get you started with Home Assistant:<br 
 
 ## Video tutorials and written guides
 * [YouTube Playlist](https://www.youtube.com/playlist?list=PLLydq6ff7NvJ1ioQSVRCt2FJK9EFzRKWr) - Easy to follow tutorials to get you started with Home Assistant
-* [Written guides](https://www.juanmtech.com/home-assistant/) - Companion writtent guides for all video tutorials
+* [Written guides](https://www.juanmtech.com/tags/home-assistant/) - Companion writtent guides for all video tutorials
 
 ## Themes I made for Home Assistant *(Available via HACS)*
 * [macOS-Theme](https://github.com/JuanMTech/macOS-Theme) (Dark/Light) - ⭐
